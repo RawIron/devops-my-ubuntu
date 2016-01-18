@@ -1,12 +1,10 @@
+## ansible playbook
+
 ### command-line
-htop
-zsh
 terminator
 
 ### devops
-ansible
 virtualbox
-vagrant
 docker
 
 ### aws
@@ -14,18 +12,9 @@ jungledisk
 s3cmd
 
 ### dev
-maven
 sbt
 
 ### python
-bottleneck
-numpy
-scipy
-scikit-learn
-seaborn
-luigi
-IPython
-
 inject
 nose
 pyvows
