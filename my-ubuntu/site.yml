@@ -1,29 +1,27 @@
 ---
 
-# ubuntu laptop
+- hosts: default
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+    - name: install linux packages
+      apt: name={{ item }} state=present
+      with_items:
+       - ansible
+       - vagrant
+       - maven
+       - htop
+       - zsh
+       - python-virtualenv
+       - python-pip
 
-- name: install linux packages
-  yum: name={{ item }} state=present
-  with_items:
-   - ansible
-   - vagrant
-   - maven
-   - htop
-   - zsh
-   - python-virtualenv
-   - python-pip
-
-- name: create virtualenv for analysis
-  virtualenv: 
-
-- name: install analysis packages into virtualenv
-  pip: name={{ item }}
-  with_items:
-   - bottleneck
-   - numpy
-   - scipy
-   - scikit-learn
-   - seaborn
-   - luigi
-   - IPython
-
+    - name: install analysis packages into virtualenv
+      pip: name={{ item }}
+      with_items:
+       - bottleneck
+       - numpy
+       - scipy
+       - scikit-learn
+       - seaborn
+       - luigi
+       - IPython
