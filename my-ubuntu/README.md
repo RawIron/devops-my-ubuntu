@@ -1,8 +1,5 @@
 ## ansible playbook
 
-'''
-vagrant init ubuntu/trusty64; vagrant up --provider virtualbox
-'''
 
 ### command-line
 terminator
@@ -12,7 +9,14 @@ terminator
 
 ### devops
 virtualbox
+'''
+vagrant init ubuntu/trusty64; vagrant up --provider virtualbox
+'''
+
 docker
+'''
+ansible-galaxy install angstwad.docker_ubuntu
+'''
 
 ### aws
 jungledisk
@@ -20,6 +24,12 @@ s3cmd
 
 ### dev
 sbt
+java open sdk
+oracle java 7 runtime
+oracle java 7 webstart
+oracle java 8 runtime
+oracle java 8 webstart
+dmd (d compiler)
 
 ### python
 inject
@@ -40,6 +50,7 @@ sublime
 git
 meld
 p4
+KCachegrind
 
 ### intellij plugins
 maven helper
@@ -50,9 +61,14 @@ markdown support
 ### 
 firefox
 skype
-rawtherapee
 libre office
-vlc media player
+FocusWriter
 
 ### firefox plugins
+FileZilla
+
+rawtherapee
+krita
+vlc media player
+ripperX
 
