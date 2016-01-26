@@ -1,0 +1,14 @@
+---
+
+- hosts: default
+  remote_user: vagrant
+  sudo: yes
+
+  vars:
+    user: achtmhz
+
+  tasks:
+    - name: install linux packages
+      apt: name={{ item }} state=present
+      with_items:
+       - python-pip

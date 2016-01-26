@@ -1,0 +1,2 @@
+alias bfg='java -jar ~/bfg-1.12.8.jar'
+alias idea='~/intelliJ/bin/idea.sh&'

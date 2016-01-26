@@ -1,17 +1,37 @@
 ---
 
-- hosts: default
-  remote_user: vagrant
-  sudo: yes
+- hosts: laptop
+
+  vars:
+    user: achtmhz
+    hostname: mordoror
+
   tasks:
+    - name: install user tools
+      apt: name={{ item }} state=present
+      with_items:
+       - htop
+       - zsh
+
+    - name: rename host
+      hostname: name={{ hostname }}
+    - name: create groups
+      group: name={{ user }} state=present
+    - name: create users
+      user: name={{ user }} shell=/bin/zsh groups={{ user }}
+    - name: append to .profile
+      command: echo 'include .profile_local' >>/home/{{ user }}/.profile
+    - name: copy bash aliases
+      copy: src=./files/aliases dest=/home/{{ user }}/.bash_aliases owner={{ user }} group={{ user }} mode=0600
+    - name: copy vi .exrc
+      copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0600
+
     - name: install linux packages
       apt: name={{ item }} state=present
       with_items:
        - ansible
        - vagrant
        - maven
-       - htop
-       - zsh
        - python-virtualenv
        - python-pip
 
