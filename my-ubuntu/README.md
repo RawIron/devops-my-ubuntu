@@ -54,8 +54,6 @@ Octave
 ### develop tools
 intellij
 sublime
-git
-meld
 p4
 KCachegrind
 

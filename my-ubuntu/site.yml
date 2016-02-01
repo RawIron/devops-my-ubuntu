@@ -17,8 +17,10 @@
     - name: install user tools
       apt: name={{ item }} state=present
       with_items:
-       - htop
+       - git
+       - meld
        - zsh
+       - htop
        - screen
        - tmux
 
@@ -44,4 +46,17 @@
     - py-dev
     - py-data-analysis
     - java-dev
+
+
+# get oh-my zsh installed but chsh fails
+# try with sudo sh -c "..."
+- hosts: laptop
+  vars:
+    - user: achtmhz
+  sudo_user: "{{ user }}"
+  sudo: yes
+
+  tasks:
+    - name: oh-my zsh
+      shell: sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
