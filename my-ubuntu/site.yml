@@ -26,18 +26,14 @@
     - name: copy vi .exrc
       copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
 
-    - name: install linux packages
+    - name: install common linux packages
       apt: name={{ item }} state=latest
       with_items:
        - vagrant
        - build-essential
 
-    - name: java dev
-      apt: name={{ item }} state=latest
-      with_items:
-       - maven
-
   roles:
     - py-dev
     - py-data-analysis
+    - java-dev
 

@@ -1,0 +1,7 @@
+---
+
+- name: java dev
+  apt: name={{ item }} state=latest
+  with_items:
+   - maven
+
