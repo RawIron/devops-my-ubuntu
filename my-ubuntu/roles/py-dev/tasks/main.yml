@@ -1,0 +1,19 @@
+---
+
+
+- name: install py-dev linux packages
+  apt: name={{ item }} state=latest
+  with_items:
+   - python-virtualenv
+   - python-pip
+   - python-dev
+
+- name: install py-dev packages
+  pip: name={{ item }} state=latest
+  with_items:
+   - nose
+   - pyvows
+   - inject
+   - sqlalchemy
+   - agnostic
+

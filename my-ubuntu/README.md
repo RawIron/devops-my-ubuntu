@@ -51,13 +51,6 @@ export PATH=$M2:$PATH
 '''
 
 
-### python
-inject
-nose
-pyvows
-sqlalchemy
-agnostic
-
 ### analysis
 anaconda
 R
@@ -87,8 +80,10 @@ FocusWriter
 ### firefox plugins
 FileZilla
 
+### media
 rawtherapee
 krita
 vlc media player
 ripperX
+dvdrip
 

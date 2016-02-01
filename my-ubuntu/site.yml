@@ -29,46 +29,15 @@
     - name: install linux packages
       apt: name={{ item }} state=latest
       with_items:
-       - ansible
        - vagrant
-       - maven
        - build-essential
-       - python-virtualenv
-       - python-pip
-       - python-dev
 
-    - name: install analysis packages into virtualenv
-      pip: name={{ item }} state=latest
+    - name: java dev
+      apt: name={{ item }} state=latest
       with_items:
-       - nose
-       - sqlalchemy
+       - maven
 
-    - name: install numpy linux packages
-      apt: name={{ item }} state=present
-      with_items:
-       - libblas-dev
-       - liblapack-dev
+  roles:
+    - py-dev
+    - py-data-analysis
 
-    - name: install scipy linux packages
-      apt: name={{ item }} state=present
-      with_items:
-       - gfortran 
-
-    - name: install scikit-learn linux packages
-      apt: name={{ item }} state=present
-      with_items:
-       - libpng-dev
-       - libfreetype6-dev
-       - pkg-config
-
-    - name: install analysis packages into virtualenv
-      pip: name={{ item }} state=latest
-      with_items:
-       - numpy
-       - scipy
-       - bottleneck
-       - scikit-learn
-       - pandas
-       - seaborn
-       - IPython
-       - luigi
