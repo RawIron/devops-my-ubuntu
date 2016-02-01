@@ -1,7 +1,22 @@
 ---
 
-- name: java dev
+- name: install maven
   apt: name={{ item }} state=latest
   with_items:
    - maven
 
+- name: download maven 3.1
+  get_url:
+    url=http://archive.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+    dest=/usr/local/apache-maven-3.1.1-bin.tar.gz
+  tags: maven31
+
+- name: install maven 3.1
+  unarchive:
+    src=/usr/local/apache-maven-3.1.1-bin.tar.gz
+    dest=/usr/local/
+  tags: maven31
+
+- name: create sym link
+  file: src=/usr/local/apache-maven-3.1.1 dest=/usr/local/apache-maven-3.1 state=link
+  tags: maven31

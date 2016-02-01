@@ -26,25 +26,24 @@
 
     - name: rename host
       hostname: name={{ hostname }}
+
     - name: create groups
       group: name={{ user }} state=present
     - name: create user
       user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
 
-    - name: copy bash aliases
-      copy: src=./files/aliases dest=/home/{{ user }}/.bash_aliases owner={{ user }} group={{ user }} mode=0644
-    - name: copy vi .exrc
-      copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
-
     - name: install common linux packages
       apt: name={{ item }} state=latest
       with_items:
-       - vagrant
+       #- vagrant
        - build-essential
+
+    - name: aws command line interface
+      pip: name=awscli state=latest
 
   roles:
     - py-dev
-    - py-data-analysis
+    #- py-data-analysis
     - java-dev
 
 
@@ -57,6 +56,11 @@
   sudo: yes
 
   tasks:
+    - name: copy bash aliases
+      copy: src=./files/aliases dest=/home/{{ user }}/.bash_aliases owner={{ user }} group={{ user }} mode=0644
+    - name: copy vi .exrc
+      copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
+
     - name: oh-my zsh
       shell: sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
