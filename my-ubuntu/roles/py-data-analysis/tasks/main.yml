@@ -1,5 +1,6 @@
 ---
 
+
 - name: install numpy linux packages
   apt: name={{ item }} state=present
   with_items:
@@ -19,7 +20,9 @@
    - pkg-config
 
 - name: install analysis packages into virtualenv
-  pip: name={{ item }} state=latest
+  pip: name={{ item }}
+       virtualenv={{ venv_home }}/venv_datahacks
+       state=latest
   with_items:
    - numpy
    - scipy

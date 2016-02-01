@@ -1,12 +1,6 @@
 ## ansible playbook
 
 
-### command-line
-terminator
-    sudo add-apt-repository ppa:gnome-terminator
-    sudo apt-get update
-    sudo apt-get install terminator
-
 ### devops
 virtualbox
 '''
@@ -22,7 +16,7 @@ ansible-galaxy install angstwad.docker_ubuntu
 jungledisk
 s3cmd
 
-### dev
+### java dev
 sbt
 java open sdk
 oracle java 7 runtime

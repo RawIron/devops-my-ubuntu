@@ -6,13 +6,21 @@
   vars:
     user: achtmhz
     hostname: mordoror
+    venv_home: /home/{{ user }}
 
   tasks:
+    - name: add terminator repo
+      apt_repository: repo='ppa:gnome-terminator'
+    - name: install terminator
+      apt: name=terminator update_cache=yes state=latest
+
     - name: install user tools
       apt: name={{ item }} state=present
       with_items:
        - htop
        - zsh
+       - screen
+       - tmux
 
     - name: rename host
       hostname: name={{ hostname }}
