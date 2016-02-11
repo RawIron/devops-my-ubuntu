@@ -25,8 +25,7 @@ oracle java 8 runtime
 oracle java 8 webstart
 dmd (d compiler)
 
-maven 3.1
-append to .profile
+maven 3.1, append to .profile
 '''
 export M2_HOME=/usr/local/apache-maven-3.1
 export M2=$M2_HOME/bin

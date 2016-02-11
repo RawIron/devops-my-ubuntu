@@ -27,9 +27,11 @@
    - numpy
    - scipy
    - bottleneck
+   - numexpr
    - scikit-learn
    - pandas
    - seaborn
    - IPython
    - luigi
+   - blaze
 
