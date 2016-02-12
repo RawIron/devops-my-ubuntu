@@ -75,7 +75,13 @@ vlc media player
 ripperX
 dvdrip
 
+
 ### look
+unfortunately haven't found out how to configure a "glass look"
+  all backgrounds are transparent, blurred
+  drop-down menu are transparent, blurred
+  ...
+
 Unity Tweak Tool
 Compiz config manager (CCSM)
 '''
@@ -94,9 +100,10 @@ gnome-look.org
 '''
 
 install theme with Unity Tweak Tool
+  current theme is delorean-dark-theme-3.9
 
 change desktop background
 * ghost-in-the-shell
 
 terminator
-	transparency
+	transparency of background
