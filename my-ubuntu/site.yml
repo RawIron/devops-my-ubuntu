@@ -35,8 +35,16 @@
     - name: install common linux packages
       apt: name={{ item }} state=latest
       with_items:
-       #- vagrant
        - build-essential
+
+    - name: install devops packages
+      apt: name={{ item }} state=latest
+      with_items:
+       - virtualbox-qt
+       - vagrant
+
+    - name: download ubuntu 14.04 vagrant box
+      command: "vagrant init ubuntu/trusty64; vagrant up --provider virtualbox"
 
     - name: aws command line interface
       pip: name=awscli state=latest
@@ -47,7 +55,7 @@
     - java-dev
 
 
-# get oh-my zsh installed but chsh fails
+# got oh-my zsh installed but chsh fails
 # try with sudo sh -c "..."
 - hosts: laptop
   vars:

@@ -2,11 +2,6 @@
 
 
 ### devops
-virtualbox
-'''
-vagrant init ubuntu/trusty64; vagrant up --provider virtualbox
-'''
-
 docker
 '''
 ansible-galaxy install angstwad.docker_ubuntu

@@ -9,14 +9,17 @@
   get_url:
     url=http://archive.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
     dest=/usr/local/apache-maven-3.1.1-bin.tar.gz
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version <= "14"
   tags: maven31
 
 - name: install maven 3.1
   unarchive:
     src=/usr/local/apache-maven-3.1.1-bin.tar.gz
     dest=/usr/local/
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version <= "14"
   tags: maven31
 
-- name: create sym link
+- name: create sym link to maven 3.1
   file: src=/usr/local/apache-maven-3.1.1 dest=/usr/local/apache-maven-3.1 state=link
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version <= "14"
   tags: maven31
