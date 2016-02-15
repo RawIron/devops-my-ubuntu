@@ -32,10 +32,12 @@
     - name: create user
       user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
 
-    - name: install common linux packages
+    - name: install dev tools
       apt: name={{ item }} state=latest
       with_items:
        - build-essential
+       - valgrind
+       - kcachegrind
 
     - name: install devops packages
       apt: name={{ item }} state=latest
@@ -45,6 +47,13 @@
 
     - name: download ubuntu 14.04 vagrant box
       command: "vagrant init ubuntu/trusty64; vagrant up --provider virtualbox"
+
+    - name: data analysis
+      apt: name={{ item }} state=latest
+      with_items:
+       - r-base
+       - r-base-dev
+       - octave
 
     - name: aws command line interface
       pip: name=awscli state=latest

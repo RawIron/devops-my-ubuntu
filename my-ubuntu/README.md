@@ -10,6 +10,10 @@ ansible-galaxy install angstwad.docker_ubuntu
 ### aws
 jungledisk
 s3cmd
+'''
+copy access and secret key to config files
+.s3cfg
+'''
 
 ### java dev
 sbt
@@ -32,16 +36,15 @@ export PATH=$M2:$PATH
 
 ### analysis
 anaconda
-R
 R commander
-Octave
+'''
+open the R interpreter (from the command line: R) and run install.package("Rcmdr") in the interpreter. Once this finishes, then run library(Rcmdr). Allow it to install missing/updated dependencies.
+'''
 
 ### develop tools
 intellij idea
 sublime
 p4
-KCachegrind
-Valgrind
 
 ### intellij plugins
 maven helper
@@ -71,7 +74,7 @@ ripperX
 dvdrip
 
 
-### look
+### eye candy
 unfortunately haven't found out how to configure a "glass look"
   all backgrounds are transparent, blurred
   drop-down menu are transparent, blurred
