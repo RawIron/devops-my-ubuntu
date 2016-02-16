@@ -1,22 +1,23 @@
 ---
 
 - vars:
-  bfg_home: {{ user_home }}/bin
-  bfg_jar: bfg-latest.jar
+    bfg_home: "{{ user_home }}/bin"
+    bfg_jar: "bfg-latest.jar"
 
 - name: install dev tools
   apt: name={{ item }} state=latest
   with_items:
    - build-essential
+   - vim-gnome
    - git
    - meld
    - valgrind
    - kcachegrind
 
 - name: install git repo cleaner bfg, https://rtyley.github.io/bfg-repo-cleaner/
-  - command: "wget --output-document={{ bfg_jar }} 'https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST'" chdir={{ bfg_home }} creates={{ bfg_home }}/{{ bfg_jar }}
-  - tags: bfg
+  command: wget --output-document="{{ bfg_jar }}" 'https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST' chdir="{{ bfg_home }}" creates="{{ bfg_home }}/{{ bfg_jar }}"
+  tags: bfg
 
-  - name: change access to bfg jar file
-  - file: path={{ bfg_home }}/{{ bfg_jar }} owner={{ user }} group={{ user }} mode=0440 state=file
-  - tags: bfg
+- name: change access to bfg jar file
+  file: path="{{ bfg_home }}/{{ bfg_jar }}" owner="{{ user }}" group="{{ user }}" mode=0440 state=file
+  tags: bfg

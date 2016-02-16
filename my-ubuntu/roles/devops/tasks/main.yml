@@ -1,0 +1,25 @@
+---
+
+- name: install devops packages
+  apt: name={{ item }} state=latest
+  with_items:
+   - virtualbox-qt
+   - vagrant
+   - docker
+
+- name: download ubuntu 14.04 vagrant box
+  command: "vagrant init ubuntu/trusty64; vagrant up --provider virtualbox"
+
+# ubuntu 15.10 installs
+#   virtualbox 5.x
+#   vagrant 1.6x
+# vagrant 1.6x does not work with virtualbox 5.x
+- name: download vagrant 1.8x
+  url_get: url="https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb" dest=/tmp
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version = "15"
+  tags: vagrant18
+
+- name: install vagrant deb
+  command: "sudo dpkg -i /tmp/vagrant_1.8.1_x86_64.deb"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version = "15"
+  tags: vagrant18

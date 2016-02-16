@@ -7,7 +7,7 @@
     user: achtmhz
     hostname: mordoror
     user_home: /home/{{ user }}
-    venv_home: {{ user_home }}
+    venv_home: "{{ user_home }}"
 
   tasks:
     - name: add terminator repo
@@ -34,15 +34,6 @@
     - name: create user
       user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
 
-    - name: install devops packages
-      apt: name={{ item }} state=latest
-      with_items:
-       - virtualbox-qt
-       - vagrant
-
-    - name: download ubuntu 14.04 vagrant box
-      command: "vagrant init ubuntu/trusty64; vagrant up --provider virtualbox"
-
     - name: data analysis
       apt: name={{ item }} state=latest
       with_items:
@@ -55,6 +46,7 @@
 
   roles:
     - dev-tools
+    - devops
     - py-dev
     #- py-data-analysis
     - java-dev
@@ -64,7 +56,7 @@
 # try with sudo sh -c "..."
 - hosts: laptop
   vars:
-    - user: achtmhz
+    user: achtmhz
   sudo_user: "{{ user }}"
   sudo: yes
 

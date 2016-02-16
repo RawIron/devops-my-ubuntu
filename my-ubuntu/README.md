@@ -24,6 +24,7 @@ sudo apt-get update
 sudo apt-get install sbt
 '''
 scala
+
 java open sdk
 oracle java 7 runtime
 oracle java 7 webstart
@@ -88,6 +89,13 @@ dvdrip
 
 
 ### eye candy
+to fix the 
+Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
+'''
+sudo apt-get install gtk2-engines-pixbuf
+'''
+
+
 unfortunately haven't found out how to configure a "glass look"
   all backgrounds are transparent, blurred
   drop-down menu are transparent, blurred
