@@ -12,14 +12,15 @@
   tasks:
     - name: add terminator repo
       apt_repository: repo='ppa:gnome-terminator'
+      tags: terminator
+
     - name: install terminator
       apt: name=terminator update_cache=yes state=latest
+      tags: terminator
 
     - name: install user tools
       apt: name={{ item }} state=present
       with_items:
-       - git
-       - meld
        - zsh
        - htop
        - screen

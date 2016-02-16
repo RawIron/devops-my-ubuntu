@@ -23,3 +23,16 @@
   file: src=/usr/local/apache-maven-3.1.1 dest=/usr/local/apache-maven-3.1 state=link
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version <= "14"
   tags: maven31
+
+
+- name: add repo for sbt
+  command: "echo 'deb https://dl.bintray.com/sbt/debian /' | sudo tee -a /etc/apt/sources.list.d/sbt.list"
+  tags: sbt
+
+- name: add key for sbt repo
+  apt_key: keyserver=keyserver.ubuntu.com id=642AC823 state=present
+  tags: sbt
+
+- name: install sbt package
+  apt: name=sbt update_cache=yes state=present
+  tags: sbt
