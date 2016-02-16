@@ -1,0 +1,12 @@
+---
+
+- name: install dev tools
+  apt: name={{ item }} state=latest
+  with_items:
+   - build-essential
+   - valgrind
+   - kcachegrind
+
+- name: install git repo cleaner bfg, https://rtyley.github.io/bfg-repo-cleaner/
+  - command: "wget --output-document=bfg-latest.jar 'https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST'" chdir={{ user_home }}/bin creates={{ user_home }}/bin/bfg-latest.jar
+

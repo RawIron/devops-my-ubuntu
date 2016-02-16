@@ -45,10 +45,11 @@ open the R interpreter (from the command line: R) and run install.package("Rcmdr
 intellij idea
 sublime
 p4
-bfg git repo cleaner
-'''
-https://rtyley.github.io/bfg-repo-cleaner/
-'''
+
+
+#### github repos
+create workspace(s) in HOME
+git clone projects into the workspace(s)
 
 ### intellij plugins
 maven helper

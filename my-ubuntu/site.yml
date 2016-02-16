@@ -6,7 +6,8 @@
   vars:
     user: achtmhz
     hostname: mordoror
-    venv_home: /home/{{ user }}
+    user_home: /home/{{ user }}
+    venv_home: {{ user_home }}
 
   tasks:
     - name: add terminator repo
@@ -32,13 +33,6 @@
     - name: create user
       user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
 
-    - name: install dev tools
-      apt: name={{ item }} state=latest
-      with_items:
-       - build-essential
-       - valgrind
-       - kcachegrind
-
     - name: install devops packages
       apt: name={{ item }} state=latest
       with_items:
@@ -59,6 +53,7 @@
       pip: name=awscli state=latest
 
   roles:
+    - dev-tools
     - py-dev
     #- py-data-analysis
     - java-dev
