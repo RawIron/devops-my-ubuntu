@@ -1,5 +1,17 @@
 ## ansible playbook
+create a vagrant box
+'''
+$ vagrant up
+'''
 
+test the ansible playbooks on the vagrant box
+'''
+$ vagrant ssh
+vagrant$ cd /vagrant
+vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
+'''
+
+## Notes, TODO
 
 ### devops
 docker
