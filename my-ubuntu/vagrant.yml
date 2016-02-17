@@ -4,11 +4,12 @@
   remote_user: vagrant
   sudo: yes
 
-  vars:
-    user: achtmhz
-
   tasks:
-    - name: install linux packages
-      apt: name={{ item }} state=present
-      with_items:
-       - ansible
+    - name: add ansible repo
+      apt_repository: repo="ppa:ansible/ansible"
+      tags: ansible_latest
+
+    - name: install ansible latest
+      apt: name=ansible update_cache=yes state=latest
+      tags: ansible_latest
+
