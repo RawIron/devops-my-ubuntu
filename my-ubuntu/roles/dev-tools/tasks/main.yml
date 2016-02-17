@@ -1,7 +1,7 @@
 ---
 
 - name: install dev tools
-  apt: name={{ item }} state=latest
+  apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - build-essential
    - vim-gnome

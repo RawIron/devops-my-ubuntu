@@ -5,11 +5,12 @@
 
   vars:
     user: achtmhz
+    user_group: achtmhz
     hostname: mordoror
     user_home: /home/{{ user }}
     venv_home: "{{ user_home }}"
 
-  tasks:
+  pre_tasks:
     - name: add terminator repo
       apt_repository: repo='ppa:gnome-terminator'
       tags: terminator
@@ -23,17 +24,21 @@
       with_items:
        - zsh
        - htop
+       - tree
        - screen
        - tmux
 
     - name: rename host
       hostname: name={{ hostname }}
 
-    - name: create groups
+    - name: create group
       group: name={{ user }} state=present
     - name: create user
       user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
+    - name: create bin folder
+      file: path={{ user_home }}/bin owner={{ user }} group={{ user_group }} state=directory
 
+  tasks:
     - name: data analysis
       apt: name={{ item }} state=latest
       with_items:
