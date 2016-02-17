@@ -13,7 +13,7 @@
   tags: vagrant_latest
 
 - name: install vagrant latest deb
-  command: "sudo dpkg -i /tmp/vagrant_1.8.1_x86_64.deb"
+  command: "dpkg -i /tmp/vagrant_1.8.1_x86_64.deb"
   when: ansible_distribution == "Ubuntu"
   tags: vagrant_latest
 

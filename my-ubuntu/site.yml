@@ -1,7 +1,8 @@
 ---
 
 - hosts: laptop
-  sudo: yes
+  become: yes
+  become_method: sudo
 
   vars:
     user: achtmhz
@@ -62,8 +63,8 @@
 - hosts: laptop
   vars:
     user: achtmhz
-  sudo_user: "{{ user }}"
-  sudo: yes
+  become_user: "{{ user }}"
+  become_method: sudo
 
   tasks:
     - name: copy bash aliases
