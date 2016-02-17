@@ -5,7 +5,7 @@
   with_items:
    - virtualbox-qt
    - vagrant
-   - docker
+   - docker.io
 
 - name: download ubuntu 14.04 vagrant box
   command: "vagrant init ubuntu/trusty64; vagrant up --provider virtualbox"
