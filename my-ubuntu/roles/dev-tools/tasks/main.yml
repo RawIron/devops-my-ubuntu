@@ -1,9 +1,5 @@
 ---
 
-- vars:
-    bfg_home: "{{ user_home }}/bin"
-    bfg_jar: "bfg-latest.jar"
-
 - name: install dev tools
   apt: name={{ item }} state=latest
   with_items:

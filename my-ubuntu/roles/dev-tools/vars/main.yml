@@ -1,0 +1,4 @@
+---
+
+bfg_home: "{{ user_home }}/bin"
+bfg_jar: "bfg-latest.jar"

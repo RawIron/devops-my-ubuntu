@@ -15,7 +15,7 @@
 #   vagrant 1.6x
 # vagrant 1.6x does not work with virtualbox 5.x
 - name: download vagrant 1.8x
-  url_get: url="https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb" dest=/tmp
+  get_url: url="https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb" dest=/tmp
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version = "15"
   tags: vagrant18
 
