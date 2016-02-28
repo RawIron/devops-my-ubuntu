@@ -27,6 +27,7 @@
        - htop
        - sysstat
        - iptraf
+       - etherape
        - tree
        - screen
        - tmux
