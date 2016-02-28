@@ -25,6 +25,8 @@
       with_items:
        - zsh
        - htop
+       - sysstat
+       - iptraf
        - tree
        - screen
        - tmux
