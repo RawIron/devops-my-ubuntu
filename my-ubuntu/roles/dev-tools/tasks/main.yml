@@ -17,3 +17,11 @@
 - name: change access to bfg jar file
   file: path="{{ bfg_home }}/{{ bfg_jar }}" owner="{{ user }}" group="{{ user }}" mode=0440 state=file
   tags: bfg
+
+- name: install nodejs
+  apt: name=nodejs update_cache=yes state=latest
+  tags: swagger
+
+- name: clone swagger editor
+  command: git clone https://github.com/swagger-api/swagger-editor.git chdir={{ user_home }} creates={{ user_home }}/swagger-editor
+  tags: swagger
