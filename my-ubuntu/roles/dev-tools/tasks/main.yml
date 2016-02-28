@@ -10,6 +10,23 @@
    - valgrind
    - kcachegrind
 
+
+- name: install nodejs
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - nodejs
+   - npm
+  tags: swagger
+
+- name: npm requires node in the path
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+  tags: swagger
+
+- name: clone swagger editor
+  command: git clone https://github.com/swagger-api/swagger-editor.git chdir={{ user_home }} creates={{ user_home }}/swagger-editor
+  tags: swagger
+
+
 - name: install git repo cleaner bfg, https://rtyley.github.io/bfg-repo-cleaner/
   command: wget --output-document="{{ bfg_jar }}" 'https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST' chdir="{{ bfg_home }}" creates="{{ bfg_home }}/{{ bfg_jar }}"
   tags: bfg
@@ -17,11 +34,3 @@
 - name: change access to bfg jar file
   file: path="{{ bfg_home }}/{{ bfg_jar }}" owner="{{ user }}" group="{{ user }}" mode=0440 state=file
   tags: bfg
-
-- name: install nodejs
-  apt: name=nodejs update_cache=yes state=latest
-  tags: swagger
-
-- name: clone swagger editor
-  command: git clone https://github.com/swagger-api/swagger-editor.git chdir={{ user_home }} creates={{ user_home }}/swagger-editor
-  tags: swagger
