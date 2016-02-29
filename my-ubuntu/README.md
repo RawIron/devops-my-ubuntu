@@ -71,6 +71,15 @@ scala
 python
 markdown support
 
+### sublime packages
+Package Control
+SublimeLinter
+sublimelinter-pylint
+sublimelinter-json
+BracketHighlighter
+Sublime CodeIntel
+SublimeREPL
+
 ### 
 firefox
 skype
@@ -81,7 +90,6 @@ bzip2
 Midnight Commander
 Record My Desktop
 
-
 ### firefox plugins
 FileZilla
 
@@ -91,7 +99,8 @@ krita
 vlc media player
 ripperX
 dvdrip
-
+OpenShot
+Calibre
 
 ### eye candy
 to fix the 
