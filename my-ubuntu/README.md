@@ -1,31 +1,31 @@
 ## ansible playbook
 create a vagrant box
-'''
+```
 $ vagrant up
-'''
+```
 
 test the ansible playbooks on the vagrant box
-'''
+```
 $ vagrant ssh
 vagrant$ cd /vagrant
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
-'''
+```
 
 ## Notes, TODO
 
 ### devops
 docker
-'''
+```
 ansible-galaxy install angstwad.docker_ubuntu
-'''
+```
 
 ### aws
 jungledisk
 s3cmd
-'''
+```
 copy access and secret key to config files
 .s3cfg
-'''
+```
 
 ### java dev
 scala
@@ -40,26 +40,33 @@ dmd (d compiler)
 
 if ubuntu 14.04:
 	maven 3.1, append to .profile
-'''
+```
 export M2_HOME=/usr/local/apache-maven-3.1
 export M2=$M2_HOME/bin
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2:$PATH
-'''
+```
 
 
 ### analysis
 anaconda
 R commander
-'''
+```
 open the R interpreter (from the command line: R) and run install.package("Rcmdr") in the interpreter. Once this finishes, then run library(Rcmdr). Allow it to install missing/updated dependencies.
-'''
+```
 
 ### develop tools
 intellij idea
 sublime
 p4
 
+### system tools
+SystemTap, perf_events, dtrace4linux, ktap, lttng
+strace, ftrace, ltrace, ss, sysdig, tiptop
+mpstat, vmstat, netstat, iostat
+```bash
+apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
+```
 
 #### github repos
 create workspace(s) in HOME
@@ -105,22 +112,22 @@ Calibre
 ### eye candy
 to fix the 
 Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
-'''
+```
 sudo apt-get install gtk2-engines-pixbuf
-'''
+```
 
 
-unfortunately haven't found out how to configure a "glass look"
+unfortunately haven`t found out how to configure a "glass look"
   all backgrounds are transparent, blurred
   drop-down menu are transparent, blurred
   ...
 
 Unity Tweak Tool
 Compiz config manager (CCSM)
-'''
+```
 sudo apt-get install unity-tweak-tool
 sudo apt-get install ccsm
-'''
+```
 
 Compiz config settings manager, Unity plugin
 	set opacity for launcher
@@ -128,9 +135,9 @@ Compiz config settings manager, Unity plugin
 
 
 download themes
-'''
+```
 gnome-look.org
-'''
+```
 
 install theme with Unity Tweak Tool
   current theme is delorean-dark-theme-3.9

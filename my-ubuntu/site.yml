@@ -32,10 +32,22 @@
       apt: name={{ item }} state=present
       with_items:
        - htop
+       - iotop
        - sysstat
-       - systemtap
+       - sysdig
+       - oprofile
+       - nicstat
        - iptraf
-       - etherape
+
+    - name: install systemtap
+      apt: name={{ item }} state=present
+      with_items:
+       - systemtap
+      tags: systemtap
+
+    - name: test systemtap
+      command: stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
+      tags: systemtap
 
     - name: rename host
       hostname: name={{ hostname }}
