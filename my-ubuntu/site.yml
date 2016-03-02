@@ -24,13 +24,18 @@
       apt: name={{ item }} state=present
       with_items:
        - zsh
-       - htop
-       - sysstat
-       - iptraf
-       - etherape
        - tree
        - screen
        - tmux
+
+    - name: install system tools
+      apt: name={{ item }} state=present
+      with_items:
+       - htop
+       - sysstat
+       - systemtap
+       - iptraf
+       - etherape
 
     - name: rename host
       hostname: name={{ hostname }}
