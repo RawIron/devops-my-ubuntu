@@ -12,32 +12,8 @@
     venv_home: "{{ user_home }}"
 
   pre_tasks:
-    - name: add terminator repo
-      apt_repository: repo='ppa:gnome-terminator'
-      tags: terminator
-
-    - name: install terminator
-      apt: name=terminator update_cache=yes state=latest
-      tags: terminator
-
-    - name: install user tools
-      apt: name={{ item }} state=present
-      with_items:
-       - zsh
-       - tree
-       - screen
-       - tmux
-
-
     - name: rename host
       hostname: name={{ hostname }}
-
-    - name: create group
-      group: name={{ user }} state=present
-    - name: create user
-      user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
-    - name: create bin folder
-      file: path={{ user_home }}/bin owner={{ user }} group={{ user_group }} state=directory
 
   tasks:
     - name: data analysis
@@ -51,6 +27,7 @@
       pip: name=awscli state=latest
 
   roles:
+    - { role: setup-user, tags: ['setup'] }
     - { role: system-tools, tags: ['systools'] }
     - { role: dev-tools, tags: ['devtools'] }
     - { role: devops, tags: ['ops'] }

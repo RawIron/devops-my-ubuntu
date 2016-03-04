@@ -5,13 +5,14 @@ $ vagrant up
 ```
 
 test the ansible playbooks on the vagrant box
+* all tasks
 ```
 $ vagrant ssh
 vagrant$ cd /vagrant
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
 ```
 
-test one role at a time using tags
+* one role at a time using the tags defined in `site.yml`
 ```
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "python"
 ```

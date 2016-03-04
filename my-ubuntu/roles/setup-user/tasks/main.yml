@@ -1,0 +1,30 @@
+---
+
+- name: install terminator
+  apt: name=terminator update_cache=yes state=latest
+  tags: terminator
+
+- name: install user tools
+  apt: name={{ item }} state=present
+  with_items:
+   - zsh
+   - tree
+   - screen
+   - tmux
+
+- name: create group
+  group: name={{ user }} state=present
+- name: create user
+  user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
+
+- name: create bin folder
+  file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }} state=directory
+  with_items:
+    - bin
+    - workspace_d
+    - workspace_java
+    - workspace_scala
+    - workspace_python
+    - workspace_data
+    - workspace_devops
+
