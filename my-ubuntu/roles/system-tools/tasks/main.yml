@@ -1,0 +1,22 @@
+---
+
+- name: install system tools
+  apt: name={{ item }} state=present
+  with_items:
+   - htop
+   - iotop
+   - sysstat
+   - sysdig
+   - oprofile
+   - nicstat
+   - iptraf
+
+- name: install systemtap
+  apt: name={{ item }} state=present
+  with_items:
+   - systemtap
+  tags: systemtap
+
+- name: test systemtap
+  command: stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
+  tags: systemtap
