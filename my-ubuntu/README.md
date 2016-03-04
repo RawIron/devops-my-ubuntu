@@ -14,7 +14,7 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
 
 * one role at a time using the tags defined in `site.yml`
 ```
-vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "python"
+vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "setup"
 ```
 
 
