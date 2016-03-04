@@ -11,6 +11,12 @@ vagrant$ cd /vagrant
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
 ```
 
+test one role at a time using tags
+```
+vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "python"
+```
+
+
 ## Notes, TODO
 
 ### devops
@@ -64,6 +70,8 @@ p4
 SystemTap, perf_events, dtrace4linux, ktap, lttng
 strace, ftrace, ltrace, ss, sysdig, tiptop
 mpstat, vmstat, netstat, iostat
+
+SystemTap install:
 ```bash
 apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
 ```
