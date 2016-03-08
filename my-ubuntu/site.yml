@@ -16,13 +16,6 @@
       hostname: name={{ hostname }}
 
   tasks:
-    - name: data analysis
-      apt: name={{ item }} state=latest
-      with_items:
-       - r-base
-       - r-base-dev
-       - octave
-
     - name: aws command line interface
       pip: name=awscli state=latest
 
@@ -31,6 +24,8 @@
     - { role: system-tools, tags: ['systools'] }
     - { role: dev-tools, tags: ['devtools'] }
     - { role: devops, tags: ['ops'] }
+    - { role: java-dev, tags: ['java'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data-analysis, tags: ['pydata'] }
-    - { role: java-dev, tags: ['java'] }
+    - { role: stats-learning, tags: ['stats'] }
+    - { role: cloud-aws, tags: ['aws'] }
