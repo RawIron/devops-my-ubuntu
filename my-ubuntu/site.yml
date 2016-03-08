@@ -15,10 +15,6 @@
     - name: rename host
       hostname: name={{ hostname }}
 
-  tasks:
-    - name: aws command line interface
-      pip: name=awscli state=latest
-
   roles:
     - { role: setup-user, tags: ['setup'] }
     - { role: system-tools, tags: ['systools'] }
