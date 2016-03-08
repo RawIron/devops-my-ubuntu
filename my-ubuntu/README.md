@@ -42,6 +42,7 @@ copy access and secret key to config files
 * scala
 
 * java
+
 java open sdk
 oracle java 7 runtime
 oracle java 7 webstart
@@ -49,6 +50,7 @@ oracle java 8 runtime
 oracle java 8 webstart
 
 * maven and sbt
+
 if ubuntu 14.04:
 	maven 3.1, append to .profile
 ```
@@ -77,15 +79,15 @@ open the R interpreter (from the command line: R) and run install.package("Rcmdr
 ```
 
 ### development tools
-intellij idea
-sublime
-p4
+* intellij idea
+* sublime
+* meld, p4
 
 #### intellij plugins
-maven helper
-scala
-python
-markdown support
+* maven helper
+* scala
+* python
+* markdown support
 
 #### sublime packages
 Package Control
@@ -113,8 +115,8 @@ apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
 ### user account
 
 #### github repos
-create workspace(s) in HOME
-git clone projects into the workspace(s)
+* create workspace(s) in HOME
+* git clone projects into the workspace(s)
 
 ### office tools
 firefox
