@@ -17,7 +17,7 @@
 - name: create user
   user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
 
-- name: create bin folder
+- name: create folders
   file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }} state=directory
   with_items:
     - bin
