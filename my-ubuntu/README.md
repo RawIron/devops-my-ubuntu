@@ -1,10 +1,14 @@
-## ansible playbook
-create a vagrant box
+## My Ubuntu
+Rebuild my Ubuntu laptop using Ansible playbooks. Just for the fun of it and to learn more about Ansible.
+
+A Vagrant box is used to test the Ansible playbooks.
+
+First create a vagrant box
 ```
 $ vagrant up
 ```
 
-test the ansible playbooks on the vagrant box
+Then test the ansible playbooks on the vagrant box
 * all tasks
 ```
 $ vagrant ssh
@@ -18,7 +22,7 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --t
 ```
 
 
-## Notes, TODO
+## Categories and the major software that I use
 
 ### devops
 docker
@@ -34,17 +38,17 @@ copy access and secret key to config files
 .s3cfg
 ```
 
-### java dev
-scala
+### jvm development
+* scala
 
+* java
 java open sdk
 oracle java 7 runtime
 oracle java 7 webstart
 oracle java 8 runtime
 oracle java 8 webstart
 
-dmd (d compiler)
-
+* maven and sbt
 if ubuntu 14.04:
 	maven 3.1, append to .profile
 ```
@@ -54,20 +58,49 @@ export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2:$PATH
 ```
 
+### python development
 
-### analysis
-anaconda
+### system programming
+
+* dmd (d compiler)
+
+
+### data analysis
+
+#### python
+* anaconda
+
+#### R
 R commander
 ```
 open the R interpreter (from the command line: R) and run install.package("Rcmdr") in the interpreter. Once this finishes, then run library(Rcmdr). Allow it to install missing/updated dependencies.
 ```
 
-### develop tools
+### development tools
 intellij idea
 sublime
 p4
 
+#### intellij plugins
+maven helper
+scala
+python
+markdown support
+
+#### sublime packages
+Package Control
+SublimeLinter
+sublimelinter-pylint
+sublimelinter-json
+BracketHighlighter
+Sublime CodeIntel
+SublimeREPL
+
 ### system tools
+
+#### performance
+show and measure what is happening on Linux
+
 SystemTap, perf_events, dtrace4linux, ktap, lttng
 strace, ftrace, ltrace, ss, sysdig, tiptop
 mpstat, vmstat, netstat, iostat
@@ -77,26 +110,13 @@ SystemTap install:
 apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
 ```
 
+### user account
+
 #### github repos
 create workspace(s) in HOME
 git clone projects into the workspace(s)
 
-### intellij plugins
-maven helper
-scala
-python
-markdown support
-
-### sublime packages
-Package Control
-SublimeLinter
-sublimelinter-pylint
-sublimelinter-json
-BracketHighlighter
-Sublime CodeIntel
-SublimeREPL
-
-### 
+### office tools
 firefox
 skype
 libre office
@@ -106,7 +126,7 @@ bzip2
 Midnight Commander
 Record My Desktop
 
-### firefox plugins
+#### firefox plugins
 FileZilla
 
 ### media
