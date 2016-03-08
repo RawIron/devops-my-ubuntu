@@ -1,4 +1,6 @@
 # git aliases are provided by oh-my-zsh
 
+alias lla='ls -la'
+
 alias bfg='java -jar ~/bin/bfg-latest.jar'
 alias idea='~/intelliJ/bin/idea.sh&'
