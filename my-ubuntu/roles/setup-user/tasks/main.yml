@@ -8,6 +8,7 @@
   apt: name={{ item }} state=present
   with_items:
    - zsh
+   - git
    - tree
    - screen
    - tmux
@@ -27,4 +28,16 @@
     - workspace_python
     - workspace_data
     - workspace_devops
+
+- name: copy bash aliases
+  copy: src=./files/aliases dest=/home/{{ user }}/.bash_aliases owner={{ user }} group={{ user }} mode=0644
+- name: copy vi .exrc
+  copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
+
+# got oh-my zsh installed but chsh fails
+# try with sudo sh -c "..."
+- name: oh-my zsh
+  shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  become_user: "{{ user }}"
+  become_method: sudo
 
