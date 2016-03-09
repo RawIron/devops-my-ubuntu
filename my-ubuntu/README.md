@@ -25,18 +25,22 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --t
 ## Categories and the major software that I use
 
 ### devops
-docker
+automate everything and so everything is reproducable. it can be can again and again. makes testing, load testing, building and deploying easy. also great for scaling.
+* ansible
+* docker
 ```
 ansible-galaxy install angstwad.docker_ubuntu
 ```
 
 ### aws
-jungledisk
-s3cmd
+tools to access, manage and deploy. a lot of times I access S3.
+* jungledisk
+* s3cmd
 ```
 copy access and secret key to config files
 .s3cfg
 ```
+* awscli
 
 ### jvm development
 * scala
@@ -61,16 +65,20 @@ export PATH=$M2:$PATH
 ```
 
 ### python development
+* nose
+
 
 ### system programming
-
+programming languages for high performance, system level access
 * dmd (d compiler)
+* C, C++
 
 
 ### data analysis
 
-#### python
+#### py-data
 * anaconda
+* numpy, scipy, sympy, Jupyter, Seaborn, scikit-learn
 
 #### R
 R commander
@@ -79,8 +87,11 @@ open the R interpreter (from the command line: R) and run install.package("Rcmdr
 ```
 
 ### development tools
+write code with fully fledged IDE or lightweight editor. plugins can be used to extend the functionality.
 * intellij idea
+* vim
 * sublime
+* git
 * meld, p4
 
 #### intellij plugins
@@ -89,7 +100,7 @@ open the R interpreter (from the command line: R) and run install.package("Rcmdr
 * python
 * markdown support
 
-#### sublime packages
+#### sublime packages (plugins)
 Package Control
 SublimeLinter
 sublimelinter-pylint
@@ -119,28 +130,31 @@ apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
 * git clone projects into the workspace(s)
 
 ### office tools
-firefox
-skype
-libre office
-FocusWriter
-7zip
-bzip2
-Midnight Commander
-Record My Desktop
+communicate. create and manage documents, files.
+* firefox
+* skype
+* libre office
+* FocusWriter
+* Record My Desktop
+* 7zip, bzip2
+* Midnight Commander
 
 #### firefox plugins
 FileZilla
 
 ### media
-rawtherapee
-krita
-vlc media player
-ripperX
-dvdrip
-OpenShot
-Calibre
+view and process photos, e-books, audio and video.
+* rawtherapee
+* krita
+* vlc media player
+* ripperX
+* dvdrip
+* OpenShot
+* Calibre
 
 ### eye candy
+give Linux the look-and-feel I like.
+
 to fix the 
 Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
 ```
