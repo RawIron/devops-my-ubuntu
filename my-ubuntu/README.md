@@ -160,12 +160,12 @@ view and process photos, e-books, audio and video.
 
 ### eye candy
 give Linux the look-and-feel I like.
-
 unfortunately haven`t figured out how to configure a "glass look"
   * all backgrounds are transparent, blurred
   * drop-down menu are transparent, blurred
   * ...
 
+tools for UI tweaks. did a few tweaks.
 * Unity Tweak Tool
 * Compiz config manager (CCSM)
 ```
@@ -178,13 +178,13 @@ Compiz config settings manager, Unity plugin
 	* set opacity for panel (or use Unity Tweak Tool)
 
 
-download themes
+browse and download a theme
 ```
 gnome-look.org
 ```
 
 install theme with Unity Tweak Tool
-  current theme is delorean-dark-theme-3.9
+  * current theme is `delorean-dark-theme-3.9`
 
 to fix the 
 Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
@@ -196,4 +196,4 @@ change desktop background
 * ghost-in-the-shell
 
 terminator
-	transparency of background
+	* transparency of background
