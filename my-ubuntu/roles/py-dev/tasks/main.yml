@@ -6,6 +6,7 @@
    - python-virtualenv
    - python-pip
    - python-dev
+   - python-pygments
 
 - name: install py-dev packages
   pip: name={{ item }} state=latest
