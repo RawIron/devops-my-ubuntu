@@ -4,20 +4,20 @@
   apt: name={{ item }} state=latest
   with_items:
    - virtualbox-qt
-   - vagrant
    - docker.io
 
 - name: download vagrant latest
-  get_url: url="http://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb" dest=/tmp
+  get_url: url="http://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb" dest=/tmp
   when: ansible_distribution == "Ubuntu"
-  tags: vagrant_latest
+  tags: vagrant
 
 - name: install vagrant latest deb
-  command: "dpkg -i /tmp/vagrant_1.8.1_x86_64.deb"
+  apt: deb=/tmp/vagrant_{{ vagrant_version }}_x86_64.deb
   when: ansible_distribution == "Ubuntu"
-  tags: vagrant_latest
+  tags: vagrant
 
 # testing it on a vagrant box does not work
 - name: download ubuntu 14.04 vagrant box
   command: "vagrant box add ubuntu/trusty64"
   when: ansible_virtualization_type != "virtualbox"
+  tags: vagrant
