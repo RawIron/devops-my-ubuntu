@@ -43,7 +43,6 @@ copy access and secret key to config files
 
 ### jvm development
 * scala
-
 * java
 ```
 java open sdk
@@ -52,7 +51,6 @@ oracle java 7 webstart
 oracle java 8 runtime
 oracle java 8 webstart
 ```
-
 * maven and sbt
 
 if ubuntu 14.04:
@@ -174,8 +172,8 @@ sudo apt-get install ccsm
 ```
 
 Compiz config settings manager, Unity plugin
-	* set opacity for launcher
-	* set opacity for panel (or use Unity Tweak Tool)
+* set opacity for launcher
+* set opacity for panel (or use Unity Tweak Tool)
 
 
 browse and download a theme
@@ -184,7 +182,7 @@ gnome-look.org
 ```
 
 install theme with Unity Tweak Tool
-  * current theme is `delorean-dark-theme-3.9`
+* current theme is `delorean-dark-theme-3.9`
 
 to fix the 
 Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
@@ -196,4 +194,4 @@ change desktop background
 * ghost-in-the-shell
 
 terminator
-	* transparency of background
+* transparency of background
