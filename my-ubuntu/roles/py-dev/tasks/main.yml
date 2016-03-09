@@ -9,10 +9,14 @@
    - python-pygments
 
 - name: install py-dev packages
-  pip: name={{ item }} state=latest
+  pip: name={{ item }}
+       virtualenv={{ venv_home }}/venv_pydev
+       state=latest
   with_items:
    - nose
    - pyvows
    - inject
    - sqlalchemy
    - agnostic
+  become_user: "{{ user }}"
+  become_method: sudo
