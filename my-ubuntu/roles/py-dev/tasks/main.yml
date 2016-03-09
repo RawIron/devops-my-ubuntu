@@ -1,6 +1,5 @@
 ---
 
-
 - name: install py-dev linux packages
   apt: name={{ item }} state=latest
   with_items:
@@ -16,4 +15,3 @@
    - inject
    - sqlalchemy
    - agnostic
-
