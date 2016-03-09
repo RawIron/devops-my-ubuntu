@@ -23,14 +23,16 @@
   tags: swagger
 
 - name: clone swagger editor
-  command: git clone https://github.com/swagger-api/swagger-editor.git chdir={{ user_home }} creates={{ user_home }}/swagger-editor
+  git: repo=https://github.com/swagger-api/swagger-editor.git dest={{ user_home }}/swagger-editor
+  become_user: "{{ user }}"
+  become_method: sudo
   tags: swagger
 
 
 - name: install git repo cleaner bfg, https://rtyley.github.io/bfg-repo-cleaner/
-  command: wget --output-document="{{ bfg_jar }}" 'https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST' chdir="{{ bfg_home }}" creates="{{ bfg_home }}/{{ bfg_jar }}"
+  get_url: url='https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST' dest={{ bfg_home }}/{{ bfg_jar }}
   tags: bfg
 
 - name: change access to bfg jar file
-  file: path="{{ bfg_home }}/{{ bfg_jar }}" owner="{{ user }}" group="{{ user }}" mode=0440 state=file
+  file: path={{ bfg_home }}/{{ bfg_jar }} owner={{ user }} group={{ user }} mode=0440 state=file
   tags: bfg
