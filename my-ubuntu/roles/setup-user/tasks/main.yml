@@ -13,31 +13,39 @@
    - screen
    - tmux
 
+
 - name: create group
   group: name={{ user }} state=present
+
 - name: create user
   user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
+
 
 - name: create folders
   file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }} state=directory
   with_items:
     - bin
-    - workspace_d
+    - opt
+    - tmp
+    - workspaces
     - workspace_java
     - workspace_scala
     - workspace_python
+    - workspace_d
     - workspace_data
     - workspace_devops
 
-- name: copy bash aliases
-  copy: src=./files/aliases dest=/home/{{ user }}/.bash_aliases owner={{ user }} group={{ user }} mode=0644
-- name: copy vi .exrc
-  copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
-
 # got oh-my zsh installed but chsh fails
-# try with sudo sh -c "..."
+# first run of this task fails, second is good
+# make it two tasks: download and run install
 - name: oh-my zsh
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   become_user: "{{ user }}"
   become_method: sudo
 
+
+- name: copy zsh aliases
+  copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom owner={{ user }} group={{ user }} mode=0644
+
+- name: copy vi .exrc
+  copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
