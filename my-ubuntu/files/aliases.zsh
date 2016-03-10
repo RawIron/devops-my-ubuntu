@@ -12,6 +12,6 @@ alias csn='pygmentize -g -O style=colorful,linenos=1'
 alias v='vi'
 
 alias bfg='java -jar ~/bin/bfg-latest.jar'
-alias idea='~/intelliJ/bin/idea.sh&'
+alias idea='~/opt/intelliJ/bin/idea.sh&'
 alias jungle='/usr/local/bin/junglediskdesktop&'
 
