@@ -5,13 +5,17 @@
   tags: terminator
 
 - name: install user tools
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=latest
   with_items:
    - zsh
    - git
+   - python-virtualenv
    - tree
    - screen
    - tmux
+
+- name: install python virtualenv wrapper
+  pip: name=virtualenvwrapper state=latest
 
 
 - name: create group
@@ -38,15 +42,22 @@
 # got oh-my zsh installed but chsh fails
 # first run of this task fails, second is good
 # make it two tasks: download and run install
-- name: oh-my zsh
+- name: oh-my-zsh
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   become_user: "{{ user }}"
   become_method: sudo
+  tags: myzsh
 
-
-- name: copy zsh aliases
+- name: copy my-zsh aliases
   copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom owner={{ user }} group={{ user }} mode=0644
-  tags: alias
+  tags: myzsh alias
+
+- name: enable my-zsh plugins
+  lineinfile: dest=/home/{{ user }}/.zshrc
+              regexp="^plugins="
+              line="plugins=(git mvn jsontools sudo virtualenvwrapper)"
+  tags: myzsh
+
 
 - name: copy vi .exrc
   copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
