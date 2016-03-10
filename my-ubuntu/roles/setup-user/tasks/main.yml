@@ -46,6 +46,7 @@
 
 - name: copy zsh aliases
   copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom owner={{ user }} group={{ user }} mode=0644
+  tags: alias
 
 - name: copy vi .exrc
   copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
