@@ -8,9 +8,31 @@
    - python-dev
    - python-pygments
 
-- name: install py-dev packages
+# support the oh-my-zsh virutalenvwrapper plugin
+# => automagically activates the venv when a git repo directory is entered 
+- name: install virutalenvwrapper
+  pip: name=virtualenvwrapper state=latest
+  tags: venvwrapper
+
+- name: configure virtualenvwrapper
+  copy: src=./files/venv-wrapper.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
+        owner={{ user }} group={{ user_group }} mode=0640
+  tags: venvwrapper
+
+# TODO
+# foreach python git repo create the venv with the same name
+- name: create venv
+  shell: source /home/{{ user }}/.oh-my-zsh/custom/venv-wrapper.zsh; mkvirtualenv pydev
+         executable=/usr/bin/zsh
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: venvwrapper
+
+# install packages required by project
+# pip -r requirements.txt
+- name: install py-dev packages into venv_home
   pip: name={{ item }}
-       virtualenv={{ venv_home }}/venv_pydev
+       virtualenv={{ venv_home }}/pydev
        state=latest
   with_items:
    - nose

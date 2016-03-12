@@ -9,7 +9,7 @@
     user_group: achtmhz
     hostname: mordoror
     user_home: /home/{{ user }}
-    venv_home: "{{ user_home }}"
+    venv_home: "{{ user_home }}/venv"
 
   pre_tasks:
     - name: rename host
