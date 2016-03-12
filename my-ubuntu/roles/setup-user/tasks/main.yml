@@ -26,18 +26,17 @@
 
 
 - name: create folders
-  file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }} state=directory
+  file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }}
+        state=directory
   with_items:
     - bin
     - opt
     - tmp
-    - workspaces
-    - workspace_java
-    - workspace_scala
-    - workspace_python
-    - workspace_d
+    - workspace
+    - workspace_open
+    - workspace_coursera
+    - workspace_book
     - workspace_data
-    - workspace_devops
 
 # got oh-my zsh installed but chsh fails
 # first run of this task fails, second is good
@@ -49,7 +48,8 @@
   tags: myzsh
 
 - name: copy my-zsh aliases
-  copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom owner={{ user }} group={{ user }} mode=0644
+  copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
+        owner={{ user }} group={{ user }} mode=0644
   tags: myzsh alias
 
 - name: enable my-zsh plugins
@@ -60,4 +60,5 @@
 
 
 - name: copy vi .exrc
-  copy: src=./files/exrc dest=/home/{{ user }}/.exrc owner={{ user }} group={{ user }} mode=0644
+  copy: src=./files/exrc dest=/home/{{ user }}/.exrc
+        owner={{ user }} group={{ user }} mode=0644
