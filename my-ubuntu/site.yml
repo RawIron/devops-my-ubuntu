@@ -10,6 +10,16 @@
     hostname: mordoror
     user_home: /home/{{ user }}
     venv_home: "{{ user_home }}/venv"
+    pydev_repos:
+      - scratch-python
+      - flask-appengine-demo
+    git_repos:
+      - farm-game
+      - gatling-loadtest-game
+      - scratch-php
+      - scratch-d
+      - scratch-cpp
+      - scratch-ruby
 
   pre_tasks:
     - name: rename host

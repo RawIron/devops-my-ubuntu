@@ -24,26 +24,24 @@
         state=present
   tags: venvwrapper
 
-# TODO
 # foreach python git repo create the venv with the same name
-- name: create venv
-  shell: source /home/{{ user }}/.zshrc; mkvirtualenv pydev
+- name: create one venv foreach pydev repo
+  shell: source /home/{{ user }}/.zshrc; mkvirtualenv {{ item }}
          executable=/usr/bin/zsh
+  with_items: "{{ pydev_repos }}"
   become_user: "{{ user }}"
   become_method: sudo
   tags: venvwrapper
 
+# TODO
 # install packages required by project
 # pip -r requirements.txt
-- name: install py-dev packages into venv_home
-  pip: name={{ item }}
-       virtualenv={{ venv_home }}/pydev
+- name: install packages into each pydev repo
+  pip: name={{ item[1] }}
+       virtualenv={{ venv_home }}/{{ item[0] }}
        state=latest
-  with_items:
-   - nose
-   - pyvows
-   - inject
-   - sqlalchemy
-   - agnostic
+  with_nested:
+   - "{{ pydev_repos }}"
+   - ["nose", "pyvows", "inject", "sqlalchemy", "agnostic"]
   become_user: "{{ user }}"
   become_method: sudo
