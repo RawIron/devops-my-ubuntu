@@ -14,15 +14,20 @@
   pip: name=virtualenvwrapper state=latest
   tags: venvwrapper
 
+# first idea was to place a venv-wrapper.zsh in the .oh-my-zsh/custom folder
+# but the oh-my-zsh virtualenvwrapper plugin runs source on virutalenvwrapper.sh
+# so config has to happen before the plugin is loaded
 - name: configure virtualenvwrapper
-  copy: src=./files/venv-wrapper.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
-        owner={{ user }} group={{ user_group }} mode=0640
+  lineinfile: dest=/home/{{ user }}/.zshrc
+        insertbefore="^plugins"
+        line="export WORKON_HOME={{ venv_home }}"
+        state=present
   tags: venvwrapper
 
 # TODO
 # foreach python git repo create the venv with the same name
 - name: create venv
-  shell: source /home/{{ user }}/.oh-my-zsh/custom/venv-wrapper.zsh; mkvirtualenv pydev
+  shell: source /home/{{ user }}/.zshrc; mkvirtualenv pydev
          executable=/usr/bin/zsh
   become_user: "{{ user }}"
   become_method: sudo
