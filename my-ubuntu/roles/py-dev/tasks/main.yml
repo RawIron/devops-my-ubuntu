@@ -45,3 +45,15 @@
    - ["nose", "pyvows", "inject", "sqlalchemy", "agnostic"]
   become_user: "{{ user }}"
   become_method: sudo
+  tags: venvwrapper
+
+# assuming git repo is already cloned
+- name: bind venv to projects
+  shell: source /home/{{ user }}/.zshrc; \
+         setvirtualenvproject {{ venv_home }}/{{ item }} {{ project_home }}/{{ item }}
+         executable=/usr/bin/zsh
+  with_items: "{{ pydev_repos }}"
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: venvwrapper
+

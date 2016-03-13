@@ -10,6 +10,7 @@
     hostname: mordoror
     user_home: /home/{{ user }}
     venv_home: "{{ user_home }}/venv"
+    project_home: "{{ user_home }}/workspace"
     pydev_repos:
       - scratch-python
       - flask-appengine-demo
