@@ -49,7 +49,7 @@
 
 - name: copy my-zsh aliases
   copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
-        owner={{ user }} group={{ user }} mode=0644
+        owner={{ user }} group={{ user_group }} mode=0644
   tags: myzsh alias
 
 - name: enable my-zsh plugins
