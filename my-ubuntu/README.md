@@ -1,5 +1,6 @@
 ## My Ubuntu Playbooks
 Rebuild my Ubuntu laptop using Ansible playbooks. Just for the fun of it and to learn more about Ansible.
+Also automate a bunch of setup steps, eg add a new git repo to my virtualenvwrapper and bind to a the project home.
 A Vagrant box is used to test the Ansible playbooks.
 
 First create a vagrant box
@@ -20,6 +21,10 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "setup"
 ```
 
+My normal workflow is that I change the ansible script, for example add a new alias `aliases.zsh`, and then _deploy_ to my laptop with
+```bash
+laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "alias"
+```
 
 ## Categories and the major software that I use
 
