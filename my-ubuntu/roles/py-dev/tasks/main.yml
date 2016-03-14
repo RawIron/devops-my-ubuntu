@@ -33,20 +33,6 @@
   become_method: sudo
   tags: venvwrapper
 
-# TODO
-# install packages required by project
-# pip -r requirements.txt
-- name: install packages into each pydev repo
-  pip: name={{ item[1] }}
-       virtualenv={{ venv_home }}/{{ item[0] }}
-       state=latest
-  with_nested:
-   - "{{ pydev_repos }}"
-   - ["nose", "pyvows", "inject", "sqlalchemy", "agnostic"]
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: venvwrapper
-
 # assuming git repo is already cloned
 - name: bind venv to projects
   shell: source /home/{{ user }}/.zshrc; \
@@ -57,3 +43,17 @@
   become_method: sudo
   tags: venvwrapper
 
+# project must have a requirements.txt
+# `pip` has no option to ignore a missing requirements.txt
+# when-condition is tricky for this one:
+#   would need the `stat` module to check if file exists
+#   store the result with `register`
+#   how to do this in a loop?
+- name: install required packages into each pydev repo
+  pip: requirements={{ project_home }}/{{ item }}/requirements.txt
+       virtualenv={{ venv_home }}/{{ item }}
+       state=latest
+  with_items: "{{ pydev_repos }}"
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: venvwrapper
