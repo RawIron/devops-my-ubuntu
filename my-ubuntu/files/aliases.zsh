@@ -9,3 +9,7 @@ alias jungle='/usr/local/bin/junglediskdesktop&'
 alias zshrc='$EDITOR ~/.zshrc'
 
 alias al='alias | grep'
+
+# Maven
+mvn_test() { mvn test -Dtest=$1 }
+alias mvntc='mvn_test'
