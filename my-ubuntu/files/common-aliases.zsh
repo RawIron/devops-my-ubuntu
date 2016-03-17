@@ -13,22 +13,26 @@ alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
 alias t='tail -f'
+alias he='head'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
+
+alias f='find'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 alias h='history'
-alias sortnr='sort -n -r'
 
+alias so='sort'
+alias sonr='sort -nr'
 alias rrf='rm -rf'
 
 alias p='ps -f'
 alias pef='ps -ef'
 
 alias c='cat'
-alias cs='pygmentize -g'
+alias cs='pygmentize -g'  # cat with syntax highlighting
 alias csn='pygmentize -g -O style=colorful,linenos=1'
 
 alias v='vi'
