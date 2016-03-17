@@ -8,8 +8,18 @@ alias jungle='/usr/local/bin/junglediskdesktop&'
 
 alias zshrc='$EDITOR ~/.zshrc'
 
-alias al='alias | grep'
+alias ag='alias | grep'
+alias hg='history | grep'
 
 # Maven
-mvn_test() { mvn test -Dtest=$1 }
+mvn_test() { mvn test -Dtest="$1" }
+mvn_main() { mvn exec:java -Dexec.mainClass="$1" }
 alias mvntc='mvn_test'
+alias mvnrc='mvn_main'
+
+# Ansible
+ansible_playbook_run_tag_local() {
+  cd devops/my-ubuntu
+  ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "$1"
+}
+alias aplt='ansible_playbook_run_tag_local'

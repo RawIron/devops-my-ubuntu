@@ -17,6 +17,10 @@
     git_repos:
       - farm-game
       - gatling-loadtest-game
+      - data-hacks
+      - devops
+      - hackerrank-scala
+      - hackerrank-d
       - scratch-php
       - scratch-d
       - scratch-cpp

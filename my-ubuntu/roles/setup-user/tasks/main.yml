@@ -52,12 +52,16 @@
         owner={{ user }} group={{ user_group }} mode=0644
   tags: myzsh alias
 
+- name: workspace aliases
+  template: src=./templates/alias-repos.j2 dest=/home/{{ user }}/.oh-my-zsh/custom/repos-aliases.zsh
+            owner={{ user }} group={{ user_group }} mode=0640
+  tags: myzsh alias
+
 - name: enable my-zsh plugins
   lineinfile: dest=/home/{{ user }}/.zshrc
               regexp="^plugins="
               line="plugins=(git mvn jsontools sudo virtualenvwrapper)"
   tags: myzsh
-
 
 - name: copy vi .exrc
   copy: src=./files/exrc dest=/home/{{ user }}/.exrc
