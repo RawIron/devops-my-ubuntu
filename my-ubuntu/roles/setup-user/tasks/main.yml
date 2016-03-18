@@ -47,15 +47,19 @@
   become_method: sudo
   tags: myzsh
 
-- name: copy my-zsh aliases
-  copy: src=./files/aliases.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
+- name: copy my .zsh files
+  copy: src=./files/{{ item }}.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
         owner={{ user }} group={{ user_group }} mode=0644
-  tags: myzsh alias
+  with_items:
+    - common-aliases
+    - aliases
+    - zle
+  tags: myzsh custom
 
 - name: workspace aliases
   template: src=./templates/alias-repos.j2 dest=/home/{{ user }}/.oh-my-zsh/custom/repos-aliases.zsh
             owner={{ user }} group={{ user_group }} mode=0640
-  tags: myzsh alias
+  tags: myzsh custom
 
 # support the oh-my-zsh virutalenvwrapper plugin
 # => automagically activates the venv when a git repo directory is entered 
