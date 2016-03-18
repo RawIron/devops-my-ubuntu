@@ -57,6 +57,22 @@
             owner={{ user }} group={{ user_group }} mode=0640
   tags: myzsh alias
 
+# support the oh-my-zsh virutalenvwrapper plugin
+# => automagically activates the venv when a git repo directory is entered 
+- name: install virtualenvwrapper
+  pip: name=virtualenvwrapper state=latest
+  tags: myzsh
+
+# first idea was to place a venv-wrapper.zsh in the .oh-my-zsh/custom folder
+# but the oh-my-zsh virtualenvwrapper plugin runs source on virutalenvwrapper.sh
+# so config has to happen before the plugin is loaded
+- name: configure virtualenvwrapper
+  lineinfile: dest=/home/{{ user }}/.zshrc
+        insertbefore="^plugins"
+        line="export WORKON_HOME={{ venv_home }}"
+        state=present
+  tags: myzsh
+
 - name: enable my-zsh plugins
   lineinfile: dest=/home/{{ user }}/.zshrc
               regexp="^plugins="
