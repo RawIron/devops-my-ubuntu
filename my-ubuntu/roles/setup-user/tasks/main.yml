@@ -33,10 +33,10 @@
     - opt
     - tmp
     - workspace
-    - workspace_open
-    - workspace_coursera
     - workspace_book
-    - workspace_data
+    - workspace_job
+    - workspace_learn
+    - workspace_open
 
 # got oh-my zsh installed but chsh fails
 # first run of this task fails, second is good
