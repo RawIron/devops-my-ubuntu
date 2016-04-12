@@ -32,40 +32,17 @@ laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --ta
 automate everything and so everything is reproducible. it can be run again and again. makes testing, load testing, building and deploying easy. also great for scaling.
 * ansible
 * docker
-```
-ansible-galaxy install angstwad.docker_ubuntu
-```
 
 ### aws
 tools to access, manage and deploy. a lot of times I access S3.
 * jungledisk
 * s3cmd
-```
-copy access and secret key to config files
-.s3cfg
-```
 * awscli
 
 ### jvm development
 * scala
-* java
-```
-java open sdk
-oracle java 7 runtime
-oracle java 7 webstart
-oracle java 8 runtime
-oracle java 8 webstart
-```
+* java runtime
 * maven and sbt
-
-if ubuntu 14.04:
-	maven 3.1, append to .profile
-```
-export M2_HOME=/usr/local/apache-maven-3.1
-export M2=$M2_HOME/bin
-export MAVEN_OPTS="-Xms256m -Xmx512m"
-export PATH=$M2:$PATH
-```
 
 ### python development
 great python packages to help writing great code. Use TDD, dependency injection, database abstraction, database migration.
@@ -90,9 +67,6 @@ wrangle, plot, predict, test hypothesis, estimate.
 
 #### R
 * R commander
-```
-open the R interpreter (from the command line: R) and run install.package("Rcmdr") in the interpreter. Once this finishes, then run library(Rcmdr). Allow it to install missing/updated dependencies.
-```
 
 ### development tools
 write code with fully fledged IDE or lightweight editor. plugins can be used to extend the functionality.
@@ -127,10 +101,6 @@ show and measure what is happening in the Linux kernel.
 * strace, ftrace, ltrace, ss, sysdig, tiptop
 * mpstat, vmstat, netstat, iostat
 
-SystemTap install:
-```bash
-apt-get install linux-tools-common linux-tools-generic linux-tools-$(uname -r)
-```
 
 ### user account
 
