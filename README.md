@@ -131,6 +131,9 @@ view and process photos, e-books, audio and video.
 * OpenShot
 * Calibre
 
+### games
+* pychess
+
 ### eye candy
 give Linux the look-and-feel I like.
 unfortunately haven`t figured out how to configure a "glass look"
