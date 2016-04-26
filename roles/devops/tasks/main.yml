@@ -1,10 +1,35 @@
 ---
 
-- name: install devops packages
+- name: install docker packages
+  apt: name={{ item }} state=latest
+  with_items:
+   - docker.io
+  tags: docker
+
+- name: create docker group
+  group: name=docker state=present
+  tags: docker
+
+- name: add user to docker group
+  user: name={{ user }}
+        groups=docker
+        append=yes
+  tags: docker
+
+- name: start docker
+  service: name=docker state=started enabled=yes
+  tags: docker
+
+- name: test docker
+  command: "docker run hello-world"
+  tags: docker
+
+
+- name: install virtualbox
   apt: name={{ item }} state=latest
   with_items:
    - virtualbox-qt
-   - docker.io
+  tags: vagrant
 
 - name: download vagrant latest
   get_url: url="http://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb" dest=/tmp
