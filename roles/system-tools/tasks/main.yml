@@ -10,6 +10,7 @@
    - oprofile
    - nicstat
    - iptraf
+   - pax-utils
 
 - name: install systemtap
   apt: name={{ item }} state=present
