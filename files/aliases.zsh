@@ -8,8 +8,12 @@ alias jungle='/usr/local/bin/junglediskdesktop&'
 
 alias zshrc='$EDITOR ~/.zshrc'
 
+alias_starts_with() { alias | grep "^$1" }
 alias ag='alias | grep'
+alias ags='alias_starts_with'
+
 alias hg='history | grep'
+
 
 # Maven
 mvn_test() { mvn test -Dtest="$1" }
