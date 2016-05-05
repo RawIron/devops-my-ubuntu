@@ -12,19 +12,24 @@
     venv_home: "{{ user_home }}/venv"
     project_home: "{{ user_home }}/workspace"
     pydev_repos:
-      - scratch-python
+      - data-hacks
       - flask-appengine-demo
+      - scratch-python
     git_repos:
+      - devops-my-ubuntu
+      - devops-opsworks
       - farm-game
       - gatling-loadtest-game
-      - data-hacks
-      - devops
-      - hackerrank-scala
       - hackerrank-d
-      - scratch-php
-      - scratch-d
+      - hackerrank-scala
+      - p4-commit-parse
+      - photon-turnbased-demo
       - scratch-cpp
+      - scratch-d
+      - scratch-java
+      - scratch-php
       - scratch-ruby
+      - webserver-simplest
 
   pre_tasks:
     - name: rename host
