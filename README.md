@@ -30,6 +30,8 @@ laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --ta
 
 ### devops
 automate everything and so everything is reproducible. it can be run again and again. makes testing, load testing, building and deploying easy. also great for scaling.
+* virtualbox
+* vagrant
 * ansible
 * docker
 
