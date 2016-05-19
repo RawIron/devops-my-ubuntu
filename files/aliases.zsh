@@ -41,3 +41,17 @@ alias doria='docker rmi $(docker images -q)'
 docker_run_shell() { docker run -it "$1" sh }
 alias dors='docker_run_shell'
 
+docker_run_mysqld() {
+# run latest Mysql 5.x server
+# $1 - instance name
+# $2 - root password
+  docker run --name "$1" -e MYSQL_ROOT_PASSWORD="$2" -d mysql:5
+}
+alias domyd='docker_run_mysqld'
+
+docker_run_mysqlc() {
+# $1 - instance name
+docker run -it --link "$1":mysql --rm mysql \
+sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+}
+alias domyc='docker_run_mysqlc'
