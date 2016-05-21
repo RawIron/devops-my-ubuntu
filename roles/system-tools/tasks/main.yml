@@ -12,6 +12,13 @@
    - iptraf
    - pax-utils
 
+- name: install kernel tools
+  apt: name={{ item }} state=present
+  with_items:
+   - linux-tools-generic
+   - linux-cloud-tools-generic
+  tags: perf
+
 - name: install systemtap
   apt: name={{ item }} state=present
   with_items:
