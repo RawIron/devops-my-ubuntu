@@ -1,6 +1,5 @@
 ---
 
-
 - name: install numpy linux packages
   apt: name={{ item }} state=present
   with_items:
@@ -34,4 +33,13 @@
    - IPython
    - luigi
    - blaze
+
+- name: install functional programming packages
+  pip: name={{ item }}
+       virtualenv={{ venv_home }}/venv_datahacks
+       state=latest
+  with_items:
+   - toolz
+   - pyrsistent
+   - effect
 

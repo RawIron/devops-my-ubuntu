@@ -47,9 +47,10 @@ tools to access, manage and deploy. a lot of times I access S3.
 * maven and sbt
 
 ### python development
-great python packages to help writing great code. Use TDD, dependency injection, database abstraction, database migration.
+great python packages to help writing great code. Use functional programming, TDD, dependency injection, database abstraction, database migration.
 * virtualenv
-* nose, pyvows
+* nose, pyvows, hypothesis
+* toolz, pyrsistent, effect
 * inject
 * sqlalchemy, agnostic
 
