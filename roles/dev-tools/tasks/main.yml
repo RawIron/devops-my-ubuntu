@@ -6,6 +6,7 @@
    - build-essential
    - vim-gnome
    - git
+   - gitg
    - meld
    - valgrind
    - kcachegrind
