@@ -77,6 +77,7 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * vim
 * sublime
 * git
+* gitg
 * meld, p4
 
 #### intellij plugins
