@@ -1,0 +1,22 @@
+---
+
+- name: install office packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - firefox
+   - focuswriter
+   - kazam
+   - bzip2
+   - mc
+   - libreoffice
+
+- name: download skype
+  get_url: url='https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb'
+           dest={{ download_home }}
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+  tags: skype
+
+- name: install skype
+  apt: deb="{{ download_home }}/skype-ubuntu-precise_4.3.0.37-1_i386.deb"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+  tags: skype
