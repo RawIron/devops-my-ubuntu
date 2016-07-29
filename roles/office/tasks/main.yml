@@ -10,13 +10,14 @@
    - mc
    - libreoffice
 
-- name: download skype
-  get_url: url='https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb'
-           dest={{ download_home }}
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+- name: add partner repo
+  apt_repository: repo='deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }}  partner' state=present
   tags: skype
 
-- name: install skype
-  apt: deb="{{ download_home }}/skype-ubuntu-precise_4.3.0.37-1_i386.deb"
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+- name: add i386 platform for skype-bin
+  command: dpkg --add-architecture i386 
+  tags: skype
+
+- name: install skype package
+  apt: name=skype update_cache=yes state=latest
   tags: skype
