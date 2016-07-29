@@ -1,0 +1,23 @@
+---
+
+- name: install office packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - firefox
+   - focuswriter
+   - kazam
+   - bzip2
+   - mc
+   - libreoffice
+
+- name: add partner repo
+  apt_repository: repo='deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }}  partner' state=present
+  tags: skype
+
+- name: add i386 platform for skype-bin
+  command: dpkg --add-architecture i386 
+  tags: skype
+
+- name: install skype package
+  apt: name=skype update_cache=yes state=latest
+  tags: skype

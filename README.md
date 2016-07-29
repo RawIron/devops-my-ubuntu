@@ -118,7 +118,8 @@ communicate. create and manage documents, files.
 * skype
 * libre office
 * FocusWriter
-* Record My Desktop
+* Kazam
+* Screenkey
 * 7zip, bzip2
 * Midnight Commander
 
