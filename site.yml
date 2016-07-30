@@ -42,6 +42,7 @@
     - { role: dev-tools, tags: ['devtools'] }
     - { role: devops, tags: ['ops'] }
     - { role: java-dev, tags: ['java'] }
+    - { role: media, tags: ['media'] }
     - { role: office, tags: ['office'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data-analysis, tags: ['pydata'] }
