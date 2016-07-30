@@ -1,0 +1,17 @@
+---
+
+- name: install media packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - rawtherapee
+   - krita
+   - vlc
+   - ripperx
+   - dvdrip
+   - openshot
+   - calibre
+
+- name: install libdvdcss2
+  apt: name=libdvd-pkg update_cache=yes state=latest
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+  
