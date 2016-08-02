@@ -1,7 +1,48 @@
 ---
 
+- name: install tools
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - python-software-properties
+   - debconf-utils
+  tags: oracle-java
+
+- name: add oracle java repo
+  apt_repository: repo='ppa:webupd8team/java' state=present
+  tags: oracle-java
+
+- name: accept oracle license
+  command: echo "oracle-java{{ item }}-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+  with_items:
+    - 7
+    - 8
+  tags: oracle-java
+
+- name: install java, jre and jdk
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - oracle-java7-installer
+   - oracle-java8-installer
+  tags: oracle-java
+
+
+- name: install openjdk 6 + 7
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - openjdk-6-jdk
+   - openjdk-7-jdk
+  tags: openjdk
+
+- name: install openjdk 8
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - openjdk-8-jdk
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+  tags: openjdk
+
+
 - name: install maven
-  apt: name={{ item }} state=latest
+  apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - maven
 
