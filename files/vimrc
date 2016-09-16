@@ -1,0 +1,128 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+"
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+"
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+"
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'easymotion/vim-easymotion'
+
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+" filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+" Syntax Highlighting
+syntax on
+
+" eye-candy
+set background=dark
+colorscheme desert
+
+" Highlight matches of search
+set hlsearch
+
+" no toolbar
+set guioptions-=T
+
+
+" Omni
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=python3complete#Complete
+
+
+" YouCompleteMe
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+nnoremap <c-b> :YcmCompleter GoTo<CR> 
+nnoremap <c-s-b> :YcmCompleter GoToDefinition<CR> 
+nnoremap <c-a-b> :YcmCompleter GoToDeclaration<CR> 
+nnoremap <c-s-7> :YcmCompleter GoToReferences<CR> 
+nnoremap <c-q> :YcmCompleter GetDoc<CR> 
+
+
+" NerdTree
+
+
+" tagbar
+" run `dpkg -L exuberant-ctags`
+let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'
+let g:tagbar_left = 1
+nnoremap <a-1> :TagbarToggle<CR>
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['pylint']
+
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" Run Python
+autocmd BufRead *.py nmap <F5> :!python %<CR>
+
+" Python PEP-8 format
+autocmd BufRead *.py set tabstop=4
+autocmd BufRead *.py set nowrap
+autocmd BufRead *.py set go+=b
