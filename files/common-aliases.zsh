@@ -35,7 +35,8 @@ alias c='cat'
 alias cs='pygmentize -g'  # cat with syntax highlighting
 alias csn='pygmentize -g -O style=colorful,linenos=1'
 
-alias v='vi'
+alias v='vim'
+alias gv='gvim'
 
 
 # output redirect: head, tail, /dev/null
