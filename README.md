@@ -68,8 +68,6 @@ wrangle, plot, predict, test hypothesis, estimate.
 * anaconda
 * numpy, scipy, sympy, Jupyter, Seaborn, scikit-learn
 
-#### R
-* R commander
 
 ### development tools
 write code with fully fledged IDE or lightweight editor. plugins can be used to extend the functionality.
@@ -77,7 +75,6 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * vim
 * sublime
 * git
-* gitg
 * meld, p4
 
 #### intellij plugins
@@ -86,7 +83,7 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * python
 * markdown support
 
-#### sublime packages (plugins)
+#### sublime plugins
 * Package Control
 * SublimeLinter
 * sublimelinter-pylint
@@ -94,6 +91,15 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * BracketHighlighter
 * Sublime CodeIntel
 * SublimeREPL
+
+#### vim plugins
+* YouCompleteMe
+* syntastic
+* UltiSnips
+* NerdTree
+* tagbar
+* vim-fugitive
+* vim-airline
 
 ### system tools
 look under the hood.

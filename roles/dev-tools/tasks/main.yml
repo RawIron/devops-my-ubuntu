@@ -3,13 +3,74 @@
 - name: install dev tools
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
-   - build-essential
-   - vim-gnome
    - git
    - gitg
    - meld
+   - build-essential
+   - cmake
    - valgrind
    - kcachegrind
+
+
+- name: install vim and required packages
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - python3-pip
+   - git
+   - cmake
+   - python3-dev
+   - python-dev
+   - exuberant-ctags
+   - vim-gnome
+  tags: vim
+
+- name: install python3 packages
+  pip: name={{ item }} executable=pip3 state=latest
+  with_items:
+   - frozendict
+   - future
+  tags: vim
+
+- name: copy vimrc
+  copy: src=./files/vimrc dest={{ user_home }}/.vimrc
+        owner={{ user }}
+        group={{ user_group }}
+  tags: vim
+
+- name: create .vim folder
+  file: path={{ user_home }}/.vim/bundle
+        state=directory
+        owner={{ user }}
+        group={{ user_group }}
+        mode=0750
+  tags: vim
+
+- name: install vundle as plugin manager
+  git: repo=https://github.com/VundleVim/vundle.vim.git
+       dest={{ user_home }}/.vim/bundle/Vundle.vim
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: vim
+
+- name: install vim plugins with vundle
+  command: vim +PluginInstall +qall
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: vim
+
+- name: clone submodules of YouCompleteMe
+  command: git submodule update --init --recursive
+           chdir={{ user_home }}/.vim/bundle/YouCompleteMe
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: vim
+
+- name: compile YouCompleteMe
+  command: ./install.py --clang-completer
+           chdir={{ user_home }}/.vim/bundle/YouCompleteMe
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: vim
 
 
 - name: install nodejs
