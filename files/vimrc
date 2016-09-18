@@ -68,8 +68,20 @@ colorscheme desert
 " Highlight matches of search
 set hlsearch
 
-" no toolbar
+" gvim, no toolbar
 set guioptions-=T
+
+" switch between window splits
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+" resize window
+map <C-S-DOWN> <C-w>+
+map <C-S-UP> <C-w>-
+map <C-S-LEFT> <C-w><
+map <C-S-RIGHT> <C-w>>
 
 
 " Omni
@@ -89,13 +101,14 @@ nnoremap <c-q> :YcmCompleter GetDoc<CR>
 
 
 " NerdTree
+nmap <A-1> :NERDTreeToggle<CR>
 
 
 " tagbar
 " run `dpkg -L exuberant-ctags`
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'
 let g:tagbar_left = 1
-nnoremap <a-1> :TagbarToggle<CR>
+nnoremap <A-7> :TagbarToggle<CR>
 
 
 " Syntastic
@@ -123,6 +136,11 @@ let g:UltiSnipsEditSplit="vertical"
 autocmd BufRead *.py nmap <F5> :!python %<CR>
 
 " Python PEP-8 format
-autocmd BufRead *.py set tabstop=4
-autocmd BufRead *.py set nowrap
-autocmd BufRead *.py set go+=b
+filetype indent on
+set tabstop=8
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+" autocmd BufRead *.py set tabstop=4
+" autocmd BufRead *.py set nowrap
+" autocmd BufRead *.py set go+=b
