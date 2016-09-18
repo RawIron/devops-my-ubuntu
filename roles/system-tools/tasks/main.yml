@@ -13,17 +13,36 @@
    - iptraf
    - pax-utils
 
+
 - name: install kernel tools
   apt: name={{ item }} state=present
   with_items:
    - linux-tools-generic
-   - linux-cloud-tools-generic
   tags: perf
 
+
 - name: install systemtap
-  apt: name={{ item }} state=present
+  apt: name={{ item }}
+       update_cache=yes state=latest
   with_items:
+   - gcc
    - systemtap
+  tags: systemtap
+
+- name: get repo keys
+  apt_key: keyserver=keyserver.ubuntu.com id=C8CAB6595FDFF622 state=present
+  tags: systemtap
+
+- name: add repos for debug symbols
+  apt_repository: repo="{{ item }}" state=present
+  with_items:
+    - deb http://ddebs.ubuntu.com/ {{ ansible_distribution_release }} main restricted universe multiverse
+  tags: systemtap
+
+- name: install debug info kernel
+  apt: name=linux-image-{{ ansible_kernel }}-dbgsym
+       update_cache=yes
+       state=present
   tags: systemtap
 
 - name: test systemtap
