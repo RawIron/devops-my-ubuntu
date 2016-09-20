@@ -15,9 +15,10 @@
 - name: install vim and required packages
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
-   - python3-pip
    - git
+   - ack-grep
    - cmake
+   - python3-pip
    - python3-dev
    - python-dev
    - exuberant-ctags

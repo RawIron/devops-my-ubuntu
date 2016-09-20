@@ -37,6 +37,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 
