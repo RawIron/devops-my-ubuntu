@@ -1,0 +1,20 @@
+---
+sudo: required
+
+language: python
+python: "2.7"
+
+
+before_install:
+  - sudo add-apt-repository ppa:ansible/ansible -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -y ansible
+
+
+before_script:
+  - ansible --version
+
+
+script:
+  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=vim --syntax-check
+  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=vim
