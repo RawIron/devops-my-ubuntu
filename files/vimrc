@@ -134,7 +134,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 " Run Python
-autocmd BufRead *.py nmap <F5> :!python %<CR>
+autocmd BufRead *.py nmap <S-F10> :!python %<CR>
 
 " Python PEP-8 format
 filetype indent on
