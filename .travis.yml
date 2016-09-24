@@ -14,5 +14,14 @@ install:
 
 
 script:
-  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=vim --syntax-check
+  # test syntax on all roles
+  - ansible-playbook --inventory=hosts --connection=local site.yml --syntax-check
+
+  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=setup
+
+  # test tags
   - ansible-playbook --inventory=hosts --connection=local site.yml --tags=vim
+
+  # test roles
+  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=devtools
+  - ansible-playbook --inventory=hosts --connection=local site.yml --tags=systools
