@@ -1,4 +1,7 @@
 ## My Ubuntu Playbooks
+
+[![Build Status](https://travis-ci.org/RawIron/devops-my-ubuntu.svg)](https://travis-ci.org/RawIron/devops-my-ubuntu)
+
 Rebuild my Ubuntu laptop using Ansible playbooks. Just for the fun of it and to learn more about Ansible.
 Also automate a bunch of setup steps, eg add a new git repo to my virtualenvwrapper and bind to a the project home.
 A Vagrant box is used to test the Ansible playbooks.
@@ -6,6 +9,11 @@ A Vagrant box is used to test the Ansible playbooks.
 First create a vagrant box
 ```
 $ vagrant up
+```
+
+Run defined tests on the vagrant box.
+```bash
+laptop$ vagrant ssh --command "cd /vagrant; ./test.sh"
 ```
 
 Then test the ansible playbooks on the vagrant box
