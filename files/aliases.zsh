@@ -31,6 +31,7 @@ ansible_playbook_run_tag_local() {
   ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "$1")
 }
 alias aplt='ansible_playbook_run_tag_local'
+alias ansible_facts='ansible -m setup'
 
 
 # Docker
