@@ -37,6 +37,7 @@
   apt_repository: repo="{{ item }}" state=present
   with_items:
     - deb http://ddebs.ubuntu.com/ {{ ansible_distribution_release }} main restricted universe multiverse
+    - deb http://ddebs.ubuntu.com/ {{ ansible_distribution_release }}-updates main restricted universe multiverse
   tags: systemtap
 
 - name: install debug info kernel
