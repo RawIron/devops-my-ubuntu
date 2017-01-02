@@ -67,7 +67,7 @@
   tags: vim
 
 - name: compile YouCompleteMe
-  command: ./install.py --clang-completer
+  command: ./install.py --clang-completer --tern-completer
            chdir={{ user_home }}/.vim/bundle/YouCompleteMe
   become_user: "{{ user }}"
   become_method: sudo
