@@ -68,9 +68,16 @@ colorscheme desert
 
 " Highlight matches of search
 set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>    " turn off search highlight
+
+" visual autocomplete for command menu
+set wildmenu
 
 " gvim, no toolbar
 set guioptions-=T
+
+" split layout
+set splitright
 
 " switch between window splits
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -138,7 +145,7 @@ autocmd BufRead *.py nmap <S-F10> :!python %<CR>
 
 " Python PEP-8 format
 filetype indent on
-set tabstop=8
+set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
