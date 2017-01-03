@@ -46,10 +46,3 @@
   command: "vagrant box add ubuntu/trusty64"
   when: ansible_virtualization_type != "virtualbox"
   tags: vagrant
-
-- name: install vagrant plugins
-  command: "vagrant plugin install {{ item }}"
-  with_items:
-    - vagrant-remove-old-box-versions
-  tags: vagrant
-
