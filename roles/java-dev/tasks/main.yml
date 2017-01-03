@@ -3,7 +3,7 @@
 - name: install tools
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
-   - python-software-properties
+   - software-properties-common
    - debconf-utils
   tags: oracle-java
 
@@ -26,10 +26,9 @@
   tags: oracle-java
 
 
-- name: install openjdk 6 + 7
+- name: install openjdk 7
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
-   - openjdk-6-jdk
    - openjdk-7-jdk
   tags: openjdk
 
