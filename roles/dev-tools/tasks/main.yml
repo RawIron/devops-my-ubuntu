@@ -4,7 +4,6 @@
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - git
-   - gitg
    - meld
    - build-essential
    - cmake
