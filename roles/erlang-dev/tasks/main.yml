@@ -1,0 +1,24 @@
+---
+
+- name: add erlang solutions repo
+  apt_repository:
+      repo='deb https://packages.erlang-solutions.com/ubuntu {{ ansible_distribution_release }} contrib'
+      state=present
+  tags: elixir
+
+- name: add key for erlang solutions repo
+  apt_key:
+      url=https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+      state=present
+  tags: elixir
+
+- name: apt update
+  apt: update_cache=yes
+  tags: elixir
+
+- name: install erlang/OTP, elixir
+  apt: name={{ item }} state=latest
+  with_items:
+   - esl-erlang
+   - elixir
+  tags: elixir
