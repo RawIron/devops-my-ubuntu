@@ -65,8 +65,10 @@
   become_method: sudo
   tags: vim
 
+# remove --tern-completer
+# because does not compile on trusty
 - name: compile YouCompleteMe
-  command: ./install.py --clang-completer --tern-completer
+  command: ./install.py --clang-completer
            chdir={{ user_home }}/.vim/bundle/YouCompleteMe
   become_user: "{{ user }}"
   become_method: sudo
