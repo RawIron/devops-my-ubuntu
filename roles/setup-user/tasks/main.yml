@@ -38,13 +38,14 @@
     - workspace_learn
     - workspace_open
 
-# got oh-my zsh installed but chsh fails
-# first run of this task fails, second is good
-# make it two tasks: download and run install
+
+# install script checks if the SHELL variable is set to .*/zsh
+# because ansible task uses sudo the SHELL variable is taken from remote_user
+# hard-code SHELL variable to /bin/zsh is safe:
+# user's shell is set to zsh in above task "create user"
 - name: oh-my-zsh
-  shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  shell: SHELL=/bin/zsh sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   become_user: "{{ user }}"
-  become_method: sudo
   tags: myzsh
 
 - name: copy my .zsh files
