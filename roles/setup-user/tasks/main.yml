@@ -1,7 +1,10 @@
 ---
 
+- name: update apt cache
+  apt: update_cache=yes
+
 - name: install terminator
-  apt: name=terminator update_cache=yes state=latest
+  apt: name=terminator state=latest
   tags: terminator
 
 - name: install user tools
@@ -23,7 +26,6 @@
 
 - name: create user
   user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
-
 
 - name: create folders
   file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }}
@@ -83,6 +85,7 @@
               regexp="^plugins="
               line="plugins=(git mvn jsontools sudo virtualenvwrapper)"
   tags: myzsh
+
 
 - name: copy vi .exrc
   copy: src=./files/exrc dest=/home/{{ user }}/.exrc
