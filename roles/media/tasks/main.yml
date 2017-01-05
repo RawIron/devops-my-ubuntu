@@ -11,6 +11,7 @@
    - openshot
    - calibre
 
+# vlc - play dvd with any region code
 - name: install libdvdcss2
   apt: name=libdvd-pkg update_cache=yes state=latest
   when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
