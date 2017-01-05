@@ -20,6 +20,7 @@
   command: test -f {{ user_home }}/.ssh/id_rsa
   register: result
   ignore_errors: True
+  become_user: "{{ user }}"
 
 - name: clone git repos
   git:
@@ -29,7 +30,15 @@
   become_user: "{{ user }}"
   when: result|success
 
-- name: create directory with empty requirements file
+- name: create directory
+  file:
+    path: "{{ project_home }}/{{ item }}"
+    state: directory
+  with_items: "{{ pydev_repos }}"
+  become_user: "{{ user }}"
+  when: result|failed
+
+- name: create empty requirements file
   file:
     path: "{{ project_home }}/{{ item }}/requirements.txt"
     state: touch
@@ -40,19 +49,17 @@
 
 # foreach python git repo create the venv with the same name
 - name: create one venv foreach pydev repo
-  shell: source /home/{{ user }}/.zshrc; mkvirtualenv {{ item }}
+  shell: source {{ user_home }}/.zshrc; mkvirtualenv {{ item }}
          executable=/usr/bin/zsh
   with_items: "{{ pydev_repos }}"
   become_user: "{{ user }}"
-  become_method: sudo
 
 - name: bind venv to projects
-  shell: source /home/{{ user }}/.zshrc; \
+  shell: source {{ user_home }}/.zshrc; \
          setvirtualenvproject {{ venv_home }}/{{ item }} {{ project_home }}/{{ item }}
          executable=/usr/bin/zsh
   with_items: "{{ pydev_repos }}"
   become_user: "{{ user }}"
-  become_method: sudo
 
 # project must have a requirements.txt
 # `pip` has no option to ignore a missing requirements.txt
@@ -66,4 +73,3 @@
        state=latest
   with_items: "{{ pydev_repos }}"
   become_user: "{{ user }}"
-  become_method: sudo
