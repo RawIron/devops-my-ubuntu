@@ -132,6 +132,7 @@ communicate. create and manage documents, files.
 * skype
 * libre office
 * FocusWriter
+* artha thesaurus
 * Kazam
 * Screenkey
 * 7zip, bzip2

@@ -5,11 +5,13 @@
   with_items:
    - firefox
    - focuswriter
+   - artha
    - kazam
    - screenkey
    - bzip2
    - mc
    - libreoffice
+   - gufw
 
 - name: add partner repo
   apt_repository: repo='deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }}  partner' state=present
