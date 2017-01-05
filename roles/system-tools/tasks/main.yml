@@ -1,5 +1,9 @@
 ---
 
+- name: update apt cache
+  apt: update_cache=yes
+
+
 - name: install system tools
   apt: name={{ item }} state=present
   with_items:
@@ -23,7 +27,7 @@
 
 - name: install systemtap
   apt: name={{ item }}
-       update_cache=yes state=latest
+       state=latest
   with_items:
    - gcc
    - systemtap
@@ -44,8 +48,14 @@
   apt: name=linux-image-{{ ansible_kernel }}-dbgsym
        update_cache=yes
        state=present
+  # HACK for Travis CI
+  # ubuntu release and kernel version do not match
+  # for example trusty has kernel 3.13 but on Travis CI kernel was upgraded to 4.4
+  when: not ( ansible_distribution_release == "trusty" and ansible_kernel.split(".")[:2] != ['3','13'] )
   tags: systemtap
 
 - name: test systemtap
   command: stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
+  # HACK for Travis CI
+  when: not ( ansible_distribution_release == "trusty" and ansible_kernel.split(".")[:2] != ['3','13'] )
   tags: systemtap
