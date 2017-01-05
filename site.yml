@@ -37,15 +37,15 @@
       hostname: name={{ hostname }}
 
   roles:
-    - { role: setup-user, tags: ['setup'] }
-    - { role: system-tools, tags: ['systools'] }
     - { role: dev-tools, tags: ['devtools'] }
-    - { role: devops, tags: ['ops'] }
     - { role: java-dev, tags: ['java'] }
     - { role: erlang-dev, tags: ['erlang'] }
-    - { role: media, tags: ['media'] }
-    - { role: office, tags: ['office'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data-analysis, tags: ['pydata'] }
-    - { role: stats-learning, tags: ['stats'] }
+    - { role: devops, tags: ['ops'] }
+    - { role: system-tools, tags: ['systools'] }
     - { role: cloud-aws, tags: ['aws'] }
+    - { role: setup-user, tags: ['setup'] }
+    - { role: media, tags: ['media'] }
+    - { role: office, tags: ['office'] }
+    - { role: stats-learning, tags: ['stats'] }
