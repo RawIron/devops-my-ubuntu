@@ -1,11 +1,7 @@
 ---
 
-- name: update apt cache
-  apt: update_cache=yes
-
-
 - name: install system tools
-  apt: name={{ item }} state=present
+  apt: name={{ item }} update_cache=yes state=present
   with_items:
    - htop
    - iotop
@@ -19,7 +15,7 @@
 
 
 - name: install kernel tools
-  apt: name={{ item }} state=present
+  apt: name={{ item }} update_cache=yes state=present
   with_items:
    - linux-tools-generic
   tags: perf
@@ -27,6 +23,7 @@
 
 - name: install systemtap
   apt: name={{ item }}
+       update_cache=yes
        state=latest
   with_items:
    - gcc

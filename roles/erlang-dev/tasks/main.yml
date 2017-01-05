@@ -12,12 +12,8 @@
       state=present
   tags: elixir
 
-- name: apt update
-  apt: update_cache=yes
-  tags: elixir
-
 - name: install erlang/OTP, elixir
-  apt: name={{ item }} state=latest
+  apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - esl-erlang
    - elixir
