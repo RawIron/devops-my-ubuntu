@@ -12,17 +12,17 @@
   tags: oracle-java
 
 - name: accept oracle license
-  command: echo "oracle-java{{ item }}-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+  command: echo "oracle-{{ item }}-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
   with_items:
-    - 7
-    - 8
+    - java7
+    - java8
   tags: oracle-java
 
-- name: install java, jre and jdk
-  apt: name={{ item }} update_cache=yes state=latest
+- name: install java 7 and 8, jre and jdk
+  apt: name=oracle-{{ item }}-installer update_cache=yes state=latest
   with_items:
-   - oracle-java7-installer
-   - oracle-java8-installer
+   - java7
+   - java8
   tags: oracle-java
 
 
