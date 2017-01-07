@@ -12,6 +12,7 @@
   with_items:
    - zsh
    - git
+   - python-pip
    - python-virtualenv
    - tree
    - screen
