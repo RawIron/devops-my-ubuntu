@@ -12,7 +12,11 @@
   tags: oracle-java
 
 - name: accept oracle license
-  command: echo "oracle-{{ item }}-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+  debconf:
+      name='oracle-{{ item }}-installer'
+      question='shared/accepted-oracle-license-v1-1'
+      value='true'
+      vtype='select'
   with_items:
     - java7
     - java8
@@ -30,6 +34,7 @@
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - openjdk-7-jdk
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 16
   tags: openjdk
 
 - name: install openjdk 8
