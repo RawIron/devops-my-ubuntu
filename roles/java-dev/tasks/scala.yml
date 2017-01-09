@@ -1,0 +1,19 @@
+---
+
+
+- name: add repo for sbt
+  shell: echo 'deb https://dl.bintray.com/sbt/debian /' | tee -a /etc/apt/sources.list.d/sbt.list creates=/etc/apt/sources.list.d/sbt.list
+  tags: sbt
+
+- name: add key for sbt repo
+  apt_key: keyserver=keyserver.ubuntu.com id=642AC823 state=present
+  tags: sbt
+
+- name: install sbt package
+  apt: name=sbt update_cache=yes state=present
+  tags: sbt
+
+# install scala and scalatest with sbt
+# add to build.sbt
+# scalaVersion := "2.11.8"
+# libraryDependencies += "org.scalatest" % "scalatest_2.11" % "3.0.1" % "test"
