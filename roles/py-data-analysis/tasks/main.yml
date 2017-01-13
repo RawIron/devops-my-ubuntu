@@ -31,6 +31,8 @@
    - pandas
    - seaborn
    - IPython
+   - requests
+   - beautifulsoup4
    - luigi
    - blaze
 
