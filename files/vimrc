@@ -41,6 +41,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 
+Plugin 'elixir-lang/vim-elixir'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype plugin indent on    " required
@@ -125,7 +127,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -140,8 +142,13 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
+" Run Elixir
+autocmd BufRead *.ex nmap <S-F10> :!elixir %<CR>
+autocmd BufRead *.exs nmap <S-F10> :!elixir %<CR>
+
 " Run Python
-autocmd BufRead *.py nmap <S-F10> :!python %<CR>
+autocmd BufRead *.py nmap <S-F10> :!python3 -m doctest %<CR>
+autocmd BufRead *.py nmap <A-S-F10> :!nosetests %<CR>
 
 " Python PEP-8 format
 filetype indent on
