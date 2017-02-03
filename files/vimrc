@@ -117,7 +117,7 @@ nmap <A-1> :NERDTreeToggle<CR>
 " tagbar
 " run `dpkg -L exuberant-ctags`
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'
-let g:tagbar_left = 1
+let g:tagbar_left = 0
 nnoremap <A-7> :TagbarToggle<CR>
 
 
