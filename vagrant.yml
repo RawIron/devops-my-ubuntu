@@ -3,12 +3,17 @@
 - hosts: default
   remote_user: vagrant
   become: yes
-  become_method: sudo
 
   tasks:
+    - name: install packages required by ansible
+      apt: name=software-properties-common update_cache=yes state=latest
+      tags: ansible_latest
+      when: True
+
     - name: add ansible repo
       apt_repository: repo="ppa:ansible/ansible"
       tags: ansible_latest
+      when: True
 
     - name: install ansible latest
       apt: name=ansible update_cache=yes state=latest
