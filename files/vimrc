@@ -30,6 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 "
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 
 Plugin 'Valloric/YouCompleteMe'
@@ -40,6 +41,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
+Plugin 'sjl/gundo.vim'
 
 Plugin 'elixir-lang/vim-elixir'
 
@@ -64,16 +66,26 @@ filetype plugin on
 " Syntax Highlighting
 syntax on
 
-" eye-candy
-set background=dark
-colorscheme desert
-
 " Highlight matches of search
 set hlsearch
-nnoremap <leader><space> :nohlsearch<CR>    " turn off search highlight
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" search in subfolders
+" works with tab-completion
+set path+=**
 
 " visual autocomplete for command menu
 set wildmenu
+
+" check last line of file for a modline
+" used for this file to fold sections
+set modelines=1
+
+" eye-candy
+set background=dark
+colorscheme desert
 
 " gvim, no toolbar
 set guioptions-=T
@@ -99,26 +111,24 @@ set omnifunc=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=python3complete#Complete
 
 
+"
+" PLUGINS
+" 
+
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python3'
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-nnoremap <c-b> :YcmCompleter GoTo<CR> 
-nnoremap <c-s-b> :YcmCompleter GoToDefinition<CR> 
-nnoremap <c-a-b> :YcmCompleter GoToDeclaration<CR> 
-nnoremap <c-s-7> :YcmCompleter GoToReferences<CR> 
-nnoremap <c-q> :YcmCompleter GetDoc<CR> 
 
-
-" NerdTree
-nmap <A-1> :NERDTreeToggle<CR>
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 
 " tagbar
 " run `dpkg -L exuberant-ctags`
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'
 let g:tagbar_left = 0
-nnoremap <A-7> :TagbarToggle<CR>
 
 
 " Syntastic
@@ -135,22 +145,20 @@ let g:syntastic_python_checkers = ['pylint']
 
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 
-" Run Elixir
-autocmd BufRead *.ex nmap <S-F10> :!elixir %<CR>
-autocmd BufRead *.exs nmap <S-F10> :!elixir %<CR>
+" Makefile
+autocmd BufEnter Makefile setlocal noexpandtab
 
-" Run Python
-autocmd BufRead *.py nmap <S-F10> :!python3 -m doctest %<CR>
-autocmd BufRead *.py nmap <A-S-F10> :!nosetests %<CR>
+"
+" PYTHON
+"
 
-" Python PEP-8 format
+" Format PEP-8
 filetype indent on
 set tabstop=4
 set shiftwidth=4
@@ -159,3 +167,64 @@ set softtabstop=4
 " autocmd BufRead *.py set tabstop=4
 " autocmd BufRead *.py set nowrap
 " autocmd BufRead *.py set go+=b
+
+
+"
+" KEY MAPPINGS - leader
+"
+
+" the \ is too far away for a leader key
+" use , instead
+let mapleader=","
+
+" the <esc> is too far away
+" use aa
+inoremap aa <esc>
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+" open Ack.vim
+nnoremap <leader>a :Ack<CR>
+
+
+"
+" KEY MAPPINGS - IntelliJ {{{
+"
+nnoremap <C-S> :w<CR>
+nnoremap <C-Q> :wq<CR>
+
+" TagBar
+nnoremap <A-7> :TagbarToggle<CR>
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+" NerdTree
+nnoremap <A-1> :NERDTreeToggle<CR>
+
+" YouCompleteMe
+nnoremap <c-b> :YcmCompleter GoTo<CR> 
+nnoremap <c-s-b> :YcmCompleter GoToDefinition<CR> 
+nnoremap <c-a-b> :YcmCompleter GoToDeclaration<CR> 
+nnoremap <c-s-7> :YcmCompleter GoToReferences<CR> 
+nnoremap <c-q> :YcmCompleter GetDoc<CR> 
+
+" PYTHON
+autocmd BufRead *.py nnoremap <S-F10> :!python3 -m doctest %<CR>
+autocmd BufRead *.py nnoremap <S-A-F10> :!nosetests %<CR>
+
+" ELIXIR
+autocmd BufRead *.ex nnoremap <S-F10> :!elixir %<CR>
+autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
+
+" PHP
+
+" CPP
+
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
