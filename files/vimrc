@@ -174,12 +174,18 @@ set softtabstop=4
 "
 
 " the \ is too far away for a leader key
-" use , instead
 let mapleader=","
 
 " the <esc> is too far away
-" use aa
 inoremap aa <esc>
+
+" 1 key
+
+" help
+nnoremap <leader>h :help 
+
+" switcher
+nnoremap <leader>s :buffers!
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -188,7 +194,15 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>u :GundoToggle<CR>
 
 " open Ack.vim
-nnoremap <leader>a :Ack<CR>
+nnoremap <leader>a :Ack 
+
+
+" 2 keys
+
+" open, close tool windows
+nnoremap <leader>oq :copen<CR>
+nnoremap <leader>cq :cclose<CR>
+nnoremap <leader>ch :helpclose<CR>
 
 
 "
@@ -201,7 +215,7 @@ nnoremap <C-Q> :wq<CR>
 nnoremap <A-7> :TagbarToggle<CR>
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<C-J>"
 
 " NerdTree
 nnoremap <A-1> :NERDTreeToggle<CR>
@@ -212,6 +226,9 @@ nnoremap <c-s-b> :YcmCompleter GoToDefinition<CR>
 nnoremap <c-a-b> :YcmCompleter GoToDeclaration<CR> 
 nnoremap <c-s-7> :YcmCompleter GoToReferences<CR> 
 nnoremap <c-q> :YcmCompleter GetDoc<CR> 
+
+augroup keymap_intellij
+autocmd!
 
 " PYTHON
 autocmd BufRead *.py nnoremap <S-F10> :!python3 -m doctest %<CR>
@@ -224,6 +241,8 @@ autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
 " PHP
 
 " CPP
+
+augroup END
 
 " }}}
 
