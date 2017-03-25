@@ -68,6 +68,8 @@ syntax on
 
 " Highlight matches of search
 set hlsearch
+" search while typing
+set incsearch
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -108,7 +110,7 @@ map <C-S-RIGHT> <C-w>>
 
 " Omni
 set omnifunc=syntaxcomplete#Complete
-autocmd FileType python set omnifunc=python3complete#Complete
+autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 
 "
@@ -123,6 +125,8 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 
 
 " tagbar
@@ -164,9 +168,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
-" autocmd BufRead *.py set tabstop=4
-" autocmd BufRead *.py set nowrap
-" autocmd BufRead *.py set go+=b
+" autocmd FileType python setlocal tabstop=4
+" autocmd FileType python setlocal nowrap
+" autocmd FileType python setlocal go+=b
 
 
 "
@@ -185,7 +189,16 @@ inoremap aa <esc>
 nnoremap <leader>h :help 
 
 " switcher
-nnoremap <leader>s :buffers!
+nnoremap <leader>s :CtrlPBuffer<CR>
+
+" buffers, including unlisted
+nnoremap <leader>b :buffers!<CR>
+
+" toggle tagbar
+nnoremap <leader>t :TagbarOpenAutoClose<CR>
+
+" toggle NerdTree
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -231,14 +244,15 @@ augroup keymap_intellij
 autocmd!
 
 " PYTHON
-autocmd BufRead *.py nnoremap <S-F10> :!python3 -m doctest %<CR>
-autocmd BufRead *.py nnoremap <S-A-F10> :!nosetests %<CR>
+autocmd FileType python nnoremap <S-F10> :!python3 -m doctest %<CR>
+autocmd FileType python nnoremap <S-A-F10> :!nosetests %<CR>
 
 " ELIXIR
 autocmd BufRead *.ex nnoremap <S-F10> :!elixir %<CR>
 autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
 
 " PHP
+autocmd FileType php nnoremap <S-F10> :!php %<CR>
 
 " CPP
 
