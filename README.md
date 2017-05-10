@@ -177,16 +177,12 @@ Compiz config settings manager, Unity plugin
 browse and download a theme
 ```
 gnome-look.org
+sudo apt-get install arc-theme
 ```
 
-install theme with Unity Tweak Tool
-* current theme is `delorean-dark-theme-3.9`
+set theme in Unity Tweak Tool
+* current theme is `Arc-dark`
 
-to fix the 
-Gtk-WARNING **: Unable to locate theme engine in module_path: "pixmap"
-```
-sudo apt-get install gtk2-engines-pixbuf
-```
 
 change desktop background
 * ghost-in-the-shell
