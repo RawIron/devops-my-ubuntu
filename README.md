@@ -89,6 +89,7 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * maven helper
 * scala
 * python
+* elixir
 * markdown support
 
 #### sublime plugins
