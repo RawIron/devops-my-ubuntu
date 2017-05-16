@@ -1,10 +1,11 @@
 ---
 
 - hosts: laptop
-  become: yes
+  become: "{{ as_root }}"
   become_method: sudo
 
   vars:
+    as_root: yes
     user: achtmhz
     user_group: achtmhz
     hostname: mordoror

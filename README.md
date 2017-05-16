@@ -31,7 +31,7 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --t
 
 In my usual workflow I change the ansible script, for example add a new alias `aliases.zsh`, and then _deploy_ to my laptop with
 ```bash
-laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "alias"
+laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags="alias" --extra-vars 'as_root=no'
 ```
 
 ## Categories and the major software that I use

@@ -35,7 +35,9 @@
   copy: src=./files/vimrc dest={{ user_home }}/.vimrc
         owner={{ user }}
         group={{ user_group }}
-  tags: vim
+  tags:
+      - vim
+      - vimrc
 
 - name: create .vim folder
   file: path={{ user_home }}/.vim/bundle

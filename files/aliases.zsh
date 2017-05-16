@@ -28,7 +28,7 @@ alias mvnrc='mvn_main'
 # Ansible
 ansible_playbook_run_tag_local() {
   (cd ~/workspace/devops-my-ubuntu;
-  ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "$1")
+  ansible-playbook --inventory-file=hosts --connection=local site.yml --tags="$1" --extra-vars "as_root=no")
 }
 alias aplt='ansible_playbook_run_tag_local'
 alias ansible_facts='ansible -m setup'
