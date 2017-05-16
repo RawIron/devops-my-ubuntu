@@ -188,6 +188,9 @@ inoremap aa <esc>
 " help
 nnoremap <leader>h :help 
 
+" make
+nnoremap <leader>m :make 
+
 " switcher
 nnoremap <leader>s :CtrlPBuffer<CR>
 
@@ -217,12 +220,23 @@ nnoremap <leader>oq :copen<CR>
 nnoremap <leader>cq :cclose<CR>
 nnoremap <leader>ch :helpclose<CR>
 
+" reload .vimrc
+nnoremap <leader>ov :e $HOME/workspace/devops-my-ubuntu/files/vimrc<CR>
+nnoremap <leader>dv :!ansible_playbook_run_tag_local vimrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
 
 "
 " KEY MAPPINGS - IntelliJ {{{
 "
 nnoremap <C-S> :w<CR>
 nnoremap <C-Q> :wq<CR>
+
+" Edit
+nnoremap <c-d> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <c-s-d> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <c-y> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <c-s-y> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " TagBar
 nnoremap <A-7> :TagbarToggle<CR>
@@ -255,6 +269,8 @@ autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
 autocmd FileType php nnoremap <S-F10> :!php %<CR>
 
 " CPP
+autocmd FileType cpp nnoremap <C-F9> :make<CR>
+autocmd FileType cpp nnoremap <C-S-F9> :make %<CR>
 
 augroup END
 
