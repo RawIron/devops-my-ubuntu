@@ -1,9 +1,30 @@
 ---
 
-- name: install docker packages
-  apt: name={{ item }} state=latest
+- name: install packages required by docker
+  apt: name={{ item }} update_cache=yes state=latest
   with_items:
-   - docker.io
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags: docker
+
+- name: add docker repo
+  apt_repository:
+      repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu  {{ ansible_distribution_release }} stable'
+      state=present
+  tags: docker
+
+- name: add key for docker repo
+  apt_key:
+      url=https://download.docker.com/linux/ubuntu/gpg
+      state=present
+  tags: docker
+
+- name: install docker
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - docker-ce
   tags: docker
 
 - name: create docker group
@@ -26,7 +47,7 @@
 
 
 - name: install virtualbox
-  apt: name={{ item }} state=latest
+  apt: name={{ item }} update_cache=yes state=latest
   with_items:
    - virtualbox-qt
   tags: vagrant
