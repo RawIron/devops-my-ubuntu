@@ -5,7 +5,6 @@
   with_items:
     - apt-transport-https
     - ca-certificates
-    - curl
     - software-properties-common
   tags: docker
 
@@ -25,10 +24,6 @@
   apt: name={{ item }} update_cache=yes state=latest
   with_items:
     - docker-ce
-  tags: docker
-
-- name: create docker group
-  group: name=docker state=present
   tags: docker
 
 - name: add user to docker group
