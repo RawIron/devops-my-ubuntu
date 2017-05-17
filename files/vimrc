@@ -185,42 +185,47 @@ inoremap aa <esc>
 
 " 1 key
 
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" open Ack.vim
+nnoremap <leader>a :Ack 
+
+" buffers, including unlisted
+nnoremap <leader>b :buffers!<CR>
+
 " help
 nnoremap <leader>h :help 
 
 " make
 nnoremap <leader>m :make 
 
+" toggle NerdTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" toggle QuickFix
+nnoremap <leader>q :cw<CR>
+
 " switcher
 nnoremap <leader>s :CtrlPBuffer<CR>
-
-" buffers, including unlisted
-nnoremap <leader>b :buffers!<CR>
 
 " toggle tagbar
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
 
-" toggle NerdTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
-
-" open Ack.vim
-nnoremap <leader>a :Ack 
 
 
 " 2 keys
 
 " open, close tool windows
+" quickfix
 nnoremap <leader>oq :copen<CR>
 nnoremap <leader>cq :cclose<CR>
+" help
 nnoremap <leader>ch :helpclose<CR>
 
-" reload .vimrc
+" manage .vimrc
 nnoremap <leader>ov :e $HOME/workspace/devops-my-ubuntu/files/vimrc<CR>
 nnoremap <leader>dv :!ansible_playbook_run_tag_local vimrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
