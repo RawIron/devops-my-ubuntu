@@ -13,9 +13,14 @@ alias_starts_with() { alias | grep "^$1" }
 alias ags='alias_starts_with'
 
 alias hg='history | grep'
+alias pg='ps -ef | grep'
 
 alias tree='tree -C'
 alias tedu='tree -C --du -h'
+
+alias mkvenv='mkvirtualenv'
+alias lsvenv='lsvirtualvenv'
+alias rmvenv='rmvirtualenv'
 
 
 # Maven
