@@ -96,7 +96,7 @@ set guioptions-=T
 set splitright
 
 " jump to first open window that contains buffer
-set switchbuf+=useopen
+set switchbuf+=useopen,vsplit
 
 " switch between window splits
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -197,6 +197,9 @@ nnoremap <leader>a :Ack
 " buffers, including unlisted
 nnoremap <leader>b :buffers!<CR>
 
+" toggle QuickFix
+nnoremap <leader>c :cw<CR>
+
 " help
 nnoremap <leader>h :help 
 
@@ -205,9 +208,6 @@ nnoremap <leader>m :make
 
 " toggle NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
-
-" toggle QuickFix
-nnoremap <leader>q :cw<CR>
 
 " switcher
 nnoremap <leader>s :CtrlPBuffer<CR>
@@ -223,15 +223,27 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " open, close tool windows
 " quickfix
-nnoremap <leader>oq :copen<CR>
-nnoremap <leader>cq :cclose<CR>
+nnoremap <leader>qo :copen<CR>
+nnoremap <leader>qc :cclose<CR>
+nnoremap <leader>qn :cnext<CR>
+nnoremap <leader>qp :cprevious<CR>
+
+" location list
+nnoremap <leader>lo :lopen<CR>
+nnoremap <leader>lc :lclose<CR>
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
+
 " help
-nnoremap <leader>ch :helpclose<CR>
+nnoremap <leader>hc :helpclose<CR>
+
+nnoremap <leader>dj :YcmCompleter GoToDefinition<CR> 
+nnoremap <leader>dcj :YcmCompleter GoToDeclaration<CR> 
 
 " manage .vimrc
-nnoremap <leader>ov :e $HOME/workspace/devops-my-ubuntu/files/vimrc<CR>
-nnoremap <leader>dv :!ansible_playbook_run_tag_local vimrc<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>vo :vsp $HOME/workspace/devops-my-ubuntu/files/vimrc<CR>
+nnoremap <leader>vd :!ansible_playbook_run_tag_local vimrc<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
 
 "
