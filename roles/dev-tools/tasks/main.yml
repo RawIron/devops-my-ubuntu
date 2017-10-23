@@ -21,6 +21,7 @@
    - python3-dev
    - python-dev
    - exuberant-ctags
+   - bear
    - vim-gnome
   tags: vim
 
