@@ -85,7 +85,7 @@ set wildmenu
 " used for this file to fold sections
 set modelines=1
 
-" eye-candy
+" gvim, eye-candy
 set background=dark
 colorscheme desert
 
@@ -104,6 +104,11 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
+nmap <silent> <C-w>k :wincmd k<CR>
+nmap <silent> <C-w>j :wincmd j<CR>
+nmap <silent> <C-w>h :wincmd h<CR>
+nmap <silent> <C-w>l :wincmd l<CR>
+
 " resize window
 map <C-S-DOWN> <C-w>+
 map <C-S-UP> <C-w>-
@@ -113,7 +118,15 @@ map <C-S-RIGHT> <C-w>>
 
 " Omni
 set omnifunc=syntaxcomplete#Complete
+
+" Omni-Python
 autocmd FileType python setlocal omnifunc=python3complete#Complete
+
+" Omni-Ruby
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 
 "
@@ -158,22 +171,30 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
+"
+" LANGUAGES
+"
+filetype indent on
+
 " Makefile
 autocmd BufEnter Makefile setlocal noexpandtab
 
-"
-" PYTHON
-"
+" RUBY
+autocmd FileType ruby compiler ruby
+autocmd FileType ruby setlocal tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2
+autocmd FileType ruby setlocal softtabstop=2
+autocmd FileType ruby setlocal expandtab
 
+" PYTHON
 " Format PEP-8
-filetype indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
-" autocmd FileType python setlocal tabstop=4
-" autocmd FileType python setlocal nowrap
-" autocmd FileType python setlocal go+=b
+autocmd FileType python setlocal tabstop=4
+autocmd FileType python setlocal shiftwidth=4
+autocmd FileType python setlocal softtabstop=4
+autocmd FileType python setlocal expandtab
+
+" C++
+autocmd FileType cpp setlocal tabstop=4
 
 
 "
@@ -192,7 +213,7 @@ inoremap aa <esc>
 nnoremap <leader><space> :nohlsearch<CR>
 
 " open Ack.vim
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack! 
 
 " buffers, including unlisted
 nnoremap <leader>b :buffers!<CR>
@@ -204,7 +225,7 @@ nnoremap <leader>c :cw<CR>
 nnoremap <leader>h :help 
 
 " make
-nnoremap <leader>m :make 
+nnoremap <leader>m :make! 
 
 " toggle NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -223,10 +244,10 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " open, close tool windows
 " quickfix
-nnoremap <leader>qo :copen<CR>
-nnoremap <leader>qc :cclose<CR>
-nnoremap <leader>qn :cnext<CR>
-nnoremap <leader>qp :cprevious<CR>
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
 
 " location list
 nnoremap <leader>lo :lopen<CR>
