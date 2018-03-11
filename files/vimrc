@@ -44,6 +44,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'sjl/gundo.vim'
 
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'pearofducks/ansible-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,6 +81,11 @@ set path+=**
 
 " visual autocomplete for command menu
 set wildmenu
+
+set wildignore+=*/tmp/*,*.so,*.swp
+set wildignore+=*/vendor/*,*.o,*.pyc
+set wildignore+=*/tags/*,*.log,*.zip
+set wildignore+=*/\.git/*
 
 " check last line of file for a modline
 " used for this file to fold sections
@@ -175,6 +181,7 @@ let g:UltiSnipsEditSplit="vertical"
 " LANGUAGES
 "
 filetype indent on
+set tags=./tags;,tags;
 
 " Makefile
 autocmd BufEnter Makefile setlocal noexpandtab
@@ -186,6 +193,12 @@ autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2
 autocmd FileType ruby setlocal expandtab
 
+" PHP
+autocmd FileType php setlocal tabstop=2
+autocmd FileType php setlocal shiftwidth=2
+autocmd FileType php setlocal softtabstop=2
+autocmd FileType php setlocal expandtab
+
 " PYTHON
 " Format PEP-8
 autocmd FileType python setlocal tabstop=4
@@ -195,6 +208,16 @@ autocmd FileType python setlocal expandtab
 
 " C++
 autocmd FileType cpp setlocal tabstop=4
+autocmd FileType cpp setlocal shiftwidth=4
+autocmd FileType cpp setlocal softtabstop=-1
+autocmd FileType cpp setlocal noexpandtab
+autocmd FileType cpp setlocal autoindent
+
+" BASH
+autocmd FileType sh setlocal tabstop=4
+autocmd FileType sh setlocal shiftwidth=4
+autocmd FileType sh setlocal softtabstop=4
+autocmd FileType sh setlocal expandtab
 
 
 "
