@@ -17,10 +17,15 @@
    - tree
    - screen
    - tmux
+   - jq
+   - encfs
+   - pass
 
 - name: install python virtualenv wrapper
-  pip: name=virtualenvwrapper state=latest
-
+  pip: name={{ item }} state=latest
+  with_items:
+    - virtualenvwrapper
+    - yq
 
 - name: create group
   group: name={{ user }} state=present
