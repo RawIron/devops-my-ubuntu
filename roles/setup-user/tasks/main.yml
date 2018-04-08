@@ -18,7 +18,6 @@
    - screen
    - tmux
    - jq
-   - encfs
    - pass
 
 - name: install python virtualenv wrapper
@@ -31,10 +30,15 @@
   group: name={{ user }} state=present
 
 - name: create user
-  user: name={{ user }} shell=/bin/zsh groups={{ user }} state=present
+  user: name={{ user }}
+        groups={{ user }}
+        shell=/bin/zsh
+        state=present
 
 - name: create folders
-  file: path={{ user_home }}/{{ item }} owner={{ user }} group={{ user_group }}
+  file: path={{ user_home }}/{{ item }}
+        owner={{ user }}
+        group={{ user_group }}
         state=directory
   with_items:
     - bin
@@ -57,8 +61,11 @@
   tags: myzsh
 
 - name: copy my .zsh files
-  copy: src=./files/{{ item }}.zsh dest=/home/{{ user }}/.oh-my-zsh/custom
-        owner={{ user }} group={{ user_group }} mode=0644
+  copy: src=./files/{{ item }}.zsh
+        dest=/home/{{ user }}/.oh-my-zsh/custom
+        owner={{ user }}
+        group={{ user_group }}
+        mode=0644
   with_items:
     - common-aliases
     - aliases
@@ -66,8 +73,11 @@
   tags: ["myzsh", "alias"]
 
 - name: workspace aliases
-  template: src=./templates/alias-repos.j2 dest=/home/{{ user }}/.oh-my-zsh/custom/repos-aliases.zsh
-            owner={{ user }} group={{ user_group }} mode=0640
+  template: src=./templates/alias-repos.j2
+            dest=/home/{{ user }}/.oh-my-zsh/custom/repos-aliases.zsh
+            owner={{ user }}
+            group={{ user_group }}
+            mode=0640
   tags: ["myzsh", "alias"]
 
 # support the oh-my-zsh virutalenvwrapper plugin
@@ -94,5 +104,8 @@
 
 
 - name: copy vi .exrc
-  copy: src=./files/exrc dest=/home/{{ user }}/.exrc
-        owner={{ user }} group={{ user }} mode=0644
+  copy: src=./files/exrc
+        dest=/home/{{ user }}/.exrc
+        owner={{ user }}
+        group={{ user }}
+        mode=0644
