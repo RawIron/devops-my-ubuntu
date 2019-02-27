@@ -12,7 +12,12 @@
    - nicstat
    - iptraf
    - pax-utils
+  tags: systools
 
+- name: install hardware static perf tools
+  apt: name={{ item }} update_cache=yes state=present
+  with_items:
+   - hwinfo
 
 - name: install kernel tools
   apt: name={{ item }} update_cache=yes state=present
