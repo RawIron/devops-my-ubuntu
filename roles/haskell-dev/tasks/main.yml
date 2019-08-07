@@ -1,0 +1,7 @@
+---
+
+- name: install haskell
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+    - haskell-platform
+  tags: haskell

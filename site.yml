@@ -16,22 +16,24 @@
     pydev_repos:
       - data-hacks
       - flask-appengine-demo
-      - scratch-python
+      - learning-python
     git_repos:
       - devops-my-ubuntu
-      - devops-opsworks
-      - farm-game
-      - gatling-loadtest-game
       - hackerrank-d
       - hackerrank-scala
-      - p4-commit-parse
-      - photon-turnbased-demo
-      - scratch-cpp
       - scratch-d
       - scratch-java
       - scratch-php
       - scratch-ruby
+      - learn-cpp
+      - learning-elixir
+      - learning-bash
+      - devops-opsworks
+      - farm-game
+      - gatling-loadtest-game
+      - p4-commit-parse
       - webserver-simplest
+      - photon-turnbased-demo
 
   pre_tasks:
     - name: rename host
@@ -41,6 +43,7 @@
     - { role: dev-tools, tags: ['devtools'] }
     - { role: java-dev, tags: ['java'] }
     - { role: erlang-dev, tags: ['erlang'] }
+    - { role: haskell-dev, tags: ['haskell'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data-analysis, tags: ['pydata'] }
     - { role: devops, tags: ['ops'] }

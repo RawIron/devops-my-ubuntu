@@ -6,8 +6,14 @@
 - name: install tools
   apt: name={{ item }} state=latest
   with_items:
+   - python-pip
    - encfs
-   - s3fs
+   - rclone
+
+- name: install aws cli
+  pip: name={{ item }} state=latest
+  with_items:
+    - awscli
 
 - name: create folders
   file: path={{ user_home }}/{{ item }}
@@ -26,11 +32,9 @@
         mode=0600
         state=touch
   with_items:
-    - .passwd-s3fs
+    - .config/rclone/rclong.conf
+    - .aws/credentials
 
-
-- name: mount S3 bucket
-  command: s3fs {{ s3_bucket }} {{ user_home }}/encrypted -o use_cache=/tmp
 
 - name: mount encfs
   command: encfs {{ user_home }}/encrypted {{ user_home }}/Storage - --extpass="gpg --no-mdc-warning -o - {{ encfs_gpg_keyfile }}"
