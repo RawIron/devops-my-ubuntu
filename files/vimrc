@@ -130,9 +130,9 @@ autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Omni-Ruby
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+let g:rubycomplete_buffer_loading = 1 
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
 
 
 "
@@ -140,8 +140,14 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 " 
 
 " YouCompleteMe
-let g:ycm_python_binary_path = 'python3'
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_autoclose_preview_window_after_completion = 1
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+"let g:ycm_clangd_binary_path = exepath("clangd")
+let g:ycm_clangd_args = ['-pretty']
 
 
 " CtrlP
@@ -171,10 +177,14 @@ let g:syntastic_python_checkers = ['pylint']
 
 
 " UltiSnips
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Gundo
+let g:gundo_prefer_python3 = 1
 
 
 "
@@ -201,6 +211,7 @@ autocmd FileType php setlocal expandtab
 
 " PYTHON
 " Format PEP-8
+autocmd FileType python compiler python3
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal shiftwidth=4
 autocmd FileType python setlocal softtabstop=4
@@ -209,8 +220,8 @@ autocmd FileType python setlocal expandtab
 " C++
 autocmd FileType cpp setlocal tabstop=4
 autocmd FileType cpp setlocal shiftwidth=4
-autocmd FileType cpp setlocal softtabstop=-1
-autocmd FileType cpp setlocal noexpandtab
+autocmd FileType cpp setlocal softtabstop=4
+autocmd FileType cpp setlocal expandtab
 autocmd FileType cpp setlocal autoindent
 
 " BASH
@@ -218,6 +229,25 @@ autocmd FileType sh setlocal tabstop=4
 autocmd FileType sh setlocal shiftwidth=4
 autocmd FileType sh setlocal softtabstop=4
 autocmd FileType sh setlocal expandtab
+
+" Go
+autocmd FileType go setlocal tabstop=2
+autocmd FileType go setlocal shiftwidth=2
+autocmd FileType go setlocal softtabstop=2
+autocmd FileType go setlocal expandtab
+autocmd FileType go setlocal autoindent
+
+" Haskell
+autocmd FileType haskell setlocal tabstop=2
+autocmd FileType haskell setlocal shiftwidth=2
+autocmd FileType haskell setlocal softtabstop=2
+autocmd FileType haskell setlocal expandtab
+
+" Elixir
+autocmd FileType elixir setlocal tabstop=2
+autocmd FileType elixir setlocal shiftwidth=2
+autocmd FileType elixir setlocal softtabstop=2
+autocmd FileType elixir setlocal expandtab
 
 
 "
@@ -228,7 +258,7 @@ autocmd FileType sh setlocal expandtab
 let mapleader=","
 
 " the <esc> is too far away
-inoremap aa <esc>
+inoremap ;; <esc>
 
 " 1 key
 
@@ -239,7 +269,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>a :Ack! 
 
 " buffers, including unlisted
-nnoremap <leader>b :buffers!<CR>
+nnoremap <leader>b :buffers!<CR>:buffer<Space>
 
 " toggle QuickFix
 nnoremap <leader>c :cw<CR>
@@ -281,6 +311,7 @@ nnoremap <leader>lp :lprevious<CR>
 " help
 nnoremap <leader>hc :helpclose<CR>
 
+" YCM
 nnoremap <leader>dj :YcmCompleter GoToDefinition<CR> 
 nnoremap <leader>dcj :YcmCompleter GoToDeclaration<CR> 
 
@@ -326,7 +357,7 @@ autocmd FileType python nnoremap <S-F10> :!python3 -m doctest %<CR>
 autocmd FileType python nnoremap <S-A-F10> :!nosetests %<CR>
 
 " ELIXIR
-autocmd BufRead *.ex nnoremap <S-F10> :!elixir %<CR>
+autocmd BufRead *.ex  nnoremap <S-F10> :!elixir %<CR>
 autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
 
 " PHP
