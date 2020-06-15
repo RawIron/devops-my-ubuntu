@@ -1,5 +1,13 @@
-
 ---
 
-- name: aws command line interface
+- name: install aws cli
   pip: name=awscli state=latest
+
+- name: create empty aws config files
+  file: path={{ user_home }}/{{ item }}
+        owner={{ user }}
+        group={{ user_group }}
+        mode=0600
+        state=touch
+  with_items:
+    - .aws/credentials
