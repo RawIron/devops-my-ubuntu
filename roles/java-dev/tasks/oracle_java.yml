@@ -1,0 +1,30 @@
+---
+
+- name: install tools
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+   - software-properties-common
+   - debconf-utils
+  tags: oracle-java
+
+- name: add oracle java repo
+  apt_repository: repo='ppa:webupd8team/java' state=present
+  tags: oracle-java
+
+- name: accept oracle license
+  debconf:
+      name='oracle-{{ item }}-installer'
+      question='shared/accepted-oracle-license-v1-1'
+      value='true'
+      vtype='select'
+  with_items:
+    - java7
+    - java8
+  tags: oracle-java
+
+- name: install java 7 and 8, jre and jdk
+  apt: name=oracle-{{ item }}-installer update_cache=yes state=latest
+  with_items:
+   - java7
+   - java8
+  tags: oracle-java

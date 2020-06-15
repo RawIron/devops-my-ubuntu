@@ -1,54 +1,16 @@
 ---
 
-- name: install tools
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - software-properties-common
-   - debconf-utils
+- name: install oracle jdk
+  include: oracle_java.yml
   tags: oracle-java
 
-- name: add oracle java repo
-  apt_repository: repo='ppa:webupd8team/java' state=present
-  tags: oracle-java
-
-- name: accept oracle license
-  debconf:
-      name='oracle-{{ item }}-installer'
-      question='shared/accepted-oracle-license-v1-1'
-      value='true'
-      vtype='select'
-  with_items:
-    - java7
-    - java8
-  tags: oracle-java
-
-- name: install java 7 and 8, jre and jdk
-  apt: name=oracle-{{ item }}-installer update_cache=yes state=latest
-  with_items:
-   - java7
-   - java8
-  tags: oracle-java
-
-
-- name: install openjdk 7
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - openjdk-7-jdk
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 16
-  tags: openjdk
-
-- name: install openjdk 8
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - openjdk-8-jdk
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
+- name: install openjdk
+  include: openjdk.yml
   tags: openjdk
 
 
 - name: install maven
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - maven
+  apt: name=maven update_cache=yes state=latest
 
 - name: download maven 3.1
   get_url:
@@ -70,4 +32,5 @@
   tags: maven31
 
 
-- include: scala.yml
+- name: install scala
+  include: scala.yml
