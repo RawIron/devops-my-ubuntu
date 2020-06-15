@@ -1,0 +1,28 @@
+---
+
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: install terminator
+  apt: name=terminator state=latest
+  tags: terminator
+
+- name: install command-line tools
+  apt:
+    state: latest
+    name: ['zsh', 'git', 'tree', 'screen', 'tmux', 'jq', 'pass']
+
+- name: install python tools
+  apt:
+    state: latest
+    name: ['python-pip', 'python-virtualenv']
+
+- name: install ui tools
+  apt:
+    state: latest
+    name: ['gnome-sushi']
+
+- name: install python virtualenv wrapper
+  pip:
+    state: latest
+    name: ['virtualenvwrapper', 'yq']

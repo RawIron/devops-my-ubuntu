@@ -1,0 +1,31 @@
+---
+
+- name: copy vim config
+  copy: src=./files/{{ item }}
+        dest=/home/{{ user }}/.{{ item }}
+        owner={{ user }}
+        group={{ user }}
+        mode=0640
+  with_items:
+    - exrc
+    - vimrc
+
+- name: copy zsh aliases
+  copy: src=./files/{{ item }}
+        dest=/home/{{ user }}/.oh-my-zsh/custom/{{ item }}
+        owner={{ user }}
+        group={{ user }}
+        mode=0640
+  with_items:
+    - aliases.zsh
+    - common-aliases.zsh
+    - zle.zsh
+
+- name: git config
+  copy: src=./files/{{ item }}
+        dest=/home/{{ user }}/.{{ item }}
+        owner={{ user }}
+        group={{ user }}
+        mode=0640
+  with_items:
+    - gitignore

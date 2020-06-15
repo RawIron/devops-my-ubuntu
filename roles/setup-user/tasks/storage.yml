@@ -32,7 +32,7 @@
         mode=0600
         state=touch
   with_items:
-    - .config/rclone/rclong.conf
+    - .config/rclone/rclone.conf
     - .aws/credentials
 
 
