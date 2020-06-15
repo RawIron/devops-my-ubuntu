@@ -1,0 +1,18 @@
+---
+
+- name: install nodejs
+  apt:
+    update_cache: yes
+    state: latest
+    name: ['nodejs', 'npm']
+  tags: swagger
+
+- name: npm requires node in the path
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+  tags: swagger
+
+- name: clone swagger editor
+  git: repo=https://github.com/swagger-api/swagger-editor.git dest={{ user_home }}/swagger-editor
+  become_user: "{{ user }}"
+  become_method: sudo
+  tags: swagger

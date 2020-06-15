@@ -1,105 +1,22 @@
 ---
 
 - name: install dev tools
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - git
-   - meld
-   - build-essential
-   - cmake
-   - valgrind
-   - kcachegrind
+  apt:
+    update_cache: yes
+    state: latest
+    name: ['git', 'meld']
+
+- name: install C-dev
+  apt:
+    state: latest
+    name: ['build-essential', 'cmake', 'valgrind', 'kcachegrind']
 
 
-- name: install vim and required packages
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - git
-   - ack-grep
-   - cmake
-   - python3-pip
-   - python3-dev
-   - python-dev
-   - exuberant-ctags
-   - bear
-   - vim-gnome
-  tags: vim
+- name: install vim
+  include: "vim.yml"
 
-- name: install python3 packages
-  pip: name={{ item }} executable=pip3 state=latest
-  with_items:
-   - frozendict
-   - future
-  tags: vim
+- name: install swagger
+  include: "swagger.yml"
 
-- name: copy vimrc
-  copy: src=./files/vimrc dest={{ user_home }}/.vimrc
-        owner={{ user }}
-        group={{ user_group }}
-  tags:
-      - vim
-      - vimrc
-
-- name: create .vim folder
-  file: path={{ user_home }}/.vim/bundle
-        state=directory
-        owner={{ user }}
-        group={{ user_group }}
-        mode=0750
-  tags: vim
-
-- name: install vundle as plugin manager
-  git: repo=https://github.com/VundleVim/vundle.vim.git
-       dest={{ user_home }}/.vim/bundle/Vundle.vim
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: vim
-
-- name: install vim plugins with vundle
-  command: vim +PluginInstall +qall
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: vim
-
-- name: clone submodules of YouCompleteMe
-  command: git submodule update --init --recursive
-           chdir={{ user_home }}/.vim/bundle/YouCompleteMe
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: vim
-
-# remove --tern-completer
-# because does not compile on trusty
-- name: compile YouCompleteMe
-  command: ./install.py --clang-completer
-           chdir={{ user_home }}/.vim/bundle/YouCompleteMe
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: vim
-
-
-- name: install nodejs
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - nodejs
-   - npm
-  tags: swagger
-
-- name: npm requires node in the path
-  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
-  tags: swagger
-
-- name: clone swagger editor
-  git: repo=https://github.com/swagger-api/swagger-editor.git dest={{ user_home }}/swagger-editor
-  become_user: "{{ user }}"
-  become_method: sudo
-  tags: swagger
-
-
-- name: install git repo cleaner bfg, https://rtyley.github.io/bfg-repo-cleaner/
-  get_url: url='https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST' dest={{ bfg_home }}/{{ bfg_jar }}
-  tags: bfg
-
-- name: change access to bfg jar file
-  file: path={{ bfg_home }}/{{ bfg_jar }} owner={{ user }} group={{ user }} mode=0440 state=file
-  tags: bfg
+- name: install git repo cleaner
+  include: "git_repo_cleaner.yml"
