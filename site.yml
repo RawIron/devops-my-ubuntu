@@ -42,7 +42,7 @@
   roles:
     - { role: dev-tools, tags: ['devtools'] }
     - { role: java-dev, tags: ['java'] }
-    - { role: erlang-dev, tags: ['erlang'] }
+    - { role: erlang-dev, tags: ['elixir'] }
     - { role: haskell-dev, tags: ['haskell'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data-analysis, tags: ['pydata'] }
