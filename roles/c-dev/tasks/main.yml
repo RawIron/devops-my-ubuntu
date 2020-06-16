@@ -6,10 +6,42 @@
     name: ['build-essential', 'libboost-all-dev', 'cmake']
 
 
+- name: tool-chain repo is needed for g++-10 on ubuntu 18
+  apt_repository:
+    repo: ppa:ubuntu-toolchain-r/test
+    update_cache: yes
+    state: present
+  when: ansible_distribution == "Ubuntu"
+    and ansible_distribution_major_version|int == 18
+
+- name: install gnu
+  apt:
+    state: latest
+    name: ['gcc-10', 'g++-10', 'gcc-9', 'g++-9']
+
+- name: install alternative for g++-10
+  alternatives:
+    name: g++
+    link: /usr/bin/g++
+    path: /usr/bin/g++-10
+    priority: 10
+
+- name: install alternative for g++-9
+  alternatives:
+    name: g++
+    link: /usr/bin/g++
+    path: /usr/bin/g++-9
+    priority: 9
+
+- name: reset g++ alternatives to auto
+  command: update-alternatives --auto g++
+
+
 - name: install grinds
   apt:
     state: latest
     name: ['valgrind', 'kcachegrind']
+
 
 - name: install clang
   apt:
