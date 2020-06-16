@@ -41,6 +41,7 @@
 
   roles:
     - { role: dev-tools, tags: ['devtools'] }
+    - { role: c-dev, tags: ['cpp'] }
     - { role: java-dev, tags: ['java'] }
     - { role: erlang-dev, tags: ['elixir'] }
     - { role: haskell-dev, tags: ['haskell'] }

@@ -4,19 +4,14 @@
   apt:
     update_cache: yes
     state: latest
-    name: ['git', 'meld']
-
-- name: install C-dev
-  apt:
-    state: latest
-    name: ['build-essential', 'cmake', 'valgrind', 'kcachegrind']
+    name: ['git', 'meld', 'ack', 'jq']
 
 
 - name: install vim
-  include: "vim.yml"
+  include: vim.yml
 
 - name: install swagger
-  include: "swagger.yml"
+  include: swagger.yml
 
 - name: install git repo cleaner
-  include: "git_repo_cleaner.yml"
+  include: git_repo_cleaner.yml

@@ -1,0 +1,17 @@
+---
+
+- name: install essentials
+  apt:
+    state: latest
+    name: ['build-essential', 'libboost-all-dev', 'cmake']
+
+
+- name: install grinds
+  apt:
+    state: latest
+    name: ['valgrind', 'kcachegrind']
+
+- name: install clang
+  apt:
+    state: latest
+    name: ['clang-format', 'clang-tidy', 'clang']
