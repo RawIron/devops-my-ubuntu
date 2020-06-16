@@ -37,17 +37,21 @@ laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --ta
 ## Categories and the major software that I use
 
 ### devops
-automate everything and so everything is reproducible. it can be run again and again. makes testing, load testing, building and deploying easy. also great for scaling.
+automate everything and so everything is reproducible.
+it can be run again and again.
+makes testing, load testing, building and deploying easy.
+also great for scaling.
 * virtualbox
 * vagrant
 * ansible
 * docker
 
 ### aws
-tools to access, manage and deploy. a lot of times I access S3.
+tools to access, manage and deploy.
 * jungledisk
 * s3cmd
 * awscli
+* rclone
 
 ### jvm development
 * scala
@@ -55,7 +59,8 @@ tools to access, manage and deploy. a lot of times I access S3.
 * maven and sbt
 
 ### python development
-great python packages to help writing great code. Use functional programming, TDD, dependency injection, database abstraction, database migration.
+great python packages to help writing great code.
+use functional programming, TDD, dependency injection, database abstraction, database migration.
 * virtualenv
 * nose, pyvows, hypothesis
 * toolz, pyrsistent, effect
@@ -64,7 +69,7 @@ great python packages to help writing great code. Use functional programming, TD
 
 
 ### system programming
-programming languages for high performance and system level access. i do like compilers and very fast code.
+programming languages for high performance and system level access.
 * dmd (d compiler)
 * C, C++
 
@@ -83,7 +88,7 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * vim
 * sublime
 * git
-* meld, p4
+* meld
 
 #### intellij plugins
 * maven helper
@@ -130,7 +135,6 @@ show and measure what is happening in the Linux kernel.
 ### office tools
 communicate. create and manage documents, files.
 * firefox
-* skype
 * libre office
 * FocusWriter
 * artha thesaurus
@@ -145,7 +149,6 @@ communicate. create and manage documents, files.
 ### media
 view and process photos, e-books, audio and video.
 * rawtherapee
-* krita
 * vlc media player
 * ripperX
 * dvdrip
@@ -163,10 +166,8 @@ unfortunately haven`t figured out how to configure a "glass look"
   * ...
 
 tools for UI tweaks. did a few tweaks.
-* Unity Tweak Tool
 * Compiz config manager (CCSM)
 ```
-sudo apt-get install unity-tweak-tool
 sudo apt-get install ccsm
 ```
 
