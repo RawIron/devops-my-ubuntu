@@ -3,6 +3,7 @@
 - name: install oracle jdk
   include: oracle_java.yml
   tags: oracle-java
+  when: False
 
 - name: install openjdk
   include: openjdk.yml
