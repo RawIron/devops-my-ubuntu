@@ -1,0 +1,55 @@
+---
+
+- name: setup python3 as default
+  include: python3.yml
+
+
+- name: install numpy linux packages
+  apt:
+    state: present
+    name:
+     - libblas-dev
+     - liblapack-dev
+
+- name: install scipy linux packages
+  apt:
+    state: present
+    name:
+     - gfortran 
+
+- name: install scikit-learn linux packages
+  apt:
+    state: present
+    name:
+     - libpng-dev
+     - libfreetype6-dev
+     - pkg-config
+
+- name: install analysis packages into virtualenv
+  pip:
+    virtualenv: "{{ venv_home }}/venv_datahacks"
+    virtualenv_command: "python3 -m venv"
+    state: latest
+    name:
+     - numpy
+     - scipy
+     - bottleneck
+     - numexpr
+     - scikit-learn
+     - pandas
+     - requests
+     - beautifulsoup4
+     - luigi
+     - blaze
+     - seaborn
+     - jupyter
+
+- name: install functional programming packages
+  pip:
+    virtualenv: "{{ venv_home }}/venv_datahacks"
+    virtualenv_command: "python3 -m venv"
+    state: latest
+    name:
+     - toolz
+     - pyrsistent
+     - effect

@@ -5,17 +5,13 @@
   become: yes
 
   tasks:
-    - name: install packages required by ansible
-      apt: name=software-properties-common update_cache=yes state=latest
-      tags: ansible_latest
-      when: True
+    - name: install python3 packages
+      apt:
+        name:
+          - python3
+          - python3-pip
+        update_cache: yes
+        state: latest
 
-    - name: add ansible repo
-      apt_repository: repo="ppa:ansible/ansible"
-      tags: ansible_latest
-      when: True
-
-    - name: install ansible latest
-      apt: name=ansible update_cache=yes state=latest
-      tags: ansible_latest
-
+    - name: install ansible with pip3
+      command: pip3 install ansible

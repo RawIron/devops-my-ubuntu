@@ -46,7 +46,7 @@
     - { role: erlang-dev, tags: ['elixir'] }
     - { role: haskell-dev, tags: ['haskell'] }
     - { role: py-dev, tags: ['python'] }
-    - { role: py-data-analysis, tags: ['pydata'] }
+    - { role: py-data, tags: ['pydata'] }
     - { role: devops, tags: ['ops'] }
     - { role: system-tools, tags: ['systools'] }
     - { role: cloud-aws, tags: ['aws'] }
