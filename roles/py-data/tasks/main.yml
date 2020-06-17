@@ -42,6 +42,7 @@
      - luigi
      - blaze
      - seaborn
+     - altair
      - jupyter
 
 - name: install functional programming packages
