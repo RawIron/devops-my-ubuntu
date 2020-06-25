@@ -4,7 +4,12 @@
   apt:
     update_cache: yes
     state: latest
-    name: ['git', 'meld', 'ack', 'jq']
+    name:
+      - git
+      - meld
+      - ack
+      - xclip
+      - jq
 
 
 - name: install vim
