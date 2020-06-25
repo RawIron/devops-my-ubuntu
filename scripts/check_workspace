@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#set -x
+
+name="$1"
+
+local_path="${HOME}/workspace_${name}"
+archive_path=/media/achtmhz/Seagate\ Expansion\ Drive/DATA/workspace_${name}
+
+for subdir in $(ls -1 ${local_path}); do
+    #ls "${local_path}/${subdir}"; ls "${archive_path}/${subdir}"
+    rclone check "${local_path}/${subdir}" "${archive_path}/${subdir}" --checksum --progress
+done
+
