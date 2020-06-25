@@ -6,6 +6,18 @@ Rebuild my Ubuntu laptop using Ansible playbooks. Just for the fun of it and to 
 Also automate a bunch of setup steps, eg add a new git repo to my virtualenvwrapper and bind to a the project home.
 A Vagrant box is used to test the Ansible playbooks.
 
+### Restore 1st steps
+
+* create a HOME directory for the user
+* install _rclone_
+* get the _rclone_ config from the Password Manager
+* place the _rclone_ config in ~/.config/rclone/rclone.conf
+* restore secret files from encrypted cloud storage
+* install git
+* clone this repo from github
+* install ansible
+
+### Test on vagrant
 First create a vagrant box
 ```
 $ vagrant up
@@ -29,6 +41,7 @@ vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
 vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "setup"
 ```
 
+### Run on laptop
 In my usual workflow I change the ansible script, for example add a new alias `aliases.zsh`, and then _deploy_ to my laptop with
 ```bash
 laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags="alias" --extra-vars 'as_root=no'
