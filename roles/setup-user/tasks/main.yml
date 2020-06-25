@@ -2,9 +2,12 @@
 
 - name: install tools
   include: "install_tools.yml"
+
 - name: create user
   include: "create_user.yml"
+
 - name: install ohmyzsh
   include: "install_ohmyzsh.yml"
+
 - name: copy dot files
   include: "copy_dot_files.yml"

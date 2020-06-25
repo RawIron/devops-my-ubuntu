@@ -6,7 +6,10 @@
 - name: install encfs and rclone
   apt:
     state: latest
-    name: ['python-pip', 'encfs', 'rclone']
+    name:
+      - python-pip
+      - encfs
+      - rclone
 
 - name: create empty rclone config file
   file: path={{ user_home }}/{{ item }}

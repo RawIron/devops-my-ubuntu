@@ -4,7 +4,9 @@
   apt: update_cache=yes
 
 - name: install terminator
-  apt: name=terminator state=latest
+  apt:
+    state: latest
+    name: terminator
   tags: terminator
 
 - name: install command-line tools
@@ -20,7 +22,7 @@
 - name: install ui tools
   apt:
     state: latest
-    name: ['gnome-sushi']
+    name: gnome-sushi
 
 - name: install python virtualenv wrapper
   pip:
