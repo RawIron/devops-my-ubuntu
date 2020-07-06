@@ -10,6 +10,7 @@
       - ack
       - xclip
       - jq
+      - cloc
 
 
 - name: install vim
