@@ -175,8 +175,9 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 0
 
 let g:syntastic_python_checkers = ['pylint']
 
@@ -316,8 +317,14 @@ nnoremap <leader>lp :lprevious<CR>
 nnoremap <leader>hc :helpclose<CR>
 
 " YCM
-nnoremap <leader>dj :YcmCompleter GoToDefinition<CR> 
-nnoremap <leader>dcj :YcmCompleter GoToDeclaration<CR> 
+nnoremap <leader>dj :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>dcj :YcmCompleter GoToDeclaration<CR>
+
+" Syntastic
+nnoremap <leader>sc :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
+nnoremap <leader>st :SyntasticToggle<CR>
+nnoremap <leader>se :Errors<CR>
 
 " manage .vimrc
 nnoremap <leader>vo :vsp $HOME/workspace/devops-my-ubuntu/files/vimrc<CR>
