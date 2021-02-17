@@ -122,6 +122,11 @@ map <C-S-UP> <C-w>-
 map <C-S-LEFT> <C-w><
 map <C-S-RIGHT> <C-w>>
 
+" terminal
+" open below all splits
+cabbrev boterm botright terminal
+set termwinsize=10x0
+
 
 " Omni
 set omnifunc=syntaxcomplete#Complete
@@ -175,9 +180,13 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_highlighting = 0
+let g:syntastic_mode_map = {
+\ "mode": "passive",
+\ "active_filetypes": [],
+\ "passive_filetypes": [] }
 
 let g:syntastic_python_checkers = ['pylint']
 
@@ -288,6 +297,10 @@ nnoremap <leader>m :make!
 " toggle NerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 
+" close terminal window
+tnoremap <leader>q <C-w>:q!<CR>
+nnoremap <leader>q <C-\><C-n>:q!<CR>
+
 " switcher
 nnoremap <leader>s :CtrlPBuffer<CR>
 
@@ -364,8 +377,8 @@ augroup keymap_intellij
 autocmd!
 
 " PYTHON
-autocmd FileType python nnoremap <buffer> <S-F10> :up<CR>:!python3 %<CR>
-autocmd FileType python nnoremap <buffer> <S-A-F10> :up<CR>:!python3 -m nose %<CR>
+autocmd FileType python nnoremap <buffer> <S-F10> :w<CR>:bo term python3 %<CR>
+autocmd FileType python nnoremap <buffer> <S-A-F10> :w<CR>:bo term python3 -m nose %<CR>
 
 " ELIXIR
 autocmd BufRead *.ex  nnoremap <S-F10> :!elixir %<CR>
