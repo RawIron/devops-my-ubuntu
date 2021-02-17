@@ -364,8 +364,8 @@ augroup keymap_intellij
 autocmd!
 
 " PYTHON
-autocmd FileType python nnoremap <S-F10> :!python3 -m doctest %<CR>
-autocmd FileType python nnoremap <S-A-F10> :!nosetests %<CR>
+autocmd FileType python nnoremap <buffer> <S-F10> :up<CR>:!python3 %<CR>
+autocmd FileType python nnoremap <buffer> <S-A-F10> :up<CR>:!python3 -m nose %<CR>
 
 " ELIXIR
 autocmd BufRead *.ex  nnoremap <S-F10> :!elixir %<CR>
