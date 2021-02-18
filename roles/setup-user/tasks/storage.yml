@@ -7,7 +7,7 @@
   apt:
     state: latest
     name:
-      - python-pip
+      - python3-pip
       - encfs
       - rclone
 
