@@ -381,11 +381,14 @@ autocmd FileType python nnoremap <buffer> <S-F10> :w<CR>:bo term python3 %<CR>
 autocmd FileType python nnoremap <buffer> <S-A-F10> :w<CR>:bo term python3 -m nose %<CR>
 
 " ELIXIR
-autocmd BufRead *.ex  nnoremap <S-F10> :!elixir %<CR>
-autocmd BufRead *.exs nnoremap <S-F10> :!elixir %<CR>
+autocmd BufRead *.ex  nnoremap <buffer> <S-F10> :bo term elixir %<CR>
+autocmd BufRead *.exs nnoremap <buffer> <S-F10> :bo term elixir %<CR>
+
+" Haskell
+autocmd FileType haskell nnoremap <buffer> <S-F10> :w<CR>:bo term ./runhs %<CR>
 
 " PHP
-autocmd FileType php nnoremap <S-F10> :!php %<CR>
+autocmd FileType php nnoremap <buffer> <S-F10> :bo term php %<CR>
 
 " CPP
 autocmd FileType cpp nnoremap <C-F9> :make<CR>
