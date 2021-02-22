@@ -54,3 +54,10 @@
     regexp: "^plugins="
     line: "plugins=(git mvn jsontools sudo virtualenvwrapper)"
   tags: myzsh
+
+- name: set EDITOR variable
+  lineinfile:
+    dest: /home/{{ user }}/.zshrc
+    regexp: "# *export EDITOR"
+    line: "export EDITOR=vim"
+  tags: myzsh
