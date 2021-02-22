@@ -1,5 +1,8 @@
 ---
 
 - name: install haskell
-  apt: name=haskell-platform update_cache=yes state=latest
+  apt:
+    name=haskell-platform
+    update_cache=yes
+    state=latest
   tags: haskell
