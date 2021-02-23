@@ -19,10 +19,14 @@ alias pg='ps -ef | grep'
 alias tree='tree -C'
 alias tedu='tree -C --du -h'
 
+# Python
 alias mkvenv='mkvirtualenv'
 alias lsvenv='lsvirtualvenv'
 alias rmvenv='rmvirtualenv'
 
+
+# Haskell
+alias runhs='runghc'
 
 # Maven
 mvn_test() { mvn test -Dtest="$1" }

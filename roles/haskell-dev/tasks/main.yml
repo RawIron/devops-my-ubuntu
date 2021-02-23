@@ -6,13 +6,3 @@
     update_cache=yes
     state=latest
   tags: haskell
-
-- name: runhs
-  copy:
-    src={{ item }}
-    dest=/home/{{ user }}/.local/bin/{{ item }}
-    owner={{ user }}
-    group={{ user }}
-    mode=0750
-  with_items:
-    - runhs
