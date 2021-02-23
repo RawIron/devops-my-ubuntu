@@ -385,7 +385,7 @@ autocmd BufRead *.ex  nnoremap <buffer> <S-F10> :bo term elixir %<CR>
 autocmd BufRead *.exs nnoremap <buffer> <S-F10> :bo term elixir %<CR>
 
 " Haskell
-autocmd FileType haskell nnoremap <buffer> <S-F10> :w<CR>:bo term ./runhs %<CR>
+autocmd FileType haskell nnoremap <buffer> <S-F10> :w<CR>:bo term runghc %<CR>
 
 " PHP
 autocmd FileType php nnoremap <buffer> <S-F10> :bo term php %<CR>
