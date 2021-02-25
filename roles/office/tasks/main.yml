@@ -1,26 +1,12 @@
 ---
 
 - name: install office packages
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - firefox
-   - focuswriter
-   - artha
-   - kazam
-   - screenkey
-   - bzip2
-   - mc
-   - libreoffice
-   - gufw
+  apt:
+    name: ['firefox', 'focuswriter', 'artha', 'kazam', 'screenkey', 'bzip2', 'mc', 'libreoffice', 'gufw']
+    update_cache: yes
+    state: latest
 
-- name: add partner repo
-  apt_repository: repo='deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }}  partner' state=present
-  tags: skype
 
-- name: add i386 platform for skype-bin
-  command: dpkg --add-architecture i386 
-  tags: skype
-
-- name: install skype package
-  apt: name=skype update_cache=yes state=latest
+- name: install skype
+  include: skype.yml
   tags: skype

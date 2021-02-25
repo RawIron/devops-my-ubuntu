@@ -4,7 +4,7 @@
   apt:
     update_cache: yes
     state: latest
-    name: ['git', 'ack', 'cmake', 'python3-pip', 'python3-dev', 'exuberant-ctags', 'bear', 'vim-gnome']
+    name: ['git', 'ack', 'cmake', 'python3-pip', 'python3-dev', 'exuberant-ctags', 'bear', 'vim']
   tags: vim
 
 - name: install python3 packages
@@ -15,19 +15,22 @@
   tags: vim
 
 - name: copy vimrc
-  copy: src=./files/vimrc dest={{ user_home }}/.vimrc
-        owner={{ user }}
-        group={{ user_group }}
+  copy:
+    src: ./files/vimrc
+    dest: "{{ user_home }}/.vimrc"
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
   tags:
-      - vim
-      - vimrc
+    - vim
+    - vimrc
 
 - name: create .vim folder
-  file: path={{ user_home }}/.vim/bundle
-        state=directory
-        owner={{ user }}
-        group={{ user_group }}
-        mode=0750
+  file:
+    path: "{{ user_home }}/.vim/bundle"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0750
   tags: vim
 
 - name: install vundle as plugin manager

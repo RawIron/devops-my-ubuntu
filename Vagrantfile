@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/focal64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -61,11 +61,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ensure that all Vagrant machines will use the same SSH key pair.
   # See https://github.com/mitchellh/vagrant/issues/5005
   #config.ssh.insert_key = false
-
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y python
-  SHELL
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"

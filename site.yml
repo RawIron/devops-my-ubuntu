@@ -40,6 +40,11 @@
       hostname: name={{ hostname }}
 
   roles:
+    - { role: setup-user, tags: ['setup'] }
+    - { role: media, tags: ['media'] }
+    - { role: office, tags: ['office'] }
+    - { role: devops, tags: ['ops'] }
+    - { role: cloud-aws, tags: ['aws'] }
     - { role: dev-tools, tags: ['devtools'] }
     - { role: c-dev, tags: ['cpp'] }
     - { role: java-dev, tags: ['java'] }
@@ -47,10 +52,5 @@
     - { role: haskell-dev, tags: ['haskell'] }
     - { role: py-dev, tags: ['python'] }
     - { role: py-data, tags: ['pydata'] }
-    - { role: devops, tags: ['ops'] }
-    - { role: system-tools, tags: ['systools'] }
-    - { role: cloud-aws, tags: ['aws'] }
-    - { role: setup-user, tags: ['setup'] }
-    - { role: media, tags: ['media'] }
-    - { role: office, tags: ['office'] }
     - { role: stats-learning, tags: ['stats'] }
+    - { role: system-tools, tags: ['systools'] }

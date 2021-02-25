@@ -1,26 +1,11 @@
 ---
 
 - name: install media packages
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-   - rawtherapee
-   - krita
-   - vlc
-   - ripperx
-   - dvdrip
-   - openshot
-   - calibre
+  apt:
+    name: ['rawtherapee', 'ripperx', 'openshot', 'calibre']
+    update_cache: yes
+    state: latest
 
-# vlc
-# - play dvd with any region code
-# - read from encrypted dvd
-# https://askubuntu.com/questions/1052993/how-to-install-libdvdcss-so-2-library-to-ubuntu-18-04
-- name: install libdvdcss2
-  apt: name=libdvd-pkg update_cache=yes state=latest
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16
-  
-- name: configure read from encrypted dvd
-  command: dpkg-reconfigure libdvd-pkg
-
-- name: install restricted-extras
-  apt: name=ubuntu-restricted-extras state=latest
+- name: install vlc
+  include: vlc.yml
+  tags: vlc

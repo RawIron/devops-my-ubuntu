@@ -1,5 +1,13 @@
 ---
 
+- name: Remove any existing installation
+  file:
+    state: absent
+    path: /home/{{ user }}/.oh-my-zsh/
+  become_user: "{{ user }}"
+  tags: myzsh
+
+
 # install script checks if the SHELL variable is set to .*/zsh
 # because ansible task uses sudo the SHELL variable is taken from remote_user
 # hard-code SHELL variable to /bin/zsh is safe:

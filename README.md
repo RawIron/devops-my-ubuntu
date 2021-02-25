@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/RawIron/devops-my-ubuntu.svg)](https://travis-ci.org/RawIron/devops-my-ubuntu)
 
-Rebuild my Ubuntu laptop using Ansible playbooks. Just for the fun of it and to learn more about Ansible.
+Rebuild my Ubuntu laptop using Ansible playbooks.
+Just for the fun of it and to learn more about Ansible.
 Also automate a bunch of setup steps, eg add a new git repo to my virtualenvwrapper and bind to a the project home.
 A Vagrant box is used to test the Ansible playbooks.
 
@@ -98,8 +99,8 @@ wrangle, plot, predict, test hypothesis, estimate.
 ### development tools
 write code with fully fledged IDE or lightweight editor. plugins can be used to extend the functionality.
 * intellij idea
+* vscode
 * vim
-* sublime
 * git
 * meld
 
@@ -109,15 +110,6 @@ write code with fully fledged IDE or lightweight editor. plugins can be used to 
 * python
 * elixir
 * markdown support
-
-#### sublime plugins
-* Package Control
-* SublimeLinter
-* sublimelinter-pylint
-* sublimelinter-json
-* BracketHighlighter
-* Sublime CodeIntel
-* SublimeREPL
 
 #### vim plugins
 * YouCompleteMe

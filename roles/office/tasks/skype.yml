@@ -1,0 +1,15 @@
+---
+
+- name: download skype latest
+  get_url:
+    url: https://go.skype.com/skypeforlinux-64.deb
+    dest: /tmp
+  when: ansible_distribution == "Ubuntu"
+  tags: skype
+
+
+- name: install skype latest deb
+  apt:
+    deb=/tmp/skypeforlinux-64.deb
+  when: ansible_distribution == "Ubuntu"
+  tags: skype

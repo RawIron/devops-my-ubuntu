@@ -15,9 +15,7 @@
         group={{ user_group }}
         state=directory
   with_items:
-    - bin
     - opt
-    - tmp
     - workspace
     - workspace_book
     - workspace_job

@@ -7,11 +7,9 @@
   tasks:
     - name: install python3 packages
       apt:
-        name:
-          - python3
-          - python3-pip
+        name: python3-pip
         update_cache: yes
         state: latest
 
     - name: install ansible with pip3
-      command: pip3 install ansible
+      command: python3 -m pip install ansible
