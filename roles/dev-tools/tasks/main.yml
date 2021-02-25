@@ -15,6 +15,11 @@
 
 - name: install vim
   include: vim.yml
+  tags: vim
+
+- name: install vscode
+  include: vscode.yml
+  tags: vscode
 
 - name: install swagger
   include: swagger.yml
