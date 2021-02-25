@@ -8,6 +8,7 @@ alias jungle='/usr/local/bin/junglediskdesktop&'
 
 alias zshrc='$EDITOR ~/.zshrc'
 alias vrc='$EDITOR ~/.vimrc'
+alias nvrc='$EDITOR ~/.config/nvim/init.vim'
 
 alias ag='alias | grep'
 alias_starts_with() { alias | grep "^$1" }

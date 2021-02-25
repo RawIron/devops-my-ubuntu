@@ -2,3 +2,6 @@
 
 bfg_home: "{{ user_home }}/bin"
 bfg_jar: "bfg-latest.jar"
+
+neovim_stdpath_data: "{{ user_home }}/.local/share/nvim/"
+neovim_stdpath_config: "{{ user_home }}/.config/nvim/"
