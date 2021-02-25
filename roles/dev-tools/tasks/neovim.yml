@@ -1,0 +1,21 @@
+---
+
+- name: install neovim
+  apt:
+    name: neovim
+    state: latest
+
+- name: create neovim autoload dir
+  file:
+    path: "{{ neovim_stdpath_data }}/site/autoload"
+    state: directory
+
+- name: install Plug
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: "{{ neovim_stdpath_data }}/site/autoload/plug.vim"
+
+- name: copy init.vim
+  copy:
+    src: ./files/init.vim
+    dest: "{{ neovim_stdpath_config }}/init.vim"

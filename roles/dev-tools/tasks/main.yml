@@ -1,21 +1,19 @@
 ---
 
-- name: install dev tools
+- name: install dev tool packages
   apt:
     update_cache: yes
     state: latest
-    name:
-      - git
-      - meld
-      - ack
-      - xclip
-      - jq
-      - cloc
+    name: ['git', 'meld', 'ack', 'xclip', 'jq', 'cloc']
 
 
 - name: install vim
   include: vim.yml
   tags: vim
+
+- name: install neovim
+  include: neovim.yml
+  tags: neovim
 
 - name: install vscode
   include: vscode.yml
