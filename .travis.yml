@@ -3,14 +3,16 @@ sudo: required
 dist: focal
 
 before_install:
-    - sudo apt-get install -y software-properties-common
+    - sudo apt install -y software-properties-common
     - sudo add-apt-repository -y ppa:ansible/ansible
-    - sudo apt-get -qq update
-    - sudo apt-get install -y ansible
-    - sudo apt-get install -y acl
+    - sudo apt -qq update
+    - sudo apt install -y ansible
+    # search for "ansible become becoming an unprivileged user"
+    # this solution was suggested on stackoverflow
+    - sudo apt install -y acl
 
 install:
   - ansible --version
 
 script:
-  - ANSIBLE_CONFIG="allow_world_readable_tmpfiles=True" ./test.sh
+  - ./test.sh
