@@ -17,15 +17,22 @@
     state: present
 
 - name: install docker
-  apt: name=docker-ce update_cache=yes state=latest
+  apt:
+    name: docker-ce
+    update_cache: yes
+    state: latest
 
 - name: add user to docker group
-  user: name={{ user }}
-        groups=docker
-        append=yes
+  user:
+    name: "{{ user }}"
+    groups: docker
+    append: yes
 
 - name: start docker
-  service: name=docker state=started enabled=yes
+  service:
+    name: docker
+    state: started
+    enabled: yes
 
 - name: test docker
   command: "docker run hello-world"
