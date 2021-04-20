@@ -1,0 +1,8 @@
+---
+
+user: "{{ lookup('env','USER') }}"
+user_home: "/home/{{ user }}"
+project_home: "{{ user_home }}/workspace"
+venv_home: ".venv"
+
+git_repo: "data-hacks"

@@ -18,48 +18,40 @@
 # test if ssh key is available
 # in case it is missing create dummy directories
 - name: test ssh key exists
-  command: test -f {{ user_home }}/.ssh/id_rsa
+  command: test -f {{ git_ssh_key_file }}
   ignore_errors: True
   register: result
   become_user: "{{ user }}"
 
 - name: clone git repos
   git:
-    repo: ssh://git@github.com/RawIron/{{ item }}.git
+    repo: "{{ git_ssh }}/{{ git_user }}/{{ item }}.git"
     dest: "{{ project_home }}/{{ item }}"
-  with_items: "{{ pydev_repos }}"
-  when: result|success
+  with_items: "{{ git_pyrepos }}"
+  when: result is success
   become_user: "{{ user }}"
 
 - name: create directory
   file:
     path: "{{ project_home }}/{{ item }}"
     state: directory
-  with_items: "{{ pydev_repos }}"
-  when: result|failed
+  with_items: "{{ git_pyrepos }}"
+  when: result is failed
   become_user: "{{ user }}"
 
 - name: create empty requirements file
   file:
     path: "{{ project_home }}/{{ item }}/requirements.txt"
     state: touch
-  with_items: "{{ pydev_repos }}"
-  when: result|failed
+  with_items: "{{ git_pyrepos }}"
+  when: result is failed
   become_user: "{{ user }}"
 
 
 # foreach python git repo create the venv with the same name
-- name: create one venv foreach pydev repo
-  shell: source {{ user_home }}/.zshrc; mkvirtualenv {{ item }}
-         executable=/usr/bin/zsh
-  with_items: "{{ pydev_repos }}"
-  become_user: "{{ user }}"
-
-- name: bind venv to projects
-  shell: source {{ user_home }}/.zshrc; \
-         setvirtualenvproject {{ venv_home }}/{{ item }} {{ project_home }}/{{ item }}
-         executable=/usr/bin/zsh
-  with_items: "{{ pydev_repos }}"
+- name: create venv in projects
+  shell: python3 -m venv {{ project_home }}/{{ item }}/{{ venv_home }}
+  with_items: "{{ git_pyrepos }}"
   become_user: "{{ user }}"
 
 # project must have a requirements.txt
@@ -68,9 +60,10 @@
 #   would need the `stat` module to check if file exists
 #   store the result with `register`
 #   how to do this in a loop?
-- name: install required packages into each pydev repo
-  pip: requirements={{ project_home }}/{{ item }}/requirements.txt
-       virtualenv={{ venv_home }}/{{ item }}
-       state=latest
-  with_items: "{{ pydev_repos }}"
+- name: install required packages into each pyrepo
+  pip:
+    requirements: "{{ project_home }}/{{ item }}/requirements.txt"
+    virtualenv: "{{ project_home }}/{{ item }}/{{ venv_home }}"
+    state: latest
+  with_items: "{{ git_pyrepos }}"
   become_user: "{{ user }}"

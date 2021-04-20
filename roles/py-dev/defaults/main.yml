@@ -1,0 +1,11 @@
+---
+
+user: "{{ lookup('env','USER') }}"
+user_home: "/home/{{ user }}"
+project_home: "{{ user_home }}/workspace"
+venv_home: ".venv"
+
+git_ssh: ssh://github@github.com
+git_user: "{{ user }}"
+git_ssh_key_file: "{{ user_home }}/.ssh/id_rsa"
+git_pyrepos: []

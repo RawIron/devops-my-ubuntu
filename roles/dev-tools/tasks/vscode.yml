@@ -29,7 +29,7 @@
 
 - name: install neovim >=0.5 for vscode
   snap:
-    name: neovim
+    name: nvim
     channel: beta
     classic: yes
     state: present

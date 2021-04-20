@@ -3,7 +3,6 @@
 - name: setup python3 as default
   include: python3.yml
 
-
 - name: install numpy linux packages
   apt:
     state: present
@@ -27,8 +26,7 @@
 
 - name: install analysis packages into virtualenv
   pip:
-    virtualenv: "{{ venv_home }}/venv_datahacks"
-    virtualenv_command: "python3 -m venv"
+    virtualenv: "{{ project_home }}/{{ git_repo }}/{{ venv_home }}"
     state: latest
     name:
      - numpy
@@ -42,13 +40,11 @@
      - luigi
      - blaze
      - seaborn
-     - altair
      - jupyter
 
 - name: install functional programming packages
   pip:
-    virtualenv: "{{ venv_home }}/venv_datahacks"
-    virtualenv_command: "python3 -m venv"
+    virtualenv: "{{ project_home }}/{{ git_repo }}/{{ venv_home }}"
     state: latest
     name:
      - toolz

@@ -21,6 +21,8 @@
 
 - name: install swagger
   include: swagger.yml
+  when: False
 
 - name: install git repo cleaner
   include: git_repo_cleaner.yml
+  when: False

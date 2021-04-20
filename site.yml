@@ -11,23 +11,22 @@
     hostname: mordoror
     user_home: /home/{{ user }}
     download_home: /tmp
-    venv_home: "{{ user_home }}/venv"
-    project_home: "{{ user_home }}/workspace"
-    pydev_repos:
+    git_user: "RawIron"
+    git_pyrepos:
+      - jotting-python
       - data-hacks
       - flask-appengine-demo
-      - learning-python
     git_repos:
       - devops-my-ubuntu
       - hackerrank-d
       - hackerrank-scala
-      - scratch-d
-      - scratch-java
-      - scratch-php
-      - scratch-ruby
+      - jotting-php
+      - jotting-elixir
       - learn-cpp
-      - learning-elixir
       - learning-bash
+      - scratch-java
+      - scratch-d
+      - scratch-ruby
       - devops-opsworks
       - farm-game
       - gatling-loadtest-game
