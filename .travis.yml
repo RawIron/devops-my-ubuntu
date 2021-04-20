@@ -12,4 +12,4 @@ install:
   - ansible --version
 
 script:
-  - ./test.sh
+  - ANSIBLE_CONFIG="ALLOW_WORLD_READABLE_TMPFILES=True" ./test.sh
