@@ -5,22 +5,18 @@
     name: virtualbox-qt
     update_cache: yes
     state: latest
-  tags: vagrant
 
 - name: download vagrant latest
   get_url:
     url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
     dest: /tmp
   when: ansible_distribution == "Ubuntu"
-  tags: vagrant
 
 - name: install vagrant latest deb
   apt: deb=/tmp/vagrant_{{ vagrant_version }}_x86_64.deb
   when: ansible_distribution == "Ubuntu"
-  tags: vagrant
 
 # testing it on a vagrant box does not work
 - name: download ubuntu 14.04 vagrant box
   command: "vagrant box add ubuntu/trusty64"
   when: ansible_virtualization_type != "virtualbox"
-  tags: vagrant
