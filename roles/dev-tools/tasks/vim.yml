@@ -29,8 +29,9 @@
     mode: 0750
 
 - name: install vundle as plugin manager
-  git: repo=https://github.com/VundleVim/vundle.vim.git
-       dest={{ user_home }}/.vim/bundle/Vundle.vim
+  git:
+    repo: https://github.com/VundleVim/vundle.vim.git
+    dest: "{{ user_home }}/.vim/bundle/Vundle.vim"
   become_user: "{{ user }}"
   become_method: sudo
 

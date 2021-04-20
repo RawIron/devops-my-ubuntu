@@ -1,7 +1,8 @@
 ---
 
 - name: update apt cache
-  apt: update_cache=yes
+  apt:
+    update_cache=yes
 
 - name: install terminator
   apt:

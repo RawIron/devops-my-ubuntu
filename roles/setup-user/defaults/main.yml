@@ -1,0 +1,9 @@
+---
+
+user: "{{ lookup('env','USER') }}"
+user_group: "{{ user }}"
+user_home: "{{ lookup('env','HOME') }}"
+
+ohmyzsh_install_uri: "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+ohmyzsh_root: ".oh-my-zsh"
+ohmyzsh_plugins: []

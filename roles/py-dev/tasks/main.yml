@@ -22,6 +22,7 @@
   ignore_errors: True
   register: result
   become_user: "{{ user }}"
+  become_method: sudo
 
 - name: clone git repos
   git:
@@ -30,6 +31,7 @@
   with_items: "{{ git_pyrepos }}"
   when: result is success
   become_user: "{{ user }}"
+  become_method: sudo
 
 - name: create directory
   file:
@@ -38,6 +40,7 @@
   with_items: "{{ git_pyrepos }}"
   when: result is failed
   become_user: "{{ user }}"
+  become_method: sudo
 
 - name: create empty requirements file
   file:
@@ -46,6 +49,7 @@
   with_items: "{{ git_pyrepos }}"
   when: result is failed
   become_user: "{{ user }}"
+  become_method: sudo
 
 
 # foreach python git repo create the venv with the same name
@@ -53,6 +57,7 @@
   shell: python3 -m venv {{ project_home }}/{{ item }}/{{ venv_home }}
   with_items: "{{ git_pyrepos }}"
   become_user: "{{ user }}"
+  become_method: sudo
 
 # project must have a requirements.txt
 # `pip` has no option to ignore a missing requirements.txt
@@ -67,3 +72,4 @@
     state: latest
   with_items: "{{ git_pyrepos }}"
   become_user: "{{ user }}"
+  become_method: sudo
