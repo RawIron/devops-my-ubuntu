@@ -1,18 +1,29 @@
 #!/bin/bash
 
+tags="$1"
+test_tags=""
+
+python_tags="python pydata stats"
+lang_tags="cpp elixir haskell java"
+app_tags="office media"
+tool_tags="ops aws devtools"
+
+if [[ ${tags} ]]; then
+    test_tags=${tags}
+else
+    test_tags="setup ops python pydata devtools cpp haskell"
+fi
+#
+# --tags=systools
+
 # test syntax on all roles
 ansible-playbook --inventory=hosts --connection=local site.yml --syntax-check
 
-# setup user env
-ansible-playbook --inventory=hosts --connection=local site.yml --tags=setup
-
-# test roles
-ansible-playbook --inventory=hosts --connection=local site.yml --tags=ops
-ansible-playbook --inventory=hosts --connection=local site.yml --tags=python
-ansible-playbook --inventory=hosts --connection=local site.yml --tags=pydata
-ansible-playbook --inventory=hosts --connection=local site.yml --tags=devtools
-
-#ansible-playbook --inventory=hosts --connection=local site.yml --tags=systools
-
-# erlang, elixir conflicts with pre-installed versions of travis-ci
-#ansible-playbook --inventory=hosts --connection=local site.yml --tags=erlang
+# test tags
+for tag in ${test_tags}; do
+    ansible-playbook --inventory=hosts --connection=local site.yml --tags=${tag}
+    rc=$?
+    if [[ ${rc} -ne 0 ]]; then
+        exit ${rc}
+    fi
+done

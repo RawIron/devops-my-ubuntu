@@ -15,4 +15,7 @@ install:
   - ansible --version
 
 script:
-  - ./test.sh
+  # following tags conflict with pre-installed solutions on travis-ci
+  # docker
+  # erlang, elixir
+  - ./test.sh "setup vagrant python pydata devtools"
