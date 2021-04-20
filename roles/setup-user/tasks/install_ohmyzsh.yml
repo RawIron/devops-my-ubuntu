@@ -6,7 +6,6 @@
     path: "{{ user_home }}/.oh-my-zsh/"
   become_user: "{{ user }}"
   become_method: sudo
-  tags: myzsh
 
 
 # install script checks if the SHELL variable is set to .*/zsh
@@ -17,7 +16,6 @@
   shell: SHELL=/bin/zsh sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   become_user: "{{ user }}"
   become_method: sudo
-  tags: myzsh
 
 - name: copy my .zsh files
   copy:
@@ -30,7 +28,7 @@
     - common-aliases
     - aliases
     - zle
-  tags: ["myzsh", "alias"]
+  tags: sh-alias
 
 - name: workspace aliases
   template:
@@ -39,7 +37,7 @@
     owner: "{{ user }}"
     group: "{{ user_group }}"
     mode: 0640
-  tags: ["myzsh", "alias"]
+  tags: sh-alias
 
 # support the oh-my-zsh virutalenvwrapper plugin
 # => automagically activates the venv when a git repo directory is entered 
@@ -47,18 +45,15 @@
   pip:
     name: virtualenvwrapper
     state: latest
-  tags: myzsh
 
 - name: enable my-zsh plugins
   lineinfile:
-    dest: "{{ user }}/.zshrc"
+    dest: "{{ user_home }}/.zshrc"
     regexp: "^plugins="
     line: "plugins=(git mvn jsontools sudo virtualenvwrapper)"
-  tags: myzsh
 
 - name: set EDITOR variable
   lineinfile:
-    dest: "{{ user }}/.zshrc"
+    dest: "{{ user_home }}/.zshrc"
     regexp: "# *export EDITOR"
     line: "export EDITOR=vim"
-  tags: myzsh

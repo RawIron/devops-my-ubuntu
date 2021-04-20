@@ -8,6 +8,7 @@
 
 - name: install ohmyzsh
   include: "install_ohmyzsh.yml"
+  tags: myzsh
 
 - name: copy dot files
   include: "copy_dot_files.yml"
