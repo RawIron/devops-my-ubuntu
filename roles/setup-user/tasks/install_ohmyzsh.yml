@@ -25,7 +25,7 @@
     dest: "{{ user_home }}/.oh-my-zsh/custom"
     owner: "{{ user }}"
     group: "{{ user_group }}"
-    mode=0644
+    mode: 0644
   with_items:
     - common-aliases
     - aliases
