@@ -1,6 +1,6 @@
 ---
 
-- hosts: laptop
+- hosts: default
   become: "{{ as_root }}"
   become_method: sudo
 
@@ -11,7 +11,7 @@
     hostname: mordoror
     user_home: /home/{{ user }}
     download_home: /tmp
-    git_user: "RawIron"
+    git_user: RawIron
     git_pyrepos:
       - jotting-python
       - data-hacks

@@ -17,11 +17,11 @@ fi
 # --tags=systools
 
 # test syntax on all roles
-ansible-playbook --inventory=hosts --connection=local site.yml --syntax-check
+ansible-playbook deploy.yml --syntax-check
 
 # test tags
 for tag in ${test_tags}; do
-    ansible-playbook --inventory=hosts --connection=local site.yml --tags=${tag}
+    ansible-playbook deploy.yml --tags=${tag}
     rc=$?
     if [[ ${rc} -ne 0 ]]; then
         exit ${rc}

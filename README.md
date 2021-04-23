@@ -16,9 +16,11 @@ A Vagrant box is used to test the Ansible playbooks.
 * restore secret files from encrypted cloud storage
 * install git
 * clone this repo from github
-* install ansible
+* create a python virtual environment
+* install the requirements: wheel, ansible, mitogen, ..
+* deploy
 
-### Test on vagrant
+### Test on the vagrant box
 First create a vagrant box
 ```
 $ vagrant up
@@ -26,7 +28,7 @@ $ vagrant up
 
 Run defined tests on the vagrant box.
 ```bash
-laptop$ vagrant ssh --command "cd /vagrant; ./test.sh"
+laptop$ vagrant ssh --command "cd /vagrant; ANSIBLE_INVENTORY=hosts ./test.sh"
 ```
 
 Then test the ansible playbooks on the vagrant box
@@ -34,19 +36,34 @@ Then test the ansible playbooks on the vagrant box
 ```
 $ vagrant ssh
 vagrant$ cd /vagrant
-vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml
+vagrant$ ansible-playbook --inventory-file=hosts deploy.yml
 ```
 
-* one role at a time using the tags defined in `site.yml`
+* one role at a time using the tags defined in `deploy.yml`
 ```
-vagrant$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags "setup"
+vagrant$ ansible-playbook --inventory-file=hosts deploy.yml --tags setup
+```
+
+### Deploy from laptop onto the vagrant box
+
+* deploy onto the vagrant box via ssh
+```
+laptop$ ansible-playbook --inventory-file=.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory deploy.yml --tags terminator
 ```
 
 ### Run on laptop
 In my usual workflow I change the ansible script, for example add a new alias `aliases.zsh`, and then _deploy_ to my laptop with
 ```bash
-laptop$ ansible-playbook --inventory-file=hosts --connection=local site.yml --tags="alias" --extra-vars 'as_root=no'
+laptop$ ansible-playbook --inventory-file=hosts deploy.yml --tags=alias --extra-vars 'as_root=no'
 ```
+
+### Use Ansible container instead of local Ansible install
+```
+docker pull cytopia/ansible:latest
+
+docker run --rm -v $(pwd):/data cytopia/ansible ansible-playbook --inventory-file=hosts deploy.yml
+```
+
 
 ## Categories and the major software that I use
 

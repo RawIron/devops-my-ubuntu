@@ -18,4 +18,4 @@ script:
   # following tags conflict with pre-installed solutions on travis-ci
   # docker
   # erlang, elixir
-  - ./test.sh "setup vagrant python pydata devtools"
+  - ANSIBLE_INVENTORY=hosts ./test.sh "setup vagrant python pydata devtools"
