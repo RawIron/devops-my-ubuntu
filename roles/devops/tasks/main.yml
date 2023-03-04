@@ -1,9 +1,9 @@
 ---
 
 - name: install docker
-  include: docker.yml
+  include_tasks: docker.yml
   tags: docker
 
 - name: install vagrant
-  include: vagrant.yml
+  include_tasks: vagrant.yml
   tags: vagrant

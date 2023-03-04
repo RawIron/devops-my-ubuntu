@@ -2,10 +2,10 @@
 
 - name: install media packages
   apt:
-    name: ['rawtherapee', 'ripperx', 'openshot', 'calibre']
+    name: ['rawtherapee', 'handbrake', 'ripperx', 'openshot', 'calibre']
     update_cache: yes
     state: latest
 
 - name: install vlc
-  include: vlc.yml
+  include_tasks: vlc.yml
   tags: vlc

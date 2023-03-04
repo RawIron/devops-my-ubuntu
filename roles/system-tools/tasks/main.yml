@@ -23,9 +23,12 @@
     state: present
 
 - name: install kernel tools
-  apt: name=linux-tools-generic update_cache=yes state=present
+  apt:
+    name: linux-tools-generic
+    update_cache: yes
+    state: present
   tags: perf
 
 - name: install systemtap
-  include: systemtap.yml
+  include_tasks: systemtap.yml
   tags: systemtap

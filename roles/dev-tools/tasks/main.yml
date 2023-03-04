@@ -4,25 +4,24 @@
   apt:
     update_cache: yes
     state: latest
-    name: ['git', 'meld', 'ack', 'xclip', 'jq', 'cloc']
-
+    name: ['git', 'meld', 'ag', 'xclip', 'jq', 'cloc']
 
 - name: install vim
-  include: vim.yml
+  include_tasks: vim.yml
   tags: vim
 
 - name: install neovim
-  include: neovim.yml
+  include_tasks: neovim.yml
   tags: neovim
 
 - name: install vscode
-  include: vscode.yml
+  include_tasks: vscode.yml
   tags: vscode
 
 - name: install swagger
-  include: swagger.yml
+  include_tasks: swagger.yml
   when: False
 
 - name: install git repo cleaner
-  include: git_repo_cleaner.yml
+  include_tasks: git_repo_cleaner.yml
   when: False

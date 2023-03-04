@@ -1,17 +1,17 @@
 ---
 
 - name: install oracle jdk
-  include: oracle_java.yml
+  include_tasks: oracle_java.yml
   tags: oracle-java
   when: False
 
 - name: install openjdk
-  include: openjdk.yml
+  include_tasks: openjdk.yml
   tags: openjdk
 
 - name: install maven
-  include: maven.yml
+  include_tasks: maven.yml
   tags: maven31
 
 - name: install scala
-  include: scala.yml
+  include_tasks: scala.yml

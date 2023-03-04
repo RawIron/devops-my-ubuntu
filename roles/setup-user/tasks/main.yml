@@ -1,14 +1,16 @@
 ---
 
 - name: install tools
-  include: "install_tools.yml"
+  include_tasks: install_tools.yml
+  tags: utools
 
 - name: create user
-  include: "create_user.yml"
+  include_tasks: create_user.yml
 
 - name: install ohmyzsh
-  include: "install_ohmyzsh.yml"
+  include_tasks: install_ohmyzsh.yml
   tags: myzsh
 
 - name: copy dot files
-  include: "copy_dot_files.yml"
+  include_tasks: copy_dot_files.yml
+  tags: dotfiles

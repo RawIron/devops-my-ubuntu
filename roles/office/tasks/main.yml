@@ -6,7 +6,6 @@
     update_cache: yes
     state: latest
 
-
 - name: install skype
-  include: skype.yml
+  include_tasks: skype.yml
   tags: skype

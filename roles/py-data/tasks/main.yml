@@ -1,7 +1,7 @@
 ---
 
 - name: setup python3 as default
-  include: python3.yml
+  include_tasks: python3.yml
 
 - name: install numpy linux packages
   apt:
