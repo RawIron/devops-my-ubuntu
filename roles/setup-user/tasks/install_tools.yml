@@ -2,13 +2,7 @@
 
 - name: update apt cache
   apt:
-    update_cache=yes
-
-- name: install terminator
-  apt:
-    state: latest
-    name: terminator
-  tags: terminator
+    update_cache: yes
 
 - name: install command-line tools
   apt:
@@ -29,7 +23,7 @@
     state: latest
     name: ['python3-pip', 'python3-setuptools', 'python3-virtualenv']
 
-- name: install python virtualenv wrapper
+- name: pip install tools
   pip:
     state: latest
     name: ['virtualenvwrapper', 'yq']
