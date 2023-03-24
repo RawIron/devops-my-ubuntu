@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# found in
+# https://superuser.com/questions/48374/find-all-user-installed-packages/105000#105000
+
+
+# apt-mark showauto <- /var/lib/apt/extended_states
+# dpkg-query <- /var/log/dpkg.log*
+comm -13 \
+  <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort) \
+  <(comm -23 \
+    <(dpkg-query -W -f='${Package}\n' | sed 1d | sort) \
+    <(apt-mark showauto | sort) \
+  )
