@@ -13,7 +13,7 @@
 - name: install command-line tools
   apt:
     state: latest
-    name: ['zsh', 'git', 'tree', 'screen', 'tmux', 'jq', 'pass']
+    name: ['zsh', 'git', 'fzf', 'tree', 'curl', 'wget', 'tmux', 'jq', 'pass']
 
 - name: install ui tools
   apt:

@@ -4,7 +4,7 @@
   apt:
     update_cache: yes
     state: latest
-    name: ['git', 'ack', 'cmake', 'python3-pip', 'python3-dev', 'exuberant-ctags', 'bear', 'vim']
+    name: ['git', 'fzf', 'ack', 'cmake', 'python3-pip', 'python3-dev', 'exuberant-ctags', 'bear', 'vim']
 
 - name: install python3 packages
   pip:
