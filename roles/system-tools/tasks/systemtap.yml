@@ -2,25 +2,26 @@
 
 - name: install systemtap
   apt:
-    update_cache: yes
-    state: latest
     name:
      - gcc
      - systemtap
+    update_cache: yes
+    state: latest
 
 - name: get repo keys
   apt_key: keyserver=keyserver.ubuntu.com id=C8CAB6595FDFF622 state=present
 
 - name: add repos for debug symbols
-  apt_repository: repo="{{ item }}" state=present
+  apt_repository: repo="{{ item }} state=present
   with_items:
     - deb http://ddebs.ubuntu.com/ {{ ansible_distribution_release }} main restricted universe multiverse
     - deb http://ddebs.ubuntu.com/ {{ ansible_distribution_release }}-updates main restricted universe multiverse
 
 - name: install debug info kernel
-  apt: name=linux-image-{{ ansible_kernel }}-dbgsym
-       update_cache=yes
-       state=present
+  apt:
+    name: linux-image-{{ ansible_kernel }}-dbgsym
+    update_cache: yes
+    state: present
   # HACK for Travis CI
   # ubuntu release and kernel version do not match
   # for example trusty has kernel 3.13 but on Travis CI kernel was upgraded to 4.4
