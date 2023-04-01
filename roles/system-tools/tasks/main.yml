@@ -7,16 +7,20 @@
     name:
      - htop
      - iotop
-     - inotify-tools
+     - iostat
      - sysstat
      - sysdig
+     - inotify-tools
      - oprofile
+     - pax-utils
      - nicstat
      - iptraf
-     - pax-utils
+     - iproute2
+     - netcat-openbsd
+     - socat
   tags: systools
 
-- name: install hardware static perf tools
+- name: install hardware info tool
   apt:
     name: hwinfo
     update_cache: yes
@@ -27,7 +31,7 @@
     name: linux-tools-generic
     update_cache: yes
     state: present
-  tags: perf
+  tags: perftools
 
 - name: install systemtap
   include_tasks: systemtap.yml
