@@ -4,7 +4,6 @@
 alias swagger='(cd ~/opt/swagger-editor; npm start)'
 alias bfg='java -jar ~/bin/bfg-latest.jar'
 alias idea='~/opt/intelliJ/bin/idea.sh&'
-alias jungle='/usr/local/bin/junglediskdesktop&'
 
 alias zshrc='$EDITOR ~/.zshrc'
 alias vrc='$EDITOR ~/.vimrc'
