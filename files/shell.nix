@@ -11,11 +11,16 @@ pkgs.mkShellNoCC {
     tig
     diff-so-fancy
     tmux
+    vifm
     rxvt-unicode-unwrapped
+    st
     encfs
+    protonvpn-gui
     calibre
+    signal-desktop
     cloc
     universal-ctags
+    fastfetch
     fzf
     fd
     ripgrep
