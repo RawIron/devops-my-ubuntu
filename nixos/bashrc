@@ -22,6 +22,12 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 # Set up fzf shell integration, key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
+BROOT_LAUNCHER="~/.config/broot/launcher/bash/br"
+if [ -f "$BROOT_LAUNCHER" ]; then
+    source "$BROOT_LAUNCHER"
+fi
+
+
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
