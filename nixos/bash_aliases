@@ -55,3 +55,8 @@ alias pg='ps -ef | grep'
 
 alias tree='tree -C'
 alias tedu='tree -C --du -h'
+
+
+if [ -f ~/.bash_aliases_git ]; then
+    source ~/.bash_aliases_git
+fi
