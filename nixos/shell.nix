@@ -11,16 +11,22 @@ pkgs.mkShellNoCC {
     tig
     diff-so-fancy
     tmux
-    vifm
     rxvt-unicode-unwrapped
     st
+    vifm
+    ffmpeg_6
+    poppler_utils
+    lynx
+    chafa
+    timg
     encfs
     protonvpn-gui
     calibre
+    rawtherapee
     signal-desktop
     cloc
     universal-ctags
-    fastfetch
+    scc
     fzf
     fd
     ripgrep
@@ -28,12 +34,15 @@ pkgs.mkShellNoCC {
     broot
     tree
     eza
+    ncdu
     dust
     jq
-    tealdeer
+    fastfetch
     nmon
+    htop
     atop
     iotop
+    tealdeer
     curl
     wget
   ];
