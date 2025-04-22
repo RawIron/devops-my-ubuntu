@@ -25,6 +25,11 @@ elseif $EDITOR != ''
     let &vicmd = $EDITOR
 endif
 
+" Command used to find files. The default is find.
+if executable('fd')
+    set findprg='fd %p'
+endif
+
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
 " solution, it's also much slower when processing large amounts of files and
@@ -110,8 +115,8 @@ colorscheme Default-256 Default
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/.local/bin/
 mark h ~/
+mark b ~/.local/bin/
 
 " ------------------------------------------------------------------------------
 " Commands
