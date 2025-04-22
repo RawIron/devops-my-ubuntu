@@ -120,6 +120,8 @@ colorscheme Default-256 Default
 
 mark h ~/
 mark b ~/.local/bin/
+mark m /run/media/michael
+mark D ~/Downloads
 
 " ------------------------------------------------------------------------------
 " Commands
