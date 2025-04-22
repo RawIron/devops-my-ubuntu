@@ -52,6 +52,9 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " This is how many directories to store in the directory history.
 set history=100
 
+" <ctrl-i> goes forward in the view history.
+set cpoptions='fs'
+
 " Automatically resolve symbolic links on l or Enter.
 set nofollowlinks
 
