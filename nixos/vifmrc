@@ -25,11 +25,6 @@ elseif $EDITOR != ''
     let &vicmd = $EDITOR
 endif
 
-" Command used to find files. The default is find.
-if executable('fd')
-    set findprg='fd %p'
-endif
-
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
 " solution, it's also much slower when processing large amounts of files and
@@ -453,6 +448,9 @@ nnoremap S :sort<cr>
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
+" Shortcut to find
+nnoremap <c-p> :find<space>
+
 if $DISPLAY && executable('gvim')
     " Open file in existing instance of gvim
     nnoremap o :!gvim --remote-tab-silent %f<cr>
@@ -544,6 +542,11 @@ nnoremap <c-u> <c-w>x
 
 " Use ag (the silver searcher) instead of grep
 " set grepprg='ag --line-numbers %i %a %s'
+
+" Use fd instead of find
+if executable('fd')
+    set findprg='fd %p'
+endif
 
 " Add additional place to look for executables
 " let $PATH = $HOME.'/bin/fuse:'.$PATH
