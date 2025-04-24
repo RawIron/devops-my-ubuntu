@@ -19,8 +19,8 @@ alias dud='du -d 1 -h'
 alias duf='du -sh *'
 
 alias f='find'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+alias fid='find . -type d -name'
+alias fif='find . -type f -name'
 
 alias h='history'
 
@@ -30,6 +30,7 @@ alias rrf='rm -rf'
 
 alias p='ps -f'
 alias pef='ps -ef'
+alias pt='ps --forest'
 
 alias c='cat'
 alias cs='pygmentize -g'  # cat with syntax highlighting
@@ -43,10 +44,11 @@ alias vimdiff='nvim -d'
 
 # Quick access to commands, files or directories
 alias zshrc='$EDITOR ~/.zshrc'
+alias bashrc='$EDITOR ~/.bashrc'
 alias vrc='$EDITOR ~/.vimrc'
 alias nvrc='$EDITOR ~/.config/nvim/init.vim'
 
-#alias alg='alias | grep'
+alias alg='alias | grep'
 #alias_starts_with() { alias | grep "^$1" }
 #alias algs='alias_starts_with'
 
