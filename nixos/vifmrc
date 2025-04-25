@@ -206,27 +206,28 @@ filetype {*.mid,*.kar}
        \ timidity %f,
 
 " Audio
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
-         \*.aac,*.mpga},<audio/*>
-       \ st mpv --no-video %f &, 
-       \ ffplay -nodisp -hide_banner -autoexit %c,
+filextype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
+          \*.aac,*.mpga},<audio/*>
+       \ st mpv --no-video %f &,
+       \ st ffplay -nodisp -hide_banner -autoexit %c &,
        \ mplayer %f,
 fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
            \*.aac,*.mpga},<audio/*>
+       \ ffprobe_jq.sh %c
        \ ffprobe -hide_banner -pretty %c 2>&1
 
 " Video
 filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
           \*.as[fx],*.unknown_video},<video/*>
+        \ mpv --quiet %f &,
         \ ffplay -loglevel error -hide_banner -autoexit %f &,
-        \ mpv --no-video %f,
-        \ dragon %f:p,
         \ mplayer %f,
+        \ dragon %f:p,
 fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
            \*.as[fx],*.unknown_video},<video/*>
-	\ ffprobe_jq.sh %c
+        \ ffprobe_jq.sh %c
         \ ffprobe -hide_banner -pretty %c 2>&1
 
 " Web
@@ -277,7 +278,7 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
 " Displaying images in terminal
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
          \ chafa --size=%pwx%ph --polite=on --colors=256 %c
-"        \ timg -I --pixelation=quarter -g %pwx%ph %c
+         \ timg -I --pixelation=quarter -g %pwx%ph %c
 " fileviewer *.jpg,*.png shellpic %c
 
 " OpenRaster
