@@ -277,8 +277,8 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
 
 " Displaying images in terminal
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ chafa --size=%pwx%ph --polite=on --colors=256 %c
-         \ timg -I --pixelation=quarter -g %pwx%ph %c
+         \ chafa --size=%pwx%ph --polite=on --colors=256 %c,
+         \ timg -I --pixelation=quarter -g %pwx%ph %c,
 " fileviewer *.jpg,*.png shellpic %c
 
 " OpenRaster
