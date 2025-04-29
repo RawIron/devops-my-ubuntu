@@ -11,21 +11,27 @@ pkgs.mkShellNoCC {
     tig
     diff-so-fancy
     tmux
-    rxvt-unicode-unwrapped
     st
+    rxvt-unicode-unwrapped
     vifm
-    ffmpeg_6
     poppler_utils
     lynx
     chafa
     timg
-    encfs
-    protonvpn-gui
+    ffmpeg_6
+    ffmpegthumbnailer
+    mpv
+    feh
+    epub-thumbnailer
+    rofi
+    zathura
     calibre
     rawtherapee
     signal-desktop
-    cloc
+    protonvpn-gui
+    encfs
     universal-ctags
+    cloc
     scc
     fzf
     fd
@@ -37,12 +43,12 @@ pkgs.mkShellNoCC {
     ncdu
     dust
     jq
+    tealdeer
     fastfetch
     nmon
     htop
     atop
     iotop
-    tealdeer
     curl
     wget
   ];
