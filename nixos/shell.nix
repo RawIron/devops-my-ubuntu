@@ -18,6 +18,7 @@ pkgs.mkShellNoCC {
     lynx
     chafa
     timg
+    glow
     ffmpeg_6
     ffmpegthumbnailer
     mpv
@@ -40,6 +41,7 @@ pkgs.mkShellNoCC {
     broot
     tree
     eza
+    lsof
     ncdu
     dust
     jq
