@@ -6,14 +6,17 @@ in
 pkgs.mkShellNoCC {
   packages = with pkgs; [
     neovim
+    helix
     rclone
     git
     tig
     diff-so-fancy
     tmux
+    zellij
     st
     rxvt-unicode-unwrapped
     vifm
+    joshuto
     poppler_utils
     lynx
     chafa
@@ -48,6 +51,7 @@ pkgs.mkShellNoCC {
     tealdeer
     fastfetch
     nmon
+    bottom
     htop
     atop
     iotop
